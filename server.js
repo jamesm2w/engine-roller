@@ -33,8 +33,13 @@ app.get("/engine/full/t4", (req, res) => {
   res.send(ans);
 });
 
+app.get("/engine/full/t5", (req, res) => {
+  let ans = roller.rollSchematic(5, 100, 135);
+  res.send(ans);
+});
+
 app.get("/engine/full/t6", (req, res) => {
-  let ans = roller.rollSchematic(5, 100, 250);
+  let ans = roller.rollSchematic(5, 100, 300);
   res.send(ans);
 });
 
