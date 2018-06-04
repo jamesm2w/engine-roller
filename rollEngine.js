@@ -1,3 +1,5 @@
+random = new require("random-py").Random;
+
 exports = module.exports = {};
 
 var elDiv = (ar1, num) => {
