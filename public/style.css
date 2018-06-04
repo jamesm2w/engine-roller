@@ -63,3 +63,18 @@ a {color: #ffe5c4;}
   font-weight: normal;
   letter-spacing: 2px;
 }
+.stat-bar-wrapper {
+  background-color: #776464; width: 100%; position: relative; height: 20px; margin-bottom: 2px;
+}
+.stat-bar-meter {
+  background-color: #668ec3; height: 20px; width: 90%; position: absolute;
+}
+.stat-bar-meter.width0 {
+  width: 0;
+}
+.stat-bar-label.left {
+  z-index:1; float: left; margin-left: 10px; position: relative;
+}
+.stat-bar-label.right {
+   z-index:1; float: right; margin-right: 10px; position: relative;
+}
