@@ -44,33 +44,43 @@ var rollSchematic = function (min, max, total) {
 var rollEngine = function (tier) {
   console.log("rolling engine" + tier)
   document.getElementById("schematicName").innerHTML = "Procedural Engine (Tier " + tier + ")";
+  var panel = document.getElementById("schematicPanel")
+  var colour = "white";
   var max = 180
   switch (tier) {
     case 6:
       max = 300;
+      colour = "#ee4000";
       break;
     case 5:
-      max = 235
+      max = 235;
+      colour = "#6b5ace";
       break;
     case 4:
-      max = 180
+      max = 180;
+      colour = "#ffeb3b";
       break;
     case 3: 
-      max = 135
+      max = 135;
+      colour = "#8470ff";
       break;
     case 2:
-      max = 100
+      max = 100;
+      colour = "#00ee76";
       break;
     case 1:
-      max = 75
+      max = 75;
+      colour = "white";
       break;
     case 7:
-      max = 375
+      max = 375;
+      colour = "black";
       break;
     default:
       max = 100
       break;
               }
+  panel.style.borderColor = colour;
   var result = rollSchematic(5, 100, max);
   for (var i = 0; i < result.length; i++){
     document.getElementById("schem-stat-" + i).style.width = Math.round(result[i]) + "%";
