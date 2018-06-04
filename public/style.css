@@ -1,15 +1,65 @@
-.stat-bar-wrapper {
-  background-color: #776464; width: 100%; position: relative; height: 20px; margin-bottom: 2px;
+/* ------------------------------
+       Column Styling
+------------------------------ */
+* {box-sizing: border-box;}
+
+.col-1 {width: 6.33%; margin-left: 1%; margin-right: 1%;}
+.col-2 {width: 14.66%; margin-left: 1%; margin-right: 1%;}
+.col-3 {width: 23%; margin-left: 1%; margin-right: 1%;}
+.col-4 {width: 31.33%; margin-left: 1%; margin-right: 1%;}
+.col-5 {width: 39.66%; margin-left: 1%; margin-right: 1%;}
+.col-6 {width: 48%; margin-left: 1%; margin-right: 1%;}
+.col-7 {width: 56.33%; margin-left: 1%; margin-right: 1%;}
+.col-8 {width: 64.66%; margin-left: 1%; margin-right: 1%;}
+.col-9 {width: 73%; margin-left: 1%; margin-right: 1%;}
+.col-10 {width: 81.33%; margin-left: 1%; margin-right: 1%;}
+.col-11 {width: 89.66%; margin-left: 1%; margin-right: 1%;}
+.col-12 {width: 98%; margin-left: 1%; margin-right: 1%;}
+
+[class*="col-"] {float: left; padding: 15px; }
+@media only screen and (max-width: 768px) {[class*="col-"] {width: 100%; margin-top: 5px; margin-bottom: 5px; }}
+.row::after {content: ""; clear: both; display: table; }
+.container {margin: 0 10px 0 10px; }
+
+/* ------------------------------
+       Main Page CSS Styles 
+------------------------------ */
+html { 
+  background: url(https://cdn.glitch.com/207b7d3e-84f3-40e3-b2ba-fb11865124a8%2Fislandbgimage.png?1526912894884) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
-.stat-bar-meter {
-  background-color: #668ec3; height: 20px; width: 90%; position: absolute;
+
+body {
+  margin: 0 0 0 0;
+  font-family: 'Noto Sans', sans-serif;
+  color: #ffe5c4;
 }
-.stat-bar-meter.width0 {
-  width: 0;
+a {color: #ffe5c4;}
+
+
+.wa-panel {
+  background-color: rgba(79, 65, 65, 0.8);
+  border-bottom-color: rgb(224, 176, 132);
+  border-bottom-style: solid;
+  border-bottom-width: 5px;
+  border-top-color: rgb(224, 176, 132);
+  border-top-style: solid;
+  border-top-width: 5px;
+  padding: 10px 10px 10px 10px;
 }
-.stat-bar-label.left {
-  z-index:1; float: left; margin-left: 10px; position: relative;
+
+.wa-header {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 15px;
 }
-.stat-bar-label.right {
-   z-index:1; float: right; margin-right: 10px; position: relative;
+
+.wa-title {
+  text-transform: uppercase;
+  font-weight: normal;
+  letter-spacing: 2px;
 }

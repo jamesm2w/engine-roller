@@ -14,7 +14,7 @@ app.get("/", function (request, response) {
 });
 
 app.get("/engine/full/t1", (req, res) => {
-  let ans = roller.rollSchematic(5, 100, 70);
+  let ans = roller.rollSchematic(5, 100, 75);
   res.send(ans);
 });
 
