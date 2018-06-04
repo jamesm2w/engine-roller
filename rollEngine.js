@@ -23,7 +23,7 @@ var arrayMult = (ar1, ar2, pwr, max, min) => {
     throw "Arrays are not same length. Can't do this";
   }
   for (let i = 0; i < ar1.length; i++) {
-    ar1[i] = Math.pow(ar2[i], pwr * (max-min)) + min;
+    ar1[i] = Math.pow(ar2[i], pwr) * (max-min) + min;
   }
   return ar1;
 }
@@ -34,14 +34,14 @@ exports.rollSchematic = (min, max, total) => {
   console.log(engine)
   while (engine[0] >= max || engine[1] >= max || engine[2] >= max || engine[3] >= max || engine[4] >= max) {
     rollMax++;
-    engine = arrayMult(engine, [random.real(0,4),random.real(0,4),random.real(0,4),random.real(0,4),random.real(0,4)], 1, max, min)
+    engine = arrayMult(engine, [random.real(1,5),random.real(1,5),random.real(1,5),random.real(1,5),random.real(1,5)], 1, max, min)
     console.log(engine)
     engine = elMult(elDiv(engine, eval(engine.join('+'))), total);
     console.log(engine)
     
     while (engine[0] < min || engine[1] < min || engine[2] < min || engine[3] < min || engine[4] < min) {
       rollMin++;
-      engine = arrayMult(engine, [random.r(0,4),random.uniform(0,4),random.uniform(0,4),random.uniform(0,4),random.uniform(0,4)], 1, max, min)
+      engine = arrayMult(engine, [random.real(1,5),random.real(1,5),random.real(1,5),random.real(1,5),random.real(1,5)], 1, max, min)
       console.log(engine)
       engine = elMult(elDiv(engine, eval(engine.join('+'))), total);
       console.log(engine)
