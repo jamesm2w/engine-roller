@@ -94,7 +94,7 @@ Schematic Styles
 .progress {
   background-color: #668ec3; 
   height: 20px; 
-  width: 90%; 
+  width: 0%; 
   position: absolute; 
   transition: width 1s;
 }
