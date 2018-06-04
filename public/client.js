@@ -79,16 +79,25 @@ var rollEngine = function (tier) {
     case 7:
       max = 375;
       colour = "black";
-      knowledge = 12
+      knowledge = 1240;
       break;
     default:
       max = 100
       break;
               }
   panel.style.borderColor = colour;
+  document.getElementById("schematicKnowledge").innerHTML = parseInt(document.getElementById("schematicKnowledge").innerHTML) + knowledge
   var result = rollSchematic(5, 100, max);
   for (var i = 0; i < result.length; i++){
     document.getElementById("schem-stat-" + i).style.width = Math.round(result[i]) + "%";
     document.getElementById("schem-stat-" + i + "-label").innerHTML = Math.round(result[i]);
   }
+  return true;
+}
+
+var resetKnowledge = function () {
+  var kc = document.getElementById("schematicKnowledge");
+  console.log("Reset " + kc.innerHTML + " Knowledge to 0");
+  kc.innerHTML = 0;
+  return true;
 }
