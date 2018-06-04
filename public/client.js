@@ -42,25 +42,34 @@ var rollSchematic = function (min, max, total) {
 };
 
 var rollEngine = function (tier) {
-  console.log("rolling engine" +
+  console.log("rolling engine" + tier)
+  document.getElementById("schematicName").innerHTML = "Procedural Engine (Tier " + tier + ")";
   var max = 180
   switch (tier) {
     case 6:
-      max = 300
+      max = 300;
+      break;
     case 5:
       max = 235
+      break;
     case 4:
       max = 180
+      break;
     case 3: 
       max = 135
+      break;
     case 2:
       max = 100
+      break;
     case 1:
       max = 75
+      break;
     case 7:
       max = 375
+      break;
     default:
       max = 100
+      break;
               }
   var result = rollSchematic(5, 100, max);
   for (var i = 0; i < result.length; i++){
