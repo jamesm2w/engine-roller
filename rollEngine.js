@@ -25,6 +25,13 @@ var arrayMult = (ar1, ar2, pwr, max, min) => {
   }
 }
 
-exports.rollEngine = (n, min, max, total) => {
-  e
+exports.rollSchematic = (min, max, total) => {
+  let engine = Array(5);
+  let rollMax = -1, rollMin = 0;
+  
+  while (engine[0] >= max || engine[1] >= max || engine[2] >= max || engine[3] >= max || engine[4] >= max) {
+    rollMax++;
+    engine = arrayMult(engine, random.uniform, 1, max, min)
+    engine = elMult(elDiv(engine, eval(engine.join('+'))), total);
+  }
 };
