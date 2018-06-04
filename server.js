@@ -14,17 +14,17 @@ app.get("/", function (request, response) {
 });
 
 app.get("/engine/full/t1", (req, res) => {
-  let ans = roller.rollSchematic(5, 100, 30);
+  let ans = roller.rollSchematic(5, 100, 70);
   res.send(ans);
 });
 
 app.get("/engine/full/t2", (req, res) => {
-  let ans = roller.rollSchematic(5, 100, 80);
+  let ans = roller.rollSchematic(5, 100, 100);
   res.send(ans);
 });
 
 app.get("/engine/full/t3", (req, res) => {
-  let ans = roller.rollSchematic(5, 100, 130);
+  let ans = roller.rollSchematic(5, 100, 150);
   res.send(ans);
 });
 

@@ -1,71 +1,15 @@
-/* styles */
-/* called by your view template */
-
-* {
-  box-sizing: border-box;
+.stat-bar-wrapper {
+  background-color: #776464; width: 100%; position: relative; height: 20px; margin-bottom: 2px;
 }
-
-body {
-  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
-  margin: 2em;
+.stat-bar-meter {
+  background-color: #668ec3; height: 20px; width: 90%; position: absolute;
 }
-
-h1 {
-  font-style: italic;
-  color: #373fff;
+.stat-bar-meter.width0 {
+  width: 0;
 }
-
-.bold {
-  font-weight: bold;
+.stat-bar-label.left {
+  z-index:1; float: left; margin-left: 10px; position: relative;
 }
-
-p {
-  max-width: 600px;
-}
-
-form {
-  margin-bottom: 25px;
-  padding: 15px;
-  background-color: cyan;
-  display: inline-block;
-  width: 100%;
-  max-width: 340px;
-  border-radius: 3px;
-}
-
-input {
-  display: block;
-  margin-bottom: 10px;
-  padding: 5px;
-  width: 100%;
-  border: 1px solid lightgrey;
-  border-radius: 3px;
-  font-size: 16px;
-}
-
-button {
-  font-size: 16px;
-  border-radius: 3px;
-  background-color: lightgrey;
-  border: 1px solid grey;
-  box-shadow: 2px 2px teal;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: yellow;
-}
-
-button:active {
-  box-shadow: none;
-}
-
-li {
-  margin-bottom: 5px;
-}
-
-footer {
-  margin-top: 50px;
-  padding-top: 25px;
-  border-top: 1px solid lightgrey;
+.stat-bar-label.right {
+   z-index:1; float: right; margin-right: 10px; position: relative;
 }
