@@ -42,6 +42,7 @@ var rollSchematic = function (min, max, total) {
 };
 
 var rollEngine = function (tier) {
+  console.log("rolling engine" +
   var max = 180
   switch (tier) {
     case 6:
@@ -63,6 +64,7 @@ var rollEngine = function (tier) {
               }
   var result = rollSchematic(5, 100, max);
   for (var i = 0; i < result.length; i++){
-    docume
+    document.getElementById("schem-stat-" + i).style.width = Math.round(result[i]) + "%";
+    document.getElementById("schem-stat-" + i + "-label").innerHTML = Math.round(result[i]);
   }
 }
