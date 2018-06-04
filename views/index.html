@@ -44,13 +44,16 @@
           <span style="z-index:1; float: right; margin-right: 10px; position: relative;">90</span>
         </div>
         <div class="divider" style="border-bottom: dashed 2px white; margin-top: 5px;"></div>
-        <p style="text-align: center">Cost: 500 Knowledge <a href="javascript:void(0)" onclick="resetKnowledge" style="text-decoration: none">(Reset)</a></p>
+        <p style="text-align: center; margin:2px 2px 2px 2px;">Cost: 500 Knowledge <a href="javascript:void(0)" onclick="resetKnowledge" style="text-decoration: none">(Reset)</a></p>
       </div>
     </div>
     
     
-    <a href="/engine">Roll Engine</a>
-
+    <a href="javascript:void(0)" onclick="rollengine()">Roll Engine</a>
+    <script src="/random.min.js"></script>
+    <script>
+      var random = new Random();
+    </script>
     <script src="/client.js"></script>
   </body>
 </html>
