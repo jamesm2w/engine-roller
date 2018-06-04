@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>Engine Roller</title>
-    <meta name="description" content="Rolling them Random Engines all day! Thanks to Ziwix for the algorithm.">
+    <meta name="description" content="Roll those Random Schematics all day! Thanks to Ziwix for the algorithm.">
     <link id="favicon" rel="icon" href="https://cdn.glitch.com/68ec3e13-1d62-4523-aa03-f014ce023665%2Fblurpleicon.ico?1528117757048" type="image/x-icon">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +17,10 @@
         <h2 class="wa-title">
           Schematic View
         </h2>
-        
+        <p style="text-align: center;">
+            Spent: <span id="schematicKnowledge">0</span> Knowledge 
+            <a href="javascript:void(0)" onclick="resetKnowledge()" style="text-decoration: none">(Reset)</a>
+          </p>
         <div class="schematicView wa-panel col-12" id="schematicPanel">
 
           <span class="wa-header" style="font-size: 2.5vh; float: left;" id="schematicName">Procedural Engine</span>
@@ -48,11 +51,10 @@
             <span class="stat-label left">Power</span>
             <span class="stat-label right" id="schem-stat-4-label">0</span>
           </div>
-          <div class="divider bottom top"></div>
-          <p style="text-align: center;">
-            Spent: <span id="schematicKnowledge">0</span> Knowledge 
-            <a href="javascript:void(0)" onclick="resetKnowledge()" style="text-decoration: none">(Reset)</a>
-          </p>
+          <div class="schematicMoreInfo">
+            <div class="divider bottom top"></div>
+            
+          </div>
         </div>
       </div>
       
@@ -73,13 +75,7 @@
       </div>
       
     </div>
-      
-      
-      
-      
-    
-    
-    
+
     <script src="/random.min.js"></script>
     <script>
       var random = new Random();
