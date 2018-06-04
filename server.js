@@ -13,6 +13,28 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
+app.get("/engine/full/t1", (req, res) => {
+  let ans = roller.rollSchematic(5, 100, 30);
+  res.send(ans);
+});
+
+app.get("/engine/full/t2", (req, res) => {
+  let ans = roller.rollSchematic(5, 100, 80);
+  res.send(ans);
+});
+
+app.get("/engine/full/t3", (req, res) => {
+  let ans = roller.rollSchematic(5, 100, 130);
+  res.send(ans);
+});
+
+app.get("/engine/full/t4", (req, res) => {
+  let ans = roller.rollSchematic(5, 100, 180);
+  res.send(ans);
+});
+
+app.get("/engine/full/t6", (req, res) => {}
+
 app.get("/engine", (req, res) => {
   let ans = roller.rollSchematic(5, 100, 180);
   res.send(ans);
