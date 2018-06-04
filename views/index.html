@@ -11,52 +11,75 @@
   </head>
   <body>
     
-    <div class="container">
-      <div class="schematicView wa-panel col-3" id="schematicPanel">
+    <div class="container" style="margin-top: 15px;">
+      
+      <div class="wa-panel col-4">
+        <h2 class="wa-title">
+          Schematic View
+        </h2>
         
-        <span class="wa-header" style="font-size: 2.5vh; float: left;" id="schematicName">Procedural Engine</span>
-        
-        <div class="divider top bottom" style=""></div>
-        <div class="stat-bar">
-          <div class="progress" id="schem-stat-0"></div>
-          <span class="stat-label left">Resilience</span>
-          <span class="stat-label right" id="schem-stat-0-label">0</span>
+        <div class="schematicView wa-panel col-12" id="schematicPanel">
+
+          <span class="wa-header" style="font-size: 2.5vh; float: left;" id="schematicName">Procedural Engine</span>
+
+          <div class="divider top bottom" style=""></div>
+          <div class="stat-bar">
+            <div class="progress" id="schem-stat-0"></div>
+            <span class="stat-label left">Resilience</span>
+            <span class="stat-label right" id="schem-stat-0-label">0</span>
+          </div>
+          <div class="stat-bar">
+            <div class="progress" id="schem-stat-1"></div>
+            <span class="stat-label left">Fuel Efficiency</span>
+            <span class="stat-label right" id="schem-stat-1-label">0</span>
+          </div>
+          <div class="stat-bar">
+            <div class="progress" id="schem-stat-2"></div>
+            <span class="stat-label left">Spin-Up</span>
+            <span class="stat-label right" id="schem-stat-2-label">0</span>
+          </div>
+          <div class="stat-bar">
+            <div class="progress" id="schem-stat-3"></div>
+            <span class="stat-label left">Overheat Limit</span>
+            <span class="stat-label right" id="schem-stat-3-label">0</span>
+          </div>
+          <div class="stat-bar">
+            <div class="progress" id="schem-stat-4"></div>
+            <span class="stat-label left">Power</span>
+            <span class="stat-label right" id="schem-stat-4-label">0</span>
+          </div>
+          <div class="divider bottom top"></div>
+          <p style="text-align: center;">
+            Spent: <span id="schematicKnowledge">0</span> Knowledge 
+            <a href="javascript:void(0)" onclick="resetKnowledge()" style="text-decoration: none">(Reset)</a>
+          </p>
         </div>
-        <div class="stat-bar">
-          <div class="progress" id="schem-stat-1"></div>
-          <span class="stat-label left">Fuel Efficiency</span>
-          <span class="stat-label right" id="schem-stat-1-label">0</span>
-        </div>
-        <div class="stat-bar">
-          <div class="progress" id="schem-stat-2"></div>
-          <span class="stat-label left">Spin-Up</span>
-          <span class="stat-label right" id="schem-stat-2-label">0</span>
-        </div>
-        <div class="stat-bar">
-          <div class="progress" id="schem-stat-3"></div>
-          <span class="stat-label left">Overheat Limit</span>
-          <span class="stat-label right" id="schem-stat-3-label">0</span>
-        </div>
-        <div class="stat-bar">
-          <div class="progress" id="schem-stat-4"></div>
-          <span class="stat-label left">Power</span>
-          <span class="stat-label right" id="schem-stat-4-label">0</span>
-        </div>
-        <div class="divider bottom top"></div>
-        <p style="text-align: center;">
-          Spent: <span id="schematicKnowledge">0</span> Knowledge 
-          <a href="javascript:void(0)" onclick="resetKnowledge()" style="text-decoration: none">(Reset)</a>
-        </p>
       </div>
+      
+      <div class="wa-panel col-8">
+        <h1 class="wa-title">
+          Random Schematic Roller
+        </h1>
+        <ul>
+          <li><a href="javascript:void(0)" onclick="rollEngine(1)">Roll Common Engine (T1)</a></li>
+          <li><a href="javascript:void(0)" onclick="rollEngine(2)">Roll Uncommon Engine (T2)</a></li>
+          <li><a href="javascript:void(0)" onclick="rollEngine(3)">Roll Rare Engine (T3)</a></li>
+          <li><a href="javascript:void(0)" onclick="rollEngine(4)">Roll Exotic Engine (T4)</a></li>
+          <li><a href="javascript:void(0)" onclick="rollEngine(5)">Roll Pristine Engine (T5)</a></li>
+          <li><a href="javascript:void(0)" onclick="rollEngine(6)">Roll Legendary Engine (T6)</a></li>
+          <li><a href="javascript:void(0)" onclick="rollEngine(7)">Roll Theoretical Engine (T7)</a></li>
+        </ul>
+        
+      </div>
+      
     </div>
+      
+      
+      
+      
     
     
-    <a href="javascript:void(0)" onclick="rollEngine(1)">Roll Engine (T1)</a>
-    <a href="javascript:void(0)" onclick="rollEngine(2)">Roll Engine (T2)</a>
-    <a href="javascript:void(0)" onclick="rollEngine(3)">Roll Engine (T3)</a>
-    <a href="javascript:void(0)" onclick="rollEngine(4)">Roll Engine (T4)</a>
-    <a href="javascript:void(0)" onclick="rollEngine(5)">Roll Engine (T5)</a>
-    <a href="javascript:void(0)" onclick="rollEngine(6)">Roll Engine (T6)</a>
+    
     <script src="/random.min.js"></script>
     <script>
       var random = new Random();
