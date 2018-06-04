@@ -14,7 +14,7 @@
     <div class="container">
       <div class="schematicView wa-panel col-3" id="schematicPanel">
         
-        <span class="wa-header" style="font-size: 18px; float: left;" id="schematicName">Procedural Engine</span>
+        <span class="wa-header" style="font-size: 2.5vh; float: left;" id="schematicName">Procedural Engine</span>
           <!--<span style="float:right; color: red; font-weight: bold; font-size: 20px;">&times;</span>-->
         
         <div class="divider top bottom" style=""></div>
@@ -43,9 +43,12 @@
           <span class="stat-label left">Power</span>
           <span class="stat-label right" id="schem-stat-4-label">0</span>
         </div>
-        <!--<div class="divider" style="border-bottom: dashed 2px white; margin-top: 5px;"></div>
-        <p style="text-align: center; margin:2px 2px 2px 2px;">Cost: 500 Knowledge <a href="javascript:void(0)" onclick="resetKnowledge" style="text-decoration: none">(Reset)</a></p>
-      --></div>
+        <div class="divider bottom top"></div>
+        <p style="text-align: center;">
+          Spent: <span id="schematicKnowledge">0</span> Knowledge 
+          <a href="javascript:void(0)" onclick="resetKnowledge" style="text-decoration: none">(Reset)</a>
+        </p>
+      </div>
     </div>
     
     
