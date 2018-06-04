@@ -1,4 +1,4 @@
-random = new require("random-py").Random;
+var random = new require("random-js").Random;
 
 exports = module.exports = {};
 
@@ -33,7 +33,14 @@ exports.rollSchematic = (min, max, total) => {
   
   while (engine[0] >= max || engine[1] >= max || engine[2] >= max || engine[3] >= max || engine[4] >= max) {
     rollMax++;
-    engine = arrayMult(engine, random.uniform, 1, max, min)
+    engine = arrayMult(engine, [random.uniform(0,4),random.uniform(0,4),random.uniform(0,4),random.uniform(0,4),random.uniform(0,4)], 1, max, min)
     engine = elMult(elDiv(engine, eval(engine.join('+'))), total);
+    
+    while (engine[0] < min || engine[1] < min || engine[2] < min || engine[3] < min || engine[4] < min) {
+      rollMin++;
+      engine = arrayMult(engine, [random.uniform(0,4),random.uniform(0,4),random.uniform(0,4),random.uniform(0,4),random.uniform(0,4)], 1, max, min)
+      engine = elMult(elDiv(engine, eval(engine.join('+'))), total);
+    }
   }
+  return engine;
 };

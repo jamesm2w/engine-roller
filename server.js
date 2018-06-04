@@ -1,7 +1,4 @@
-// server.js
-// where your node app starts
-
-// init project
+var roller = require("./rollEngine.js");
 var express = require('express');
 var app = express();
 
@@ -14,6 +11,11 @@ app.use(express.static('public'));
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
+});
+
+app.get("/engine", (req, res) => {
+  let ans = roller.rollSchematic(5, 100, 180);
+  res.send(ans);
 });
 
 // listen for requests :)
