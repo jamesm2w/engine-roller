@@ -123,7 +123,7 @@ for (var i = 0; i < materials.length; i++) {
       effect = [0]; // Resilience
       break;
     case "Combustion":
-      effect = [1, 3 ,4]; // FE, OH, Power
+      effect = [1, 3, 4]; // FE, OH, Power
       break;
     case "Mechanical":
       effect = [1, 3, 2]; // FE, OH, Spin
@@ -134,7 +134,12 @@ for (var i = 0; i < materials.length; i++) {
     default:
       break;
   }
-  materials[i]
+  materials[i].addEventListener("mouseover", function (event) {
+    for (var a = i; a < effect.length; a++) {
+      var effected = document.getElementById("schem-stat-" + effect[a]);
+      effected.style.backgroundColor = "";
+    }
+  });
 }
 
 var resetKnowledge = function () {

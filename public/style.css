@@ -99,7 +99,7 @@ Schematic Styles
   height: 20px; 
   width: 0%; 
   position: absolute; 
-  transition: width 1s;
+  transition: width 1s, background-color 0.5s ease;
 }
 
 .stat-label {
