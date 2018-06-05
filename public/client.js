@@ -129,7 +129,7 @@ var handleMatMouseEnter = function (e) {
       name = el.querySelector(".wa-header").innerHTML, 
       effects = effectTable[name];
   for (var i = 0; i < effects.length; i++) {
-    document.getElementById("schem-stat-" + effects[i]).style.backgroundColor = "#b2ff59";
+    document.getElementById("schem-stat-" + effects[i]).style.backgroundColor = "#8bc34a";
     //document.getElementById("schem-stat-" + effects[i]).nextElementSibling.style.color = "darkgrey";
   }
 }
