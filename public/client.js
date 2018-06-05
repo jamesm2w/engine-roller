@@ -117,7 +117,8 @@ var generateSchemCosts = function (engine) {
 
 var materials = document.getElementsByClassName("schem-mat");
 for (var i = 0; i < materials.length; i++) {
-  materials[i].addEventListener("mouseenter", handleMatMouseEnter);
+  materials[i].addEventListener("mouseover", handleMatMouseEnter);
+  materials[i].addEventListener("mouseout", handleMatMouseLeave);
 }
 
 var effectTable = {
@@ -129,18 +130,16 @@ var effectTable = {
 
 var handleMatMouseEnter = function (e) {
   var el = e.target, 
-      name = el.innerHTML, 
+      name = el.firstChild.innerHTML, 
       effects = effectTable[name];
+  console.log(el);
   for (var i = 0; i < effects.length; i++) {
     document.getElementById("schem-stat-" + i).style.backgroundColor = "#b2ff59";
   }
 }
 
 var handleMatMouseLeave = function (e) {
-  var el = e.target, 
-      name = el.innerHTML, 
-      effects = effectTable[name];
-  for (var i = 0; i < effects.length; i++) {
+  for (var i = 0; i < 5; i++) {
     document.getElementById("schem-stat-" + i).style.backgroundColor = "#668ec3";
   }
 }
