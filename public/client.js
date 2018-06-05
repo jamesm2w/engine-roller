@@ -117,29 +117,32 @@ var generateSchemCosts = function (engine) {
 
 var materials = document.getElementsByClassName("schem-mat");
 for (var i = 0; i < materials.length; i++) {
-  var materialName = document.getElementById("schem-mat-" + i + "-label").innerHTML, effect = [0]
-  switch (materialName) {
-    case "Casing":
-      effect = [0]; // Resilience
-      break;
-    case "Combustion":
-      effect = [1, 3, 4]; // FE, OH, Power
-      break;
-    case "Mechanical":
-      effect = [1, 3, 2]; // FE, OH, Spin
-      break;
-    case "Propeller":
-      effect = [2, 4]; // Spin, Power
-      break;
-    default:
-      break;
+  materials[i].addEventListener("mouseenter", handleMatMouseEnter);
+}
+
+var effectTable = {
+  "Casing": [0],
+  "Combustion": [1, 3, 4],
+  "Mechanical": [1, 3, 2],
+  "Propeller": [2, 4]
+}
+
+var handleMatMouseEnter = function (e) {
+  var el = e.target, 
+      name = el.innerHTML, 
+      effects = effectTable[name];
+  for (var i = 0; i < effects.length; i++) {
+    document.getElementById("schem-stat-" + i).style.backgroundColor = "#b2ff59";
   }
-  materials[i].addEventListener("mouseover", function (event) {
-    for (var a = i; a < effect.length; a++) {
-      var effected = document.getElementById("schem-stat-" + effect[a]);
-      effected.style.backgroundColor = "";
-    }
-  });
+}
+
+var handleMatMouseLeave = function (e) {
+  var el = e.target, 
+      name = el.innerHTML, 
+      effects = effectTable[name];
+  for (var i = 0; i < effects.length; i++) {
+    document.getElementById("schem-stat-" + i).style.backgroundColor = "#668ec3";
+  }
 }
 
 var resetKnowledge = function () {
