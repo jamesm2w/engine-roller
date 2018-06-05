@@ -115,6 +115,28 @@ var generateSchemCosts = function (engine) {
   }
 }
 
+var materials = document.getElementsByClassName("schem-mat");
+for (var i = 0; i < materials.length; i++) {
+  var materialName = document.getElementById("schem-mat-" + i + "-label").innerHTML, effect = [0]
+  switch (materialName) {
+    case "Casing":
+      effect = [0]; // Resilience
+      break;
+    case "Combustion":
+      effect = [1, 3 ,4]; // FE, OH, Power
+      break;
+    case "Mechanical":
+      effect = [1, 3, 2]; // FE, OH, Spin
+      break;
+    case "Propeller":
+      effect = [2, 4]; // Spin, Power
+      break;
+    default:
+      break;
+  }
+  materials[i]
+}
+
 var resetKnowledge = function () {
   var kc = document.getElementById("schematicKnowledge");
   console.log("Reset " + kc.innerHTML + " Knowledge to 0");
