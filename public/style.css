@@ -37,7 +37,10 @@ body {
   font-family: 'Noto Sans', sans-serif;
   color: #ffe5c4;
 }
-a {color: #ffe5c4;}
+
+a {
+  color: #ffe5c4;
+}
 
 
 .wa-panel {
@@ -125,6 +128,12 @@ Schematic Styles
   margin-bottom: 1%;
 }
 
+.schem-mat.hidden {
+  display: none !important;
+}
+
 .schem-mat > .wa-header {
   display: block;
 }
+
+

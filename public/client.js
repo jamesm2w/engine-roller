@@ -100,6 +100,11 @@ var rollEngine = function (tier) {
   return true;
 }
 
+var generateSchemCosts = function (engine) {
+  // [Resil, FE, Spin, OH, Power]
+  
+}
+
 var resetKnowledge = function () {
   var kc = document.getElementById("schematicKnowledge");
   console.log("Reset " + kc.innerHTML + " Knowledge to 0");
