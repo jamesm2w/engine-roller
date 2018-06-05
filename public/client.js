@@ -42,7 +42,6 @@ var rollSchematic = function (min, max, total) {
 };
 
 var rollEngine = function (tier) {
-  console.log("rolling engine" + tier)
   document.getElementById("schematicName").innerHTML = "Procedural Engine (Tier " + tier + ")";
   var panel = document.getElementById("schematicPanel"), colour = "white", max = 180, knowledge = 0;//Establish default fallback values
   switch (tier) {
@@ -92,17 +91,28 @@ var rollEngine = function (tier) {
               }
   panel.style.borderColor = colour;
   document.getElementById("schematicKnowledge").innerHTML = parseInt(document.getElementById("schematicKnowledge").innerHTML) + knowledge
+  console.log("Rolling New" + tier + " Engine");
   var result = rollSchematic(5, 100, max);
   for (var i = 0; i < result.length; i++){
-    document.getElementById("schem-stat-" + i).style.width = Math.round(result[i]) + "%";
-    document.getElementById("schem-stat-" + i + "-label").innerHTML = Math.round(result[i]);
+    result[i] = Math.round(result[i]);
+    document.getElementById("schem-stat-" + i).style.width = result[i] + "%";
+    document.getElementById("schem-stat-" + i + "-label").innerHTML = result[i];
   }
+  console.log(result);
+  generateSchemCosts(result);
   return true;
 }
 
 var generateSchemCosts = function (engine) {
   // [Resil, FE, Spin, OH, Power]
-  
+  var costs = [0, 0, 0, 0] //Casing, Combus, Mech, Prop
+  costs[0] = 2 * (engine[0] + engine[4] + engine[2]);   //2 x (Resilience + Power + Spinup)
+  costs[1] = 2 * (engine[4] + engine[1] + engine[3]);   //2 x (Power + Fuel efficiency + Overheat)
+  costs[2] = 2 * (engine[4] + engine[1]);               //2 x (Power + Fuel efficiency)
+  costs[3] = 2 * (engine[2] + engine[3]);               //2 x (Spinup + Overheat)
+  for (var i = 0; i < costs.length; i++) {
+    document.getElementById("schem-mat-" + i).innerHTML = costs[i]
+  }
 }
 
 var resetKnowledge = function () {
