@@ -115,11 +115,7 @@ var generateSchemCosts = function (engine) {
   }
 }
 
-var materials = document.getElementsByClassName("schem-mat");
-for (var i = 0; i < materials.length; i++) {
-  materials[i].addEventListener("mouseenter", handleMatMouseEnter);
-  materials[i].addEventListener("mouseleave", handleMatMouseLeave);
-}
+
 
 var effectTable = {
   "Casing": [0],
@@ -132,8 +128,6 @@ var handleMatMouseEnter = function (e) {
   var el = e.target, 
       name = el.querySelector(".wa-header").innerHTML, 
       effects = effectTable[name];
-  console.log(el);
-  console.log(name);
   for (var i = 0; i < effects.length; i++) {
     document.getElementById("schem-stat-" + effects[i]).style.backgroundColor = "#b2ff59";
     //document.getElementById("schem-stat-" + effects[i]).nextElementSibling.style.color = "darkgrey";

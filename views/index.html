@@ -101,9 +101,14 @@
     </div>
 
     <script src="/random.min.js"></script>
+    <script src="/client.js"></script>
     <script>
       var random = new Random();
+      var materials = document.getElementsByClassName("schem-mat");
+      for (var i = 0; i < materials.length; i++) {
+        materials[i].addEventListener("mouseenter", handleMatMouseEnter);
+        materials[i].addEventListener("mouseleave", handleMatMouseLeave);
+      }
     </script>
-    <script src="/client.js"></script>
   </body>
 </html>
