@@ -44,7 +44,7 @@ var rollSchematic = function (min, max, total) {
 var rollEngine = function (tier) {
   console.log("rolling engine" + tier)
   document.getElementById("schematicName").innerHTML = "Procedural Engine (Tier " + tier + ")";
-  var panel = document.getElementById("schematicPanel"), colour = "white", max = 180, knowledge = 0;
+  var panel = document.getElementById("schematicPanel"), colour = "white", max = 180, knowledge = 0;//Establish default fallback values
   switch (tier) {
     case 6:
       max = 300;
@@ -58,12 +58,12 @@ var rollEngine = function (tier) {
       break;
     case 4:
       max = 180;
-      colour = "#ffeb3b";
+      colour = "#F9D58B";
       knowledge = 500;
       break;
     case 3: 
       max = 135;
-      colour = "#8470ff";
+      colour = "#588BEB";
       knowledge = 400;
       break;
     case 2:
@@ -78,8 +78,13 @@ var rollEngine = function (tier) {
       break;
     case 7:
       max = 375;
-      colour = "black";
+      colour = "darkgrey";
       knowledge = 1240;
+      break;
+    case 8:
+      max = 460;
+      colour = "black";
+      knowledge = 2000;
       break;
     default:
       max = 100
