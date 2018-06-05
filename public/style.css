@@ -112,3 +112,19 @@ Schematic Styles
 .right {
   float: right;
 }
+
+.schem-mat {
+  background-color: #776464;
+}
+
+.schem-mat.top {
+   margin-top: 1%;
+}
+
+.schem-mat.bottom {
+  margin-bottom: 1%;
+}
+
+.schem-mat > .wa-header {
+  display: block;
+}
