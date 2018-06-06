@@ -102,7 +102,25 @@ var engineConfig = {
     "Spin-Up": 2,
     "Overheat Limit": 3,
     "Power": 4
-  }
+  },
+  "propMounts": [ // Min Power, Name, requiredType, 
+    [60, "Starcaster", "j", "m"],
+    [51, "Cloudchaser", "j", "m"],
+    [45, "Supreme", "m"],
+    [40, "Elite", "m"],
+    [35, "Hurricane", "m"],
+    [30, "Tornado", "m"],
+    [25, "Cyclone", "m"],
+    [20, "Pacesetter", "m"],
+    [15, "Rival", "m"],
+    [10, "Populus", "m"],
+    [0, "Steamer", "m"],
+    [28, "Workhorse", "w"],
+    [20, "Cranker", "w"],
+    [15, "Smokie", "w"],
+    [10, "Crudbait", "w"],
+    [0, "Rustbucket", "w"]
+  ]
 }
 
 var rollEngine = function (tier) {
