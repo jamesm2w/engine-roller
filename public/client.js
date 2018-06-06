@@ -139,8 +139,49 @@ var generateSchemCostsAndObj = function (engine) { // Only requires a stat array
 }
 
 var extractNameFromEngine = function (engine) { // Requires an engine OBJ. Not stat array.
-  var casingName, propMountName, propName, powerNum, stats = engine.stats, costs = engine.costs;
-  ifengine.stats[4]
+  var casingName, propMountName, propName, powerNum, engineType, stats = engine.stats, costs = engine.costs;
+  
+  //Get Prop Head name from Power
+  var power = stats[4];
+  if (engineType = "m") { //If we had a metal casing, then these are the metal prop heads
+    if (power >= 60) {
+      propMountName = "Starcaster";
+      engineType = "j";
+    } else if (power >= 51) {
+      propMountName = "Cloudchaser";
+      engineType = "j";
+    } else if (power >= 45) {
+      propMountName = "Supreme";
+    } else if (power >= 40) {
+      propMountName = "Elite";
+    } else if (power >= 35) {
+      propMountName = "Hurricane";
+    } else if (power >= 30) {
+      propMountName = "Tornado";
+    } else if (power >= 25) {
+      propMountName = "Cyclone";
+    } else if (power >= 20) {
+      propMountName = "Pacesetter";
+    } else if (power >= 15) {
+      propMountName = "Rival"
+    } else if (power >= 10) {
+      propMountName = "Populus";
+    } else {
+      propMountName = "Steamer";
+    }
+  } else if (engineType = "w") {
+    if (power >= 28) {
+      propMountName = "Workhorse";
+    } else if (power >= 20) {
+      propMountName = "Cranker";
+    } else if (power >= 15) {
+      propMountName = "Smokie"; //Estimated at 15 from trend data
+    } else if (power >= 10) {
+      propMountName = "Crudbait"; //Estimated at 10 from trend data
+    } else {
+      propMountName = "Rustbucket";
+    }
+  }
   
 }
 
