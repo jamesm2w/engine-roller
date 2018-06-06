@@ -170,7 +170,7 @@ var generateSchemCostsAndObj = function (engine) { // Only requires a stat array
 }
 
 var extractNameFromEngine = function (engine) { // Requires an engine OBJ. Not stat array.
-  var casingName, propMountName, propName, powerNum, engineType, stats = engine.stats, costs = engine.costs;
+  var casingName, propMountName, propName, powerNum, engineType = "m", stats = engine.stats, costs = engine.costs;
   
   //Get Prop Head name from Power
   var power = stats[4];
@@ -187,7 +187,7 @@ var extractNameFromEngine = function (engine) { // Requires an engine OBJ. Not s
   var spin = stats[2];
   for (var i = 0; i < engineConfig.props.length; i++) {
     if (power >= engineConfig.props[i][0] && engineType == engineConfig.props[i][2]) {
-      propMountName = engineConfig.props[i][1];
+      propName = engineConfig.props[i][1];
       if (engineConfig.props[i][3] != undefined) {
         engineType = engineConfig.props[i][3];
       }
