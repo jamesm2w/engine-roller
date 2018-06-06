@@ -177,14 +177,23 @@ var extractNameFromEngine = function (engine) { // Requires an engine OBJ. Not s
   for (var i = 0; i < engineConfig.propMounts.length; i++) {
     if (power >= engineConfig.propMounts[i][0] && engineType == engineConfig.propMounts[i][2]) {
       propMountName = engineConfig.propMounts[i][1];
-      if (engineConfig.propMounts[i][2] != undefined) {
-        engineType = engineConfig.propMounts[i][2]
+      powerNum = power - engineConfig.propMounts[i][0];
+      if (engineConfig.propMounts[i][3] != undefined) {
+        engineType = engineConfig.propMounts[i][3];
       }
     }
   }
   // Get the propeller from spin-up
   var spin = stats[2];
-  
+  for (var i = 0; i < engineConfig.props.length; i++) {
+    if (power >= engineConfig.props[i][0] && engineType == engineConfig.props[i][2]) {
+      propMountName = engineConfig.props[i][1];
+      if (engineConfig.props[i][3] != undefined) {
+        engineType = engineConfig.props[i][3];
+      }
+    }
+  }
+  return [casingName, propMountName, propName, powerNum];
 }
 
 var rollEngineUntil = function (statName, statValue, tier) {
