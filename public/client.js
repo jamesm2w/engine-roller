@@ -186,7 +186,7 @@ var extractNameFromEngine = function (engine) { // Requires an engine OBJ. Not s
   // Get the propeller from spin-up
   var spin = stats[2];
   for (var i = 0; i < engineConfig.props.length; i++) {
-    if (power >= engineConfig.props[i][0] && engineType == engineConfig.props[i][2]) {
+    if (power >= engineConfig.props[i][0] && (engineType == engineConfig.props[i][2] || engineConfig.props[i][2] == undefined)) {
       propName = engineConfig.props[i][1];
       if (engineConfig.props[i][3] != undefined) {
         engineType = engineConfig.props[i][3];
