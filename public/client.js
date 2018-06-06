@@ -95,6 +95,13 @@ var engineConfig = {
     "Combustion": [1, 3, 4],
     "Mechanical": [1, 3, 2],
     "Propeller": [2, 4]
+  },
+  "stats": {
+    "Resilience": 0,
+    "Fuel Efficiency": 1,
+    "Spin-Up": 2,
+    "Overheat Limit": 3,
+    "Power": 4
   }
 }
 
@@ -111,11 +118,11 @@ var rollEngine = function (tier) {
     document.getElementById("schem-stat-" + i + "-label").innerHTML = result[i];
   }
   console.log(result);
-  generateSchemCosts(result);
+  var engineObj = generateSchemCostsAndObj(result);
   return true;
 }
 
-var generateSchemCosts = function (engine) {
+var generateSchemCostsAndObj = function (engine) {
   // [Resil, FE, Spin, OH, Power]
   var costs = [0, 0, 0, 0] //Casing, Combus, Mech, Prop
   costs[0] = 2 * (engine[0] + engine[4] + engine[2]);   //2 x (Resilience + Power + Spinup)
@@ -126,26 +133,31 @@ var generateSchemCosts = function (engine) {
     document.getElementById("schem-mat-" + i).innerHTML = costs[i]
   }
   return {
-    "type": "Engin
+    "stats": engine,
+    "costs": costs
   }
 }
 
-
-
-var effectTable = {
-  "Casing": [0],
-  "Combustion": [1, 3, 4],
-  "Mechanical": [1, 3, 2],
-  "Propeller": [2, 4]
+var rollEngineUntil = function (statName, statValue, tier) {
+  var arrayKey = engineConfig.stats[statName];
+  var engine = rollEngine(5, 100, engineConfig[tier].max);
+  var n = 1;
+  while (engine[arrayKey] < statValue) {
+    engine = rollEngine(5, 100, engineConfig[tier].max);
+    n++;
+  }
+  console.log("Final Engine")
+  console.log(engine)
+  console.log("Generated")
+  console.log(n)
 }
 
 var handleMatMouseEnter = function (e) {
   var el = e.target, 
       name = el.querySelector(".wa-header").innerHTML, 
-      effects = effectTable[name];
+      effects = engineConfig.statEffects[name];
   for (var i = 0; i < effects.length; i++) {
     document.getElementById("schem-stat-" + effects[i]).style.backgroundColor = "#8bc34a";
-    //document.getElementById("schem-stat-" + effects[i]).nextElementSibling.style.color = "darkgrey";
   }
 }
 
