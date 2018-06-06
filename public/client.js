@@ -103,23 +103,36 @@ var engineConfig = {
     "Overheat Limit": 3,
     "Power": 4
   },
-  "propMounts": [ // Min Power, Name, requiredType, 
-    [60, "Starcaster", "j", "m"],
-    [51, "Cloudchaser", "j", "m"],
-    [45, "Supreme", "m"],
-    [40, "Elite", "m"],
-    [35, "Hurricane", "m"],
-    [30, "Tornado", "m"],
-    [25, "Cyclone", "m"],
-    [20, "Pacesetter", "m"],
-    [15, "Rival", "m"],
-    [10, "Populus", "m"],
-    [0, "Steamer", "m"],
-    [28, "Workhorse", "w"],
-    [20, "Cranker", "w"],
-    [15, "Smokie", "w"],
-    [10, "Crudbait", "w"],
-    [0, "Rustbucket", "w"]
+  "propMounts": [ // minPower, name, requiredType, setType
+    [60, "Starcaster",  "m", "j"],
+    [51, "Cloudchaser", "m", "j"],
+    [45, "Supreme",     "m"],
+    [40, "Elite",       "m"],
+    [35, "Hurricane",   "m"],
+    [30, "Tornado",     "m"],
+    [25, "Cyclone",     "m"],
+    [20, "Pacesetter",  "m"],
+    [15, "Rival",       "m"],
+    [10, "Populus",     "m"],
+    [ 0, "Steamer",     "m"],
+    [28, "Workhorse",   "w"],
+    [20, "Cranker",     "w"],
+    [15, "Smokie",      "w"],
+    [10, "Crudbait",    "w"],
+    [ 0, "Rustbucket",  "w"]
+  ],
+  "props": [ // minSpin, name, requiredType
+    [30, "Z", "j"],
+    [ 0, "X", "j"],
+    [58, "N"],
+    [48, "M"],
+    [40, "H"],
+    [31, "F"],
+    [25, "B"],
+    [20, "U"],
+    [15, "O"],
+    [10, "E"],
+    [ 0, "A"]
   ]
 }
 
@@ -161,91 +174,16 @@ var extractNameFromEngine = function (engine) { // Requires an engine OBJ. Not s
   
   //Get Prop Head name from Power
   var power = stats[4];
-  if (engineType = "m") { //If we had a metal casing, then these are the metal prop heads
-    if (power >= 60) {
-      propMountName = "Starcaster";
-      engineType = "j";
-      powerNum = power - 60;
-    } else if (power >= 51) {
-      propMountName = "Cloudchaser";
-      engineType = "j";
-      powerNum = power - 51;
-    } else if (power >= 45) {
-      propMountName = "Supreme";
-      powerNum = power - 45;
-    } else if (power >= 40) {
-      propMountName = "Elite";
-      powerNum = power - 40;
-    } else if (power >= 35) {
-      propMountName = "Hurricane";
-      powerNum = power - 35;
-    } else if (power >= 30) {
-      propMountName = "Tornado";
-      powerNum = power - 30;
-    } else if (power >= 25) {
-      propMountName = "Cyclone";
-      powerNum = power - 25;
-    } else if (power >= 20) {
-      propMountName = "Pacesetter";
-      powerNum = power - 25;
-    } else if (power >= 15) {
-      propMountName = "Rival";
-      powerNum = power - 15;
-    } else if (power >= 10) {
-      propMountName = "Populus";
-      powerNum = power - 10;
-    } else {
-      propMountName = "Steamer";
-      powerNum = power - 0;
-    }
-  } else if (engineType = "w") {
-    if (power >= 28) {
-      propMountName = "Workhorse";
-      powerNum = power - 28;
-    } else if (power >= 20) {
-      propMountName = "Cranker";
-      powerNum = power - 20;
-    } else if (power >= 15) {
-      propMountName = "Smokie"; //Estimated at 15 from trend data
-      powerNum = power - 15;
-    } else if (power >= 10) {
-      propMountName = "Crudbait"; //Estimated at 10 from trend data
-      powerNum = power - 10;
-    } else {
-      propMountName = "Rustbucket";
-      powerNum = power - 0;
+  for (var i = 0; i < engineConfig.propMounts.length; i++) {
+    if (power >= engineConfig.propMounts[i][0] && engineType == engineConfig.propMounts[i][2]) {
+      propMountName = engineConfig.propMounts[i][1];
+      if (engineConfig.propMounts[i][2] != undefined) {
+        engineType = engineConfig.propMounts[i][2]
+      }
     }
   }
-  
   // Get the propeller from spin-up
   var spin = stats[2];
-  if (engineType = "j") {
-    if (spin >= 30) {
-      propName = "Z";
-    } else {
-      propName = "X"
-    }
-  } else {
-    if (spin >= 58) {
-      propName = "N";
-    } else if (spin >= 48) {
-      propName = "M";
-    } else if (spin >= 40) {
-      propName = "H";
-    } else if (spin >= 31) {
-      propName = "F";
-    } else if (spin >= 25) {
-      propName = "B";
-    } else if (spin >= 20) {
-      propName = "U";
-    } else if (spin >= 15) {
-      propName = "O";
-    } else if (spin >= 10) {
-      propName = "E";
-    } else {
-      propName = "A"
-    }
-  }
   
 }
 
