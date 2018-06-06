@@ -111,7 +111,7 @@ var rollEngine = function (tier) {
   panel.style.borderColor = config.colour;
   document.getElementById("schematicKnowledge").innerHTML = parseInt(document.getElementById("schematicKnowledge").innerHTML) + config.knowledge
   console.log("Rolling New" + tier + " Engine");
-  var result = rollSchematic(5, 100, config.max);
+  var result = rollSchematic(5, 100, config.schemMax);
   for (var i = 0; i < result.length; i++){
     result[i] = Math.round(result[i]);
     document.getElementById("schem-stat-" + i).style.width = result[i] + "%";
@@ -140,16 +140,17 @@ var generateSchemCostsAndObj = function (engine) {
 
 var rollEngineUntil = function (statName, statValue, tier) {
   var arrayKey = engineConfig.stats[statName];
-  var engine = rollEngine(5, 100, engineConfig[tier].max);
+  var engine = rollSchematic(5, 100, engineConfig[tier].schemMax);
+  console.log(engine);
   var n = 1;
   while (engine[arrayKey] < statValue) {
-    engine = rollEngine(5, 100, engineConfig[tier].max);
+    engine = rollSchematic(5, 100, engineConfig[tier].schemMax);
+    console.log(engine);
     n++;
   }
-  console.log("Final Engine")
-  console.log(engine)
-  console.log("Generated")
-  console.log(n)
+  console.log("Final Engine");
+  console.log(engine);
+  console.log("It took " + n + " tries");
 }
 
 var handleMatMouseEnter = function (e) {
