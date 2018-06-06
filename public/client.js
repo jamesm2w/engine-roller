@@ -122,7 +122,7 @@ var rollEngine = function (tier) {
   return true;
 }
 
-var generateSchemCostsAndObj = function (engine) {
+var generateSchemCostsAndObj = function (engine) { // Only requires a stat array
   // [Resil, FE, Spin, OH, Power]
   var costs = [0, 0, 0, 0] //Casing, Combus, Mech, Prop
   costs[0] = 2 * (engine[0] + engine[4] + engine[2]);   //2 x (Resilience + Power + Spinup)
@@ -138,10 +138,15 @@ var generateSchemCostsAndObj = function (engine) {
   }
 }
 
+var extractNameFromEngine = function (engine) { // Requires an engine OBJ. Not stat array.
+  var casingName, propMountName, propName, powerNum, stats = engine.stats, costs = engine.costs;
+  ifengine.stats[4]
+  
+}
+
 var rollEngineUntil = function (statName, statValue, tier) {
   var arrayKey = engineConfig.stats[statName];
   var engine = rollSchematic(5, 100, engineConfig[tier].schemMax);
-  console.log(engine);
   var n = 1;
   while (engine[arrayKey] < statValue) {
     if (n > 5000) {
@@ -154,7 +159,6 @@ var rollEngineUntil = function (statName, statValue, tier) {
       alert("The function has run 100 times without generating a schematic matching the criteria. Continue?")
     }
     engine = rollSchematic(5, 100, engineConfig[tier].schemMax);
-    console.log(engine);
     n++;
   }
   console.log("Final Engine");
