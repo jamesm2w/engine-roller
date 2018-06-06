@@ -160,31 +160,42 @@ var extractNameFromEngine = function (engine) { // Requires an engine OBJ. Not s
       powerNum = power - 40;
     } else if (power >= 35) {
       propMountName = "Hurricane";
-      powerNum = power - 60;
+      powerNum = power - 35;
     } else if (power >= 30) {
       propMountName = "Tornado";
+      powerNum = power - 30;
     } else if (power >= 25) {
       propMountName = "Cyclone";
+      powerNum = power - 25;
     } else if (power >= 20) {
       propMountName = "Pacesetter";
+      powerNum = power - 25;
     } else if (power >= 15) {
-      propMountName = "Rival"
+      propMountName = "Rival";
+      powerNum = power - 15;
     } else if (power >= 10) {
       propMountName = "Populus";
+      powerNum = power - 10;
     } else {
       propMountName = "Steamer";
+      powerNum = power - 0;
     }
   } else if (engineType = "w") {
     if (power >= 28) {
       propMountName = "Workhorse";
+      powerNum = power - 28;
     } else if (power >= 20) {
       propMountName = "Cranker";
+      powerNum = power - 20;
     } else if (power >= 15) {
       propMountName = "Smokie"; //Estimated at 15 from trend data
+      powerNum = power - 15;
     } else if (power >= 10) {
       propMountName = "Crudbait"; //Estimated at 10 from trend data
+      powerNum = power - 10;
     } else {
       propMountName = "Rustbucket";
+      powerNum = power - 0;
     }
   }
   
