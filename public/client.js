@@ -147,15 +147,20 @@ var extractNameFromEngine = function (engine) { // Requires an engine OBJ. Not s
     if (power >= 60) {
       propMountName = "Starcaster";
       engineType = "j";
+      powerNum = power - 60;
     } else if (power >= 51) {
       propMountName = "Cloudchaser";
       engineType = "j";
+      powerNum = power - 51;
     } else if (power >= 45) {
       propMountName = "Supreme";
+      powerNum = power - 45;
     } else if (power >= 40) {
       propMountName = "Elite";
+      powerNum = power - 40;
     } else if (power >= 35) {
       propMountName = "Hurricane";
+      powerNum = power - 60;
     } else if (power >= 30) {
       propMountName = "Tornado";
     } else if (power >= 25) {
@@ -180,6 +185,36 @@ var extractNameFromEngine = function (engine) { // Requires an engine OBJ. Not s
       propMountName = "Crudbait"; //Estimated at 10 from trend data
     } else {
       propMountName = "Rustbucket";
+    }
+  }
+  
+  // Get the propeller from spin-up
+  var spin = stats[2];
+  if (engineType = "j") {
+    if (spin >= 30) {
+      propName = "Z";
+    } else {
+      propName = "X"
+    }
+  } else {
+    if (spin >= 58) {
+      propName = "N";
+    } else if (spin >= 48) {
+      propName = "M";
+    } else if (spin >= 40) {
+      propName = "H";
+    } else if (spin >= 31) {
+      propName = "F";
+    } else if (spin >= 25) {
+      propName = "B";
+    } else if (spin >= 20) {
+      propName = "U";
+    } else if (spin >= 15) {
+      propName = "O";
+    } else if (spin >= 10) {
+      propName = "E";
+    } else {
+      propName = "A"
     }
   }
   
