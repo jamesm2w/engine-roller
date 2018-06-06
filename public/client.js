@@ -41,58 +41,70 @@ var rollSchematic = function (min, max, total) {
   return engine;
 };
 
+var engineConfig = {
+  8: {
+    "rarity": "Hypothetical",
+    "schemMax": 460,
+    "knowledge": 2000,
+    "colour": "black"
+  },
+  7: {
+    "rarity": "Hypothetical",
+    "schemMax": 375,
+    "knowledge": 1240,
+    "colour": "darkgrey"
+  },
+  6: {
+    "rarity": "Legendary",
+    "schemMax": 300,
+    "knowledge": 860,
+    "colour": "#ee4000"
+  },
+  5: {
+    "rarity": "Pristine",
+    "schemMax": 235,
+    "knowledge": 640,
+    "colour": "#6b5ace"
+  },
+  4: {
+    "rarity": "Exotic",
+    "schemMax": 180,
+    "knowledge": 500,
+    "colour": "#F9D58B"
+  },
+  3: {
+    "rarity": "Rare",
+    "schemMax": 135,
+    "knowledge": 400,
+    "colour": "#588BEB"
+  },
+  2: {
+    "rarity": "Uncommon",
+    "schemMax": 100,
+    "knowledge": 320,
+    "colour": "#00ee76"
+  },
+  1: {
+    "rarity": "Common",
+    "schemMax": 75,
+    "knowledge": 250,
+    "colour": "white"
+  },
+  "statEffects": {
+    "Casing": [0],
+    "Combustion": [1, 3, 4],
+    "Mechanical": [1, 3, 2],
+    "Propeller": [2, 4]
+  }
+}
+
 var rollEngine = function (tier) {
   document.getElementById("schematicName").innerHTML = "Procedural Engine (Tier " + tier + ")";
-  var panel = document.getElementById("schematicPanel"), colour = "white", max = 180, knowledge = 0;//Establish default fallback values
-  switch (tier) {
-    case 6:
-      max = 300;
-      colour = "#ee4000";
-      knowledge = 860;
-      break;
-    case 5:
-      max = 235;
-      colour = "#6b5ace";
-      knowledge = 640;
-      break;
-    case 4:
-      max = 180;
-      colour = "#F9D58B";
-      knowledge = 500;
-      break;
-    case 3: 
-      max = 135;
-      colour = "#588BEB";
-      knowledge = 400;
-      break;
-    case 2:
-      max = 100;
-      colour = "#00ee76";
-      knowledge = 320;
-      break;
-    case 1:
-      max = 75;
-      colour = "white";
-      knowledge = 250;
-      break;
-    case 7:
-      max = 375;
-      colour = "darkgrey";
-      knowledge = 1240;
-      break;
-    case 8:
-      max = 460;
-      colour = "black";
-      knowledge = 2000;
-      break;
-    default:
-      max = 100
-      break;
-              }
-  panel.style.borderColor = colour;
-  document.getElementById("schematicKnowledge").innerHTML = parseInt(document.getElementById("schematicKnowledge").innerHTML) + knowledge
+  var panel = document.getElementById("schematicPanel"), config = engineConfig[tier];
+  panel.style.borderColor = config.colour;
+  document.getElementById("schematicKnowledge").innerHTML = parseInt(document.getElementById("schematicKnowledge").innerHTML) + config.knowledge
   console.log("Rolling New" + tier + " Engine");
-  var result = rollSchematic(5, 100, max);
+  var result = rollSchematic(5, 100, config.max);
   for (var i = 0; i < result.length; i++){
     result[i] = Math.round(result[i]);
     document.getElementById("schem-stat-" + i).style.width = result[i] + "%";
@@ -112,6 +124,9 @@ var generateSchemCosts = function (engine) {
   costs[3] = 2 * (engine[2] + engine[3]);               //2 x (Spinup + Overheat)
   for (var i = 0; i < costs.length; i++) {
     document.getElementById("schem-mat-" + i).innerHTML = costs[i]
+  }
+  return {
+    "type": "Engin
   }
 }
 
