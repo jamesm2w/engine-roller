@@ -106,33 +106,33 @@ var engineConfig = {
   "propMounts": [ // minPower, name, requiredType, setType
     [59, "Starcaster",  "m", "j"],
     [50, "Cloudchaser", "m", "j"],
-    [44, "Supreme",     "m"],
-    [39, "Elite",       "m"],
-    [34, "Hurricane",   "m"],
-    [29, "Tornado",     "m"],
-    [24, "Cyclone",     "m"],
-    [19, "Pacesetter",  "m"],
-    [14, "Rival",       "m"],
-    [ 9, "Populus",     "m"],
-    [ 0, "Steamer",     "m"],
-    [27, "Workhorse",   "w"],
-    [19, "Cranker",     "w"],
-    [14, "Smokie",      "w"],
-    [ 9, "Crudbait",    "w"],
-    [ 0, "Rustbucket",  "w"]
+    [44, "Supreme",     "m", "p"],
+    [39, "Elite",       "m", "p"],
+    [34, "Hurricane",   "m", "p"],
+    [29, "Tornado",     "m", "p"],
+    [24, "Cyclone",     "m", "p"],
+    [19, "Pacesetter",  "m", "p"],
+    [14, "Rival",       "m", "p"],
+    [ 9, "Populus",     "m", "p"],
+    [ 0, "Steamer",     "m", "p"],
+    [27, "Workhorse",   "w", "p"],
+    [19, "Cranker",     "w", "p"],
+    [14, "Smokie",      "w", "p"],
+    [ 9, "Crudbait",    "w", "p"],
+    [ 0, "Rustbucket",  "w", "p"]
   ],
   "props": [ // minSpin, name, requiredType
     [30, "Z", "j"],
     [ 0, "X", "j"],
-    [58, "N"],
-    [48, "M"],
-    [40, "H"],
-    [31, "F"],
-    [25, "B"],
-    [20, "U"],
-    [15, "O"],
-    [10, "E"],
-    [ 0, "A"]
+    [58, "N", "p"],
+    [48, "M", "p"],
+    [40, "H", "p"],
+    [31, "F", "p"],
+    [25, "B", "p"],
+    [20, "U", "p"],
+    [15, "O", "p"],
+    [10, "E", "p"],
+    [ 0, "A", "p"]
   ]
 }
 
@@ -182,10 +182,7 @@ var extractNameFromEngine = function (engine) { // Requires an engine OBJ. Not s
       powerNum = power - engineConfig.propMounts[i][0];
       
       if (engineConfig.propMounts[i][3] != undefined) {
-        
         engineType = engineConfig.propMounts[i][3];
-      } else {
-        engineType = undefined;
       }
       
       break;
@@ -195,9 +192,7 @@ var extractNameFromEngine = function (engine) { // Requires an engine OBJ. Not s
   var spin = stats[2];
   for (var i = 0; i < engineConfig.props.length; i++) {
 
-    if (power >= engineConfig.props[i][0]) {
-      
-      if (engineConfig.props[i][2] == engineType) {
+    if (power >= engineConfig.props[i][0] &&engineConfig.props[i][2] == engineType) {
         propName = engineConfig.props[i][1];
       }
       
