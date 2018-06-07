@@ -104,21 +104,21 @@ var engineConfig = {
     "Power": 4
   },
   "propMounts": [ // minPower, name, requiredType, setType
-    [60, "Starcaster",  "m", "j"],
-    [51, "Cloudchaser", "m", "j"],
-    [45, "Supreme",     "m"],
-    [40, "Elite",       "m"],
-    [35, "Hurricane",   "m"],
-    [30, "Tornado",     "m"],
-    [25, "Cyclone",     "m"],
-    [20, "Pacesetter",  "m"],
-    [15, "Rival",       "m"],
-    [10, "Populus",     "m"],
+    [59, "Starcaster",  "m", "j"],
+    [50, "Cloudchaser", "m", "j"],
+    [44, "Supreme",     "m"],
+    [39, "Elite",       "m"],
+    [34, "Hurricane",   "m"],
+    [29, "Tornado",     "m"],
+    [24, "Cyclone",     "m"],
+    [19, "Pacesetter",  "m"],
+    [14, "Rival",       "m"],
+    [ 9, "Populus",     "m"],
     [ 0, "Steamer",     "m"],
-    [28, "Workhorse",   "w"],
-    [20, "Cranker",     "w"],
-    [15, "Smokie",      "w"],
-    [10, "Crudbait",    "w"],
+    [27, "Workhorse",   "w"],
+    [19, "Cranker",     "w"],
+    [14, "Smokie",      "w"],
+    [ 9, "Crudbait",    "w"],
     [ 0, "Rustbucket",  "w"]
   ],
   "props": [ // minSpin, name, requiredType
@@ -175,22 +175,37 @@ var extractNameFromEngine = function (engine) { // Requires an engine OBJ. Not s
   //Get Prop Head name from Power
   var power = stats[4];
   for (var i = 0; i < engineConfig.propMounts.length; i++) {
-    if (power >= engineConfig.propMounts[i][0] && engineType == engineConfig.propMounts[i][2]) {
+    
+    if (power > engineConfig.propMounts[i][0] && engineType == engineConfig.propMounts[i][2]) {
+      
       propMountName = engineConfig.propMounts[i][1];
       powerNum = power - engineConfig.propMounts[i][0];
+      
       if (engineConfig.propMounts[i][3] != undefined) {
+        
         engineType = engineConfig.propMounts[i][3];
+      } else {
+        engineType = undefined;
       }
+      
+      break;
     }
   }
   // Get the propeller from spin-up
   var spin = stats[2];
   for (var i = 0; i < engineConfig.props.length; i++) {
-    if (power >= engineConfig.props[i][0] && (engineType == engineConfig.props[i][2] || engineConfig.props[i][2] == undefined)) {
-      propName = engineConfig.props[i][1];
+
+    if (power >= engineConfig.props[i][0]) {
+      
+      if (engineConfig.props[i][2] == engineType) {
+        propName = engineConfig.props[i][1];
+      }
+      
       if (engineConfig.props[i][3] != undefined) {
         engineType = engineConfig.props[i][3];
       }
+      
+      break;
     }
   }
   return [casingName, propMountName, propName, powerNum];
