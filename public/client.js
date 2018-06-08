@@ -58,31 +58,31 @@ var engineConfig = {
     "rarity": "Legendary",
     "schemMax": 300,
     "knowledge": 860,
-    "colour": "#ee4000"
+    "colour": "#ff0000"
   },
   5: {
     "rarity": "Pristine",
     "schemMax": 235,
     "knowledge": 640,
-    "colour": "#6b5ace"
+    "colour": "#9900cc"
   },
   4: {
     "rarity": "Exotic",
     "schemMax": 180,
     "knowledge": 500,
-    "colour": "#F9D58B"
+    "colour": "#ffff33"
   },
   3: {
     "rarity": "Rare",
     "schemMax": 135,
     "knowledge": 400,
-    "colour": "#588BEB"
+    "colour": "#0066ff"
   },
   2: {
     "rarity": "Uncommon",
     "schemMax": 100,
     "knowledge": 320,
-    "colour": "#00ee76"
+    "colour": "#33FF33"
   },
   1: {
     "rarity": "Common",
