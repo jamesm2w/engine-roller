@@ -137,4 +137,15 @@ Schematic Styles
   display: block;
 }
 
+.rollButton {
+  padding: 5px; 
+  border: 1px solid; 
+  border-radius: 5px; 
+  display: inline;
+  transition: background-color 0.3s ease;
+  background-color: rgba(0,0,0,0);
+}
 
+.rollButton:hover {
+  background-color: red;
+}
