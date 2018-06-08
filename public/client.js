@@ -148,13 +148,12 @@ class Engine {
   constructor(tier) {
     this.tier = tier;
     this.config = engineConfig[tier];
-    this.stats = rollSchematic(5, 100, this.config.schemMax);
+    this.stats = this.rollStats(this.config.schemMax);
+    this.costs = this.calcCosts(this.stats);
+    this.name = this.detName(this.stats);
   }
   
-  calculateCosts (stats) {
-    if (!stats) {
-      stats = this.stats;
-    }
+  _calculateCosts (stats) {
     var costs = [0, 0, 0, 0] //Casing, Combus, Mech, Prop
     costs[0] = 2 * (stats[0] + stats[4] + stats[2]);   //2 x (Resilience + Power + Spinup)
     costs[1] = 2 * (stats[4] + stats[1] + stats[3]);   //2 x (Power + Fuel efficiency + Overheat)
@@ -166,12 +165,64 @@ class Engine {
     return costs;
   }
   
-  static rollStats(total) {
+  _determineEngineName (stats) {
+    var casingName, propMountName, propName, powerNum, engineType = "m", stats = stats;
+    // TODO: Get Casing name from something
+  
+    //Get Prop Head name from Power
+    var power = stats[4];
+    for (var i = 0; i < engineConfig.propMounts.length; i++) {
+      if (power > engineConfig.propMounts[i][0] && engineType == engineConfig.propMounts[i][2]) {
+
+        propMountName = engineConfig.propMounts[i][1];
+        powerNum = power - engineConfig.propMounts[i][0];
+        engineType = engineConfig.propMounts[i][3];
+
+        break;
+      }
+    }
+    // Get the propeller from spin-up
+    var spin = stats[2];
+    for (var i = 0; i < engineConfig.props.length; i++) {
+      if (spin >= engineConfig.props[i][0] && engineConfig.props[i][2] == engineType) {
+
+        propName = engineConfig.props[i][1];
+        engineType = engineConfig.props[i][3];
+
+        break;
+      }
+    }
+    return [casingName, propMountName, propName, powerNum];
+  }
+  
+  displayEngine () {
+    var panel = document.getElementById("schematicPanel");
+    panel.style.borderColor = this.config.colour;
+    document.getElementById("schematicKnowledge").innerHTML = parseInt(document.getElementById("schematicKnowledge").innerHTML) + this.config.knowledge;
+    for (var i = 0; i < this.stats.length; i++){
+      this.stats[i] = Math.round(this.stats[i]);
+      document.getElementById("schem-stat-" + i).style.width = this.stats[i] + "%";
+      document.getElementById("schem-stat-" + i + "-label").innerHTML = this.stats[i];
+    }
+    document.getElementById("schematicName").innerHTML = 
+      this.name[0] + " " + this.name[1] + " " + this.name[2] + this.name[3] + " (Tier " + this.tier + ")";
+    
+  }
+  
+  get engineObj () {
+    return {"name": this.name, "tier": this.tier, "stats": this.stats, "costs": this.costs};
+  }
+  
+  static rollStats (total) {
     return rollSchematic(5, 100, total);
   }
   
-  static calcCosts(stats) {
-    return this.calculateCosts(stats);
+  static calcCosts (stats) {
+    return this._calculateCosts(stats);
+  }
+  
+  static detName (stats) {
+    return this._determineEngineName(stats);
   }
 }
 
