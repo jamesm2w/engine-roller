@@ -24,17 +24,25 @@ var arrayMult = function (ar1, ar2, pwr, max, min) {
   return ar1;
 }
 
+var randomStatArray = function (n) {
+  var a = new Array(n);
+  for (var i = 0; i < n; i++) {
+    a[i] = [random.real(1,5)];
+  }
+  return a;
+}
+
 var rollSchematic = function (min, max, total) {
   let engine = [max + 1, max + 1, max + 1, max + 1, max + 1];
   let rollMax = -1, rollMin = 0;
   while (engine[0] >= max || engine[1] >= max || engine[2] >= max || engine[3] >= max || engine[4] >= max) {
     rollMax++;
-    engine = arrayMult(engine, [random.real(1,5),random.real(1,5),random.real(1,5),random.real(1,5),random.real(1,5)], 1, max, min)
+    engine = arrayMult(engine, randomStatArray(5), 1, max, min)
     engine = elMult(elDiv(engine, eval(engine.join('+'))), total);
     
     while (engine[0] < min || engine[1] < min || engine[2] < min || engine[3] < min || engine[4] < min) {
       rollMin++;
-      engine = arrayMult(engine, [random.real(1,5),random.real(1,5),random.real(1,5),random.real(1,5),random.real(1,5)], 1, max, min)
+      engine = arrayMult(engine, randomStatArray(5), 1, max, min)
       engine = elMult(elDiv(engine, eval(engine.join('+'))), total);
     }
   }
@@ -136,7 +144,9 @@ var engineConfig = {
   ]
 }
 
-var rollEngine = function (tier) {
+
+
+var rollEngineStats = function (tier) {
   
   var panel = document.getElementById("schematicPanel"), config = engineConfig[tier];
   panel.style.borderColor = config.colour;
@@ -156,7 +166,7 @@ var rollEngine = function (tier) {
   return true;
 }
 
-var generateSchemCostsAndObj = function (engine) { // Only requires a stat array
+var calculateEngineCosts = function (engine) { // Only requires a stat array
   // [Resil, FE, Spin, OH, Power]
   var costs = [0, 0, 0, 0] //Casing, Combus, Mech, Prop
   costs[0] = 2 * (engine[0] + engine[4] + engine[2]);   //2 x (Resilience + Power + Spinup)
