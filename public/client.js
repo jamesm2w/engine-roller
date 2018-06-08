@@ -144,7 +144,36 @@ var engineConfig = {
   ]
 }
 
-
+class Engine {
+  constructor(tier) {
+    this.tier = tier;
+    this.config = engineConfig[tier];
+    this.stats = rollSchematic(5, 100, this.config.schemMax);
+  }
+  
+  calculateCosts (stats) {
+    if (!stats) {
+      stats = this.stats;
+    }
+    var costs = [0, 0, 0, 0] //Casing, Combus, Mech, Prop
+    costs[0] = 2 * (stats[0] + stats[4] + stats[2]);   //2 x (Resilience + Power + Spinup)
+    costs[1] = 2 * (stats[4] + stats[1] + stats[3]);   //2 x (Power + Fuel efficiency + Overheat)
+    costs[2] = 2 * (stats[4] + stats[1]);               //2 x (Power + Fuel efficiency)
+    costs[3] = 2 * (stats[2] + stats[3]);               //2 x (Spinup + Overheat)
+    for (var i = 0; i < costs.length; i++) {
+      document.getElementById("schem-mat-" + i).innerHTML = costs[i]
+    }
+    return costs;
+  }
+  
+  static rollStats(total) {
+    return rollSchematic(5, 100, total);
+  }
+  
+  static calcCosts(stats) {
+    return this.calculateCosts(stats);
+  }
+}
 
 var rollEngineStats = function (tier) {
   
