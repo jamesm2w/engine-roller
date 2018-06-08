@@ -228,7 +228,7 @@ class Engine {
 
 var createRollerUI = function () {
   for (var i = 1; i < 9; i++) {
-    document.getElementById("rollerUI").innerHTML += "<li><a style='font-weight: 700; color: " 
+    document.getElementById("rollerUI").innerHTML += "<li><a style='text-decoration: none; font-weight: 700; color: " 
       + engineConfig[i].colour + "' href='javascript:void(0)' onclick='randomRollEngine(" 
       + i + ")'>Roll " 
       + engineConfig[i].rarity + " (T" + i + ") Engine</a></li>";
