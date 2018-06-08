@@ -137,15 +137,75 @@ Schematic Styles
   display: block;
 }
 
-.rollButton {
+.roll-btn {
   padding: 5px; 
   border: 1px solid; 
   border-radius: 5px; 
   display: inline;
+  cursor: pointer;
   transition: background-color 0.3s ease;
-  background-color: rgba(0,0,0,0);
 }
 
-.rollButton:hover {
-  background-color: red;
+.btn-common {
+  border-color: white;
+}
+
+.btn-common:hover {
+  background-color: white;
+}
+
+.btn-uncommon {
+  border-color: #33FF33;
+}
+
+.btn-uncommon:hover {
+  background-color: #33FF33;
+}
+
+.btn-rare {
+  border-color: #0066ff;
+}
+
+.btn-rare:hover {
+  background-color: #0066ff;
+}
+
+.btn-exotic {
+  border-color: #ffff33;
+}
+
+.btn-exotic:hover {
+  background-color: #ffff33;
+}
+
+.btn-pristine {
+  border-color: #9900cc;
+}
+
+.btn-pristine:hover {
+  background-color: #9900cc;
+}
+
+.btn-legendary {
+  border-color: #ff0000;
+}
+
+.btn-legendary:hover {
+  background-color: #ff0000;
+}
+
+.btn-hypothetical {
+  border-color: darkgray;
+}
+
+.btn-hypothetical:hover {
+  background-color: darkgray;
+}
+
+.btn-experimental {
+  border-color: black;
+}
+
+.btn-experimental:hover {
+  background-color: black;
 }

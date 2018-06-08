@@ -51,7 +51,7 @@ var rollSchematic = function (min, max, total) {
 
 var engineConfig = {
   8: {
-    "rarity": "Hypothetical",
+    "rarity": "Experimental",
     "schemMax": 460,
     "knowledge": 2000,
     "colour": "black"
