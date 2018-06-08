@@ -137,7 +137,7 @@ var engineConfig = {
 }
 
 var rollEngine = function (tier) {
-  document.getElementById("schematicName").innerHTML = "Procedural Engine (Tier " + tier + ")";
+  
   var panel = document.getElementById("schematicPanel"), config = engineConfig[tier];
   panel.style.borderColor = config.colour;
   document.getElementById("schematicKnowledge").innerHTML = parseInt(document.getElementById("schematicKnowledge").innerHTML) + config.knowledge
@@ -152,6 +152,7 @@ var rollEngine = function (tier) {
   var engineObj = generateSchemCostsAndObj(result);
   var name = extractNameFromEngine(engineObj);
   console.log(name);
+  document.getElementById("schematicName").innerHTML = name[0] + " " + name[1] + " " + name[2] + name[3] +" (Tier " + tier + ")";
   return true;
 }
 
