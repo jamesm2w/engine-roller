@@ -253,15 +253,6 @@ var rollEngineUntil = function (statName, statValue, tier) {
   var engine = rollSchematic(5, 100, engineConfig[tier].schemMax);
   var n = 1;
   while (engine[arrayKey] < statValue) {
-    if (n > 5000) {
-      alert("The function has run 5000 times without generating a schematic matching the criteria. Continue?")
-    } else if (n > 1000) {
-      alert("The function has run 1000 times without generating a schematic matching the criteria. Continue?")
-    } else if (n > 500) {
-      alert("The function has run 500 times without generating a schematic matching the criteria. Continue?")
-    } else if (n > 100) {
-      alert("The function has run 100 times without generating a schematic matching the criteria. Continue?")
-    }
     engine = rollSchematic(5, 100, engineConfig[tier].schemMax);
     n++;
   }
