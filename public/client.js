@@ -103,37 +103,37 @@ var engineConfig = {
     "Overheat Limit": 3,
     "Power": 4
   },
-  "propMounts": { // minPower, name, requiredType, setType
-    0: [59, "Starcaster",  "m", "j"],
-    1: [50, "Cloudchaser", "m", "j"],
-    2: [44, "Supreme",     "m", "p"],
-    3: [39, "Elite",       "m", "p"],
-    4: [34, "Hurricane",   "m", "p"],
-    5: [29, "Tornado",     "m", "p"],
-    6: [24, "Cyclone",     "m", "p"],
-    7: [19, "Pacesetter",  "m", "p"],
-    8: [14, "Rival",       "m", "p"],
-    9: [ 9, "Populus",     "m", "p"],
-    10:[ 0, "Steamer",     "m", "p"],
-    11:[27, "Workhorse",   "w", "p"],
-    12:[19, "Cranker",     "w", "p"],
-    13:[14, "Smokie",      "w", "p"],
-    14:[ 9, "Crudbait",    "w", "p"],
-    15:[ 0, "Rustbucket",  "w", "p"]
-  },
-  "props": { // minSpin, name, requiredType
-    0: [30, "Z", "j"],
-    1: [ 0, "X", "j"],
-    2: [58, "N", "p"],
-    3: [48, "M", "p"],
-    4: [40, "H", "p"],
-    5: [31, "F", "p"],
-    6: [25, "B", "p"],
-    7: [20, "U", "p"],
-    8: [15, "O", "p"],
-    9: [10, "E", "p"],
-    10:[ 0, "A", "p"]
-  }
+  "propMounts": [ // minPower, name, requiredType, setType
+    [59, "Starcaster",  "m", "j"],
+    [50, "Cloudchaser", "m", "j"],
+    [44, "Supreme",     "m", "p"],
+    [39, "Elite",       "m", "p"],
+    [34, "Hurricane",   "m", "p"],
+    [29, "Tornado",     "m", "p"],
+    [24, "Cyclone",     "m", "p"],
+    [19, "Pacesetter",  "m", "p"],
+    [14, "Rival",       "m", "p"],
+    [ 9, "Populus",     "m", "p"],
+    [ 0, "Steamer",     "m", "p"],
+    [27, "Workhorse",   "w", "p"],
+    [19, "Cranker",     "w", "p"],
+    [14, "Smokie",      "w", "p"],
+    [ 9, "Crudbait",    "w", "p"],
+    [ 0, "Rustbucket",  "w", "p"]
+  ],
+  "props": [ // minSpin, name, requiredType
+    [30, "Z", "j"],
+    [ 0, "X", "j"],
+    [58, "N", "p"],
+    [48, "M", "p"],
+    [40, "H", "p"],
+    [31, "F", "p"],
+    [25, "B", "p"],
+    [20, "U", "p"],
+    [15, "O", "p"],
+    [10, "E", "p"],
+    [ 0, "A", "p"]
+  ]
 }
 
 var rollEngine = function (tier) {
@@ -150,6 +150,8 @@ var rollEngine = function (tier) {
   }
   console.log(result);
   var engineObj = generateSchemCostsAndObj(result);
+  var name = extractNameFromEngine(engineObj);
+  console.log(name);
   return true;
 }
 
@@ -174,10 +176,9 @@ var extractNameFromEngine = function (engine) { // Requires an engine OBJ. Not s
   
   //Get Prop Head name from Power
   var power = stats[4];
-  for (var i = 0; i < 16; i++) {
-    console.log(engineConfig.propMounts[i]);
+  for (var i = 0; i < engineConfig.propMounts.length; i++) {
     if (power > engineConfig.propMounts[i][0] && engineType == engineConfig.propMounts[i][2]) {
-      console.log(engineConfig.propMounts[i]);
+      
       propMountName = engineConfig.propMounts[i][1];
       powerNum = power - engineConfig.propMounts[i][0];
       engineType = engineConfig.propMounts[i][3];
@@ -187,12 +188,11 @@ var extractNameFromEngine = function (engine) { // Requires an engine OBJ. Not s
   }
   // Get the propeller from spin-up
   var spin = stats[2];
-  for (var a = 0; a < 11; i++) {
-    console.log(engineConfig.props[a]);
-    if (power >= engineConfig.props[a][0] && engineConfig.props[a][2] == engineType) {
-      console.log(engineConfig.props[a]);
-      propName = engineConfig.props[a][1];
-      engineType = engineConfig.props[a][3];
+  for (var i = 0; i < engineConfig.props.length; i++) {
+    if (spin >= engineConfig.props[i][0] && engineConfig.props[i][2] == engineType) {
+
+      propName = engineConfig.props[i][1];
+      engineType = engineConfig.props[i][3];
       
       break;
     }
