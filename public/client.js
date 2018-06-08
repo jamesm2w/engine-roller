@@ -226,10 +226,26 @@ class Engine {
   }
 }
 
+var createRollerUI = function () {
+  for (var i = 1; i < 9; i++) {
+    document.getElementById("rollerUI").innerHTML += "<li><a style='font-weight: 700; color: " 
+      + engineConfig[i].colour + "' href='javascript:void(0)' onclick='randomRollEngine(" 
+      + i + ")'>Roll " 
+      + engineConfig[i].rarity + " (T" + i + ") Engine</a></li>";
+  }
+}
+
 var randomRollEngine = function (tier) {
   var randomRoll = new Engine(tier);
-  console.log("R
+  console.log("Rolling new " + tier + " Engine");
   randomRoll.displayEngine();
+}
+
+var resetKnowledge = function () {
+  var kc = document.getElementById("schematicKnowledge");
+  console.log("Reset " + kc.innerHTML + " Knowledge to 0");
+  kc.innerHTML = 0;
+  return true;
 }
 
 var rollEngineUntil = function (statName, statValue, tier) {
@@ -269,9 +285,3 @@ var handleMatMouseLeave = function (e) {
   }
 }
 
-var resetKnowledge = function () {
-  var kc = document.getElementById("schematicKnowledge");
-  console.log("Reset " + kc.innerHTML + " Knowledge to 0");
-  kc.innerHTML = 0;
-  return true;
-}

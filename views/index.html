@@ -86,15 +86,8 @@
         <h1 class="wa-title" style="text-align: center">
           Random Schematic Roller
         </h1>
-        <ul>
-          <li><a href="javascript:void(0)" onclick="rollEngine(1)">Roll Common Engine (T1)</a></li>
-          <li><a href="javascript:void(0)" onclick="rollEngine(2)">Roll Uncommon Engine (T2)</a></li>
-          <li><a href="javascript:void(0)" onclick="rollEngine(3)">Roll Rare Engine (T3)</a></li>
-          <li><a href="javascript:void(0)" onclick="rollEngine(4)">Roll Exotic Engine (T4)</a></li>
-          <li><a href="javascript:void(0)" onclick="rollEngine(5)">Roll Pristine Engine (T5)</a></li>
-          <li><a href="javascript:void(0)" onclick="rollEngine(6)">Roll Legendary Engine (T6)</a></li>
-          <li><a href="javascript:void(0)" onclick="rollEngine(7)">Roll Theoretical Engine (T7)</a></li>
-          <li><a href="javascript:void(0)" onclick="rollEngine(8)">Roll Experimental Engine (T8)</a></li>
+        <ul id="rollerUI">
+          
         </ul>
         
       </div>
@@ -110,6 +103,7 @@
         materials[i].addEventListener("mouseenter", handleMatMouseEnter);
         materials[i].addEventListener("mouseleave", handleMatMouseLeave);
       }
+      createRollerUI();
     </script>
   </body>
 </html>
