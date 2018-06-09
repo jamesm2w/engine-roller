@@ -78,25 +78,25 @@ var engineConfig = {
     "rarity": "Exotic",
     "schemMax": 180,
     "knowledge": 500,
-    "colour": "#ffff33"
+    "colour": "#86ACDA"
   },
   3: {
     "rarity": "Rare",
     "schemMax": 135,
     "knowledge": 400,
-    "colour": "#0066ff"
+    "colour": "#FFD27D"
   },
   2: {
     "rarity": "Uncommon",
     "schemMax": 100,
     "knowledge": 320,
-    "colour": "#33FF33"
+    "colour": "#95C340"
   },
   1: {
     "rarity": "Common",
     "schemMax": 75,
     "knowledge": 250,
-    "colour": "white"
+    "colour": "#FFE5C4"
   },
   "statEffects": {
     "Casing": [0],
