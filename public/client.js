@@ -60,7 +60,7 @@ var engineConfig = {
     "rarity":    "Hypothetical",
     "schemMax":  375,
     "knowledge": 1240,
-    "colour":    "darkgrey"
+    "colour":    "darkgray"
   },
   6: {
     "rarity":    "Legendary",
@@ -228,8 +228,8 @@ class Engine {
 
 var createRollerUI = function () {
   for (var i = 1; i < 9; i++) {
-    document.getElementById("rollerUI").innerHTML += "<div class='btn-" 
-      + engineConfig[i].rarity.toLowerCase() + " roll-btn' onclick='randomRollEngine(" 
+    document.getElementById("rollerUI").innerHTML += "<div class='" 
+      + engineConfig[i].rarity.toLowerCase() + "-btn roll-btn' onclick='randomRollEngine(" 
       + i + ")'>" 
       + engineConfig[i].rarity + " (T" + i + ") Engine</div><br>";
   }

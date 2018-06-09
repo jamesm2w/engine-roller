@@ -22,7 +22,14 @@
 .container {margin: 0 10px 0 10px; }
 
 :root {
-  --
+  --rarity-common: #FFE5C4;
+  --rarity-uncommon: #95C340;
+  --rarity-rare: #6392F6;
+  --rarity-exotic: #FFD27D;
+  --rarity-pristine: #C883F5;
+  --rarity-legendary: #E6152C;
+  --rarity-experimental: black;
+  --rarity-theoretical: darkgray;
 }
 
 /* ------------------------------
@@ -149,4 +156,13 @@ Schematic Styles
   cursor: pointer;
   margin-bottom: 5px;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.common-btn {
+  color: var(--rarity-common);
+  background-color: rgba(0,0,0,0);
+  :hover {
+    color: #ffe5c4;
+    background-color: var(--rarity-common);
+  }
 }
