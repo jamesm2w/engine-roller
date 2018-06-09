@@ -29,7 +29,9 @@
   --rarity-pristine: #C883F5;
   --rarity-legendary: #E6152C;
   --rarity-experimental: black;
-  --rarity-theoretical: darkgray;
+  --rarity-hypothetical: darkgray;
+  
+  --text-colour: #ffe5c4;
 }
 
 /* ------------------------------
@@ -160,9 +162,82 @@ Schematic Styles
 
 .common-btn {
   color: var(--rarity-common);
-  background-color: rgba(0,0,0,0);
-  :hover {
-    color: #ffe5c4;
-    background-color: var(--rarity-common);
-  }
+  background-color: rgba(0,0,0,0);  
+}
+
+.common-btn:hover {
+  color: black;
+  background-color: var(--rarity-common);
+  border-color: var(--rarity-common);
+}
+
+.uncommon-btn {
+  color: var(--rarity-uncommon);
+  background-color: rgba(0,0,0,0);  
+}
+
+.uncommon-btn:hover {
+  color: var(--text-colour);
+  background-color: var(--rarity-uncommon);
+  border-color: var(--rarity-uncommon);
+}
+
+.rare-btn {
+  color: var(--rarity-rare);
+  background-color: rgba(0,0,0,0);  
+}
+
+.rare-btn:hover {
+  color: var(--text-colour);
+  background-color: var(--rarity-rare);
+}
+
+.exotic-btn {
+  color: var(--rarity-exotic);
+  background-color: rgba(0,0,0,0);  
+}
+
+.exotic-btn:hover {
+  color: black;
+  background-color: var(--rarity-exotic);
+}
+
+.pristine-btn {
+  color: var(--rarity-pristine);
+  background-color: rgba(0,0,0,0);  
+}
+
+.pristine-btn:hover {
+  color: var(--text-colour);
+  background-color: var(--rarity-pristine);
+}
+
+.legendary-btn {
+  color: var(--rarity-legendary);
+  background-color: rgba(0,0,0,0);  
+}
+
+.legendary-btn:hover {
+  color: var(--text-colour);
+  background-color: var(--rarity-legendary);
+}
+
+.hypothetical-btn {
+  color: var(--rarity-hypothetical);
+  background-color: rgba(0,0,0,0);  
+}
+
+.hypothetical-btn:hover {
+  color: var(--text-colour);
+  background-color: var(--rarity-hypothetical);
+}
+
+.experimental-btn {
+  color: var(--rarity-experimental);
+  background-color: rgba(0,0,0,0);  
+}
+
+.experimental-btn:hover {
+  color: var(--text-colour);
+  background-color: var(--rarity-experimental);
 }
