@@ -132,6 +132,7 @@ Schematic Styles
 
 .schem-mat {
   background-color: #776464;
+  cursor: pointer;
 }
 
 .schem-mat.top {
@@ -154,7 +155,9 @@ Schematic Styles
   padding: 5px; 
   border: 1px solid; 
   border-radius: 5px; 
-  display: inline-block;
+  display: block;
+  width: 100%;
+  text-align: center;
   cursor: pointer;
   margin-bottom: 5px;
   transition: background-color 0.3s ease, color 0.3s ease;

@@ -231,7 +231,7 @@ var createRollerUI = function () {
     document.getElementById("rollerUI").innerHTML += "<div class='" 
       + engineConfig[i].rarity.toLowerCase() + "-btn roll-btn' onclick='randomRollEngine(" 
       + i + ")'>" 
-      + engineConfig[i].rarity + " (T" + i + ") Engine</div><br>";
+      + engineConfig[i].rarity + " (T" + i + ") Engine</div>";
   }
 }
 
