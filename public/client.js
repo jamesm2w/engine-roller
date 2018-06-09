@@ -66,7 +66,7 @@ var engineConfig = {
     "rarity": "Legendary",
     "schemMax": 300,
     "knowledge": 860,
-    "colour": "#ff0000"
+    "colour": "#F56938"
   },
   5: {
     "rarity": "Pristine",
@@ -78,13 +78,13 @@ var engineConfig = {
     "rarity": "Exotic",
     "schemMax": 180,
     "knowledge": 500,
-    "colour": "#86ACDA"
+    "colour": "#FFD27D"
   },
   3: {
     "rarity": "Rare",
     "schemMax": 135,
     "knowledge": 400,
-    "colour": "#FFD27D"
+    "colour": "#86ACDA"
   },
   2: {
     "rarity": "Uncommon",
