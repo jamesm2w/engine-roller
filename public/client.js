@@ -51,58 +51,58 @@ var rollSchematic = function (min, max, total) {
 
 var engineConfig = {
   8: {
-    "rarity": "Experimental",
-    "schemMax": 460,
+    "rarity":    "Experimental",
+    "schemMax":  460,
     "knowledge": 2000,
-    "colour": "black"
+    "colour":    "black"
   },
   7: {
-    "rarity": "Hypothetical",
-    "schemMax": 375,
+    "rarity":    "Hypothetical",
+    "schemMax":  375,
     "knowledge": 1240,
-    "colour": "darkgrey"
+    "colour":    "darkgrey"
   },
   6: {
-    "rarity": "Legendary",
-    "schemMax": 300,
+    "rarity":    "Legendary",
+    "schemMax":  300,
     "knowledge": 860,
-    "colour": "#F56938"
+    "colour":    "#E6152C"
   },
   5: {
-    "rarity": "Pristine",
-    "schemMax": 235,
+    "rarity":    "Pristine",
+    "schemMax":  235,
     "knowledge": 640,
-    "colour": "#9900cc"
+    "colour":    "#C883F5"
   },
   4: {
-    "rarity": "Exotic",
-    "schemMax": 180,
+    "rarity":    "Exotic",
+    "schemMax":  180,
     "knowledge": 500,
-    "colour": "#FFD27D"
+    "colour":    "#FFD27D"
   },
   3: {
-    "rarity": "Rare",
-    "schemMax": 135,
+    "rarity":    "Rare",
+    "schemMax":  135,
     "knowledge": 400,
-    "colour": "#86ACDA"
+    "colour":    "#6392F6"
   },
   2: {
-    "rarity": "Uncommon",
-    "schemMax": 100,
+    "rarity":    "Uncommon",
+    "schemMax":  100,
     "knowledge": 320,
-    "colour": "#95C340"
+    "colour":    "#95C340"
   },
   1: {
-    "rarity": "Common",
-    "schemMax": 75,
+    "rarity":    "Common",
+    "schemMax":  75,
     "knowledge": 250,
-    "colour": "#FFE5C4"
+    "colour":    "#FFE5C4"
   },
   "statEffects": {
-    "Casing": [0],
+    "Casing":     [0],
     "Combustion": [1, 3, 4],
     "Mechanical": [1, 3, 2],
-    "Propeller": [2, 4]
+    "Propeller":  [2, 4]
   },
   "stats": {
     "Resilience": 0,
