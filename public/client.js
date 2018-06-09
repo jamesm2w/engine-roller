@@ -228,10 +228,10 @@ class Engine {
 
 var createRollerUI = function () {
   for (var i = 1; i < 9; i++) {
-    document.getElementById("rollerUI").innerHTML += "<li><a style='text-decoration: none; font-weight: 700; color: " 
-      + engineConfig[i].colour + "' href='javascript:void(0)' onclick='randomRollEngine(" 
-      + i + ")'>Roll " 
-      + engineConfig[i].rarity + " (T" + i + ") Engine</a></li>";
+    document.getElementById("rollerUI").innerHTML += "<div class='btn-" 
+      + engineConfig[i].rarity.toLowerCase() + " roll-btn' onclick='randomRollEngine(" 
+      + i + ")'>" 
+      + engineConfig[i].rarity + " (T" + i + ") Engine</div><br>";
   }
 }
 

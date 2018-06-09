@@ -141,8 +141,9 @@ Schematic Styles
   padding: 5px; 
   border: 1px solid; 
   border-radius: 5px; 
-  display: inline;
+  display: inline-block;
   cursor: pointer;
+  margin-bottom: 5px;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -161,6 +162,7 @@ Schematic Styles
 
 .btn-uncommon:hover {
   background-color: #33FF33;
+  color: black;
 }
 
 .btn-rare {
@@ -177,6 +179,7 @@ Schematic Styles
 
 .btn-exotic:hover {
   background-color: #ffff33;
+  color: black;
 }
 
 .btn-pristine {
@@ -201,6 +204,7 @@ Schematic Styles
 
 .btn-hypothetical:hover {
   background-color: darkgray;
+  color: black;
 }
 
 .btn-experimental {
