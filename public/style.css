@@ -190,6 +190,7 @@ Schematic Styles
 .rare-btn:hover {
   color: var(--text-colour);
   background-color: var(--rarity-rare);
+  border-color: var(--rarity-rare);
 }
 
 .exotic-btn {
@@ -200,6 +201,7 @@ Schematic Styles
 .exotic-btn:hover {
   color: black;
   background-color: var(--rarity-exotic);
+  border-color: var(--rarity-exotic);
 }
 
 .pristine-btn {
@@ -210,6 +212,7 @@ Schematic Styles
 .pristine-btn:hover {
   color: var(--text-colour);
   background-color: var(--rarity-pristine);
+  border-color: var(--rarity-pristine);
 }
 
 .legendary-btn {
@@ -220,6 +223,7 @@ Schematic Styles
 .legendary-btn:hover {
   color: var(--text-colour);
   background-color: var(--rarity-legendary);
+  border-color: var(--rarity-legendary);
 }
 
 .hypothetical-btn {
@@ -230,6 +234,7 @@ Schematic Styles
 .hypothetical-btn:hover {
   color: var(--text-colour);
   background-color: var(--rarity-hypothetical);
+  border-color: var(--rarity-hypothetical);
 }
 
 .experimental-btn {
@@ -240,4 +245,5 @@ Schematic Styles
 .experimental-btn:hover {
   color: var(--text-colour);
   background-color: var(--rarity-experimental);
+  border-color: var(--rarity-experimental);
 }
