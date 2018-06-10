@@ -37,6 +37,8 @@
 .form-group {
   display: block;
   margin-left: 1%; width: 48%; margin-right: 1%;
+  margin-bottom: 1%;
+  margin-top: 1%;
   background-color: #776464;
 }
 
