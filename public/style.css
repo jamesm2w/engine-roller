@@ -40,8 +40,12 @@
   margin-bottom: 1%;
   margin-top: 1%;
   background-color: #776464;
+  transition: background-color 0.5s ease;
 }
 
+.form-group.clickable:hover {
+  background-color: #534646;
+}
 
 /* ------------------------------
        Main Page CSS Styles 
