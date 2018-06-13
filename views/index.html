@@ -138,6 +138,9 @@
         materials[i].addEventListener("mouseenter", handleMatMouseEnter);
         materials[i].addEventListener("mouseleave", handleMatMouseLeave);
       }
+      for (var i = 0; i < 5; i++) {
+        document.getElementById("roll-stat-" + i + "-param").addEventListener("click", handleQualifierClick);
+      }
       createRollerUI();
     </script>
   </body>

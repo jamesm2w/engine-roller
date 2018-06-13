@@ -261,9 +261,24 @@ var rollEngineUntil = function (statName, statValue, tier) {
   console.log("It took " + n + " tries");
 }
 
+var equals = function (el) {
+  return el == this;
+}
+
 var incrementQualifier = function (current) {
-  var qualifiers = [">","<","=", ">=", "<="]
+  var qualifiers = [">", "<", "=", ">=", "<="];
+  let a = qualifiers.findIndex(equals, current) + 1;
+  if (a > qualifiers.length) {
+    var next = qualifiers[0];
+  } else {
+    var next = qualifiers[a + 1];
+  }
   return next;
+}
+
+var handleQualifierClick = function (e) {
+  var current = e.target.value;
+  e.target.value = incrementQualifier(current);
 }
 
 var handleMatMouseEnter = function (e) {
