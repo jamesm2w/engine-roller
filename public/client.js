@@ -261,6 +261,11 @@ var rollEngineUntil = function (statName, statValue, tier) {
   console.log("It took " + n + " tries");
 }
 
+var incrementQualifier = function (current) {
+  var qualifiers = [">","<","=", ">=", "<="]
+  return next;
+}
+
 var handleMatMouseEnter = function (e) {
   var el = e.target, 
       name = el.querySelector(".wa-header").innerHTML, 
