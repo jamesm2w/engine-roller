@@ -48,6 +48,29 @@
   cursor: pointer;
 }
 
+.wa-input {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: transparent;
+  box-sizing: border-box;
+  color: #ffe5c4;
+  font-family: "Noto Sans";
+  font-size: 14px;
+  height: 34px;
+  line-height: 19.6px;
+  outline-color: rgb(255, 229, 196);
+  outline-style: none;
+  outline-width: 0px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  text-align: start;
+  -webkit-appearance: none;
+  -webkit-rtl-ordering: logical;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-border-image: none;
+}
+
 /* ------------------------------
        Main Page CSS Styles 
 ------------------------------ */
