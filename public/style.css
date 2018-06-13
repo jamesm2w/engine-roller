@@ -48,6 +48,30 @@
   cursor: pointer;
 }
 
+.form-group > .wa-header {
+  font-size: 1em; 
+  float: left; 
+  display: inline-block; 
+  vertical-align: middle; 
+  line-height: 34px;
+}
+
+.form-group > .wa-input {
+  float: right; 
+  display: inline-block; 
+  vertical-align: middle; 
+  line-height: 100%;
+}
+
+.wa-input.value {
+   width: 55px;
+}
+
+.wa-input.parameter {
+  width: 45px; 
+  border-right: 2px dotted white;
+}
+
 .wa-input {
   background-color: rgba(0, 0, 0, 0.3);
   border: transparent;
