@@ -70,6 +70,7 @@
 .wa-input.parameter {
   width: 45px; 
   border-right: 2px dotted white;
+  cursor: pointer;
 }
 
 .wa-input {
