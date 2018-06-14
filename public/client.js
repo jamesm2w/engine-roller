@@ -268,10 +268,10 @@ var equals = function (el) {
 var incrementQualifier = function (current) {
   var qualifiers = [">", "<", "=", ">=", "<="];
   let a = qualifiers.findIndex(equals, current) + 1;
-  if (a > qualifiers.length) {
+  if (a >= qualifiers.length) {
     var next = qualifiers[0];
   } else {
-    var next = qualifiers[a + 1];
+    var next = qualifiers[a];
   }
   return next;
 }
