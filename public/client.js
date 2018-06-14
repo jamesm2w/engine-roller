@@ -212,6 +212,9 @@ class Engine {
     }
     document.getElementById("schematicName").innerHTML = 
       this.name[0] + " " + this.name[1] + " " + this.name[2] + this.name[3] + " (Tier " + this.tier + ")";
+    if (this.rollNumber > 0) {
+      document.getElementById("rolling-info").innerHTML = "<br> Rolled " + n
+    }
   }
   
   get engineObj () {
