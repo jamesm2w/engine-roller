@@ -111,7 +111,7 @@ var engineConfig = {
     "Overheat Limit": 3,
     "Power": 4
   },
-  "casing": [
+  "casings": [
   //Tier, Name, Required Stat, Casing Type
     [4, "Godfellow", "Spin-Up","m"],
     [4, "Apotheus", "Resilience", "m"],
@@ -179,6 +179,13 @@ class Engine {
   _determineEngineName (stats) {
     var casingName, propMountName, propName, powerNum, engineType = "m", stats = stats;
     // TODO: Get Casing name from something
+    for (var i = 0; i < engineConfig.casings.length; i++) {
+      var currentCasing = engineConfig.casings[i];
+      if (currentCasing[0] == this.tier && stats.indexOf(Math.max(...stats)) == engineConfig.stats[currentCasing[2]]) {
+        casingName = currentCasing[1];
+        engineType = currentCasing[3];
+      } 
+    }
   
     //Get Prop Head name from Power
     var power = stats[4];
