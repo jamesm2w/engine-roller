@@ -261,12 +261,24 @@ var checkRollAgainstRuleset = function (array, engine) {
   return true;
 }
 
-var assembleRuleSet = function () {
+var assembleRuleset = function () {
   var array = new Array(5);
   for (var i = 0; i < array.length; i++) {
     array[i] = [document.getElementById("roll-stat-" + i + "-param").value, document.getElementById("roll-stat-" + i + "-val").value];
   }
   return array;
+}
+
+var safetyCheckForRoll = function (tier, ruleset) {
+  var statTotal = 0, maximumTotal = engineConfig[tier].schemMax - 25;
+  for (var i = 0; i < ruleset.length; i++) {
+    statTotal += ruleset[i][1];
+  }
+  if (statTotal > maximumTotal) {
+    alert("WHOA THERE! You can't roll schematics too high for your chosen tier");
+  } else {
+    alert("Pre-flight checks for advanced rolling looks good");
+  }
 }
 
 var advancedRoll = function (tier, ruleset) {
