@@ -113,6 +113,12 @@ var engineConfig = {
   },
   "casings": [
   //Min Tier, Name, Required Stat, Casing Type
+    [1, "Piped",      "Spin-Up",         "m"],
+    [1, "Squareframe","Resilience",      "m"],
+    [1, "Scrapheap",  "Fuel Efficiency", "m"],
+    [1, "Scrapheap",  "Overheat Limit",  "m"],
+    [1, "Boxpile",    "Power",           "m"],
+    
     [3, "Dervish",   "Spin-Up",         "m"],
     [3, "Pinnacle",  "Resilience",      "m"],
     [3, "Iceberg",   "Fuel Efficiency", "m"],
