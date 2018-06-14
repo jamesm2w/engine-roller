@@ -248,11 +248,37 @@ var resetKnowledge = function () {
   return true;
 }
 
-var checkRoleAgainstRuleset = function (array, engine) {
+var checkRollAgainstRuleset = function (array, engine) {
   //2D Array [ [qual, value], ... ] 
   for (var i = 0; i < array.length; i++) {
     var bool = eval(engine.stats[i] + array[i][0] + array[i][1]);
-    console.log(bool)
+    if (bool === true) {
+      continue;
+    } else {
+      return false;
+    }
+  }
+  return true;
+}
+
+var assembleRuleSet = function () {
+  var array = new Array(5);
+  for (var i = 0; i < array.length; i++) {
+    array[i] = [document.getElementById("roll-stat-" + i + "-param").value, document.getElementById("roll-stat-" + i + "-val").value];
+  }
+  return array;
+}
+
+var advancedRoll = function (tier, ruleset) {
+  var n = 0;
+  while (true) {
+    n++;
+    var engine = new Engine(tier);
+    if(checkRollAgainstRuleset(ruleset, engine)) {
+      engine.displayEngine();
+      alert("Rolled " + n + " engines");
+      return true;
+    }
   }
 }
 
