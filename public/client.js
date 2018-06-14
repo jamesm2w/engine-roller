@@ -155,7 +155,7 @@ class Engine {
     this.rollNumber = 1;
   }
   
-  set rollNumber (n) {
+  setRollNumber (n) {
     this.rollNumber = n;
   }
   
@@ -296,6 +296,7 @@ var advancedRoll = function (tier, ruleset) {
     var engine = new Engine(tier);
     if(checkRollAgainstRuleset(ruleset, engine)) {
       alert("Rolled " + n + " engines");
+      engine.setRollNumber(n);
       return engine;
     }
   }
