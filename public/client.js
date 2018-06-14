@@ -212,8 +212,10 @@ class Engine {
     }
     document.getElementById("schematicName").innerHTML = 
       this.name[0] + " " + this.name[1] + " " + this.name[2] + this.name[3] + " (Tier " + this.tier + ")";
-    if (this.rollNumber > 0) {
-      document.getElementById("rolling-info").innerHTML = "<br> Rolled " + n
+    if (this.rollNumber > 1) {
+      document.getElementById("rolling-output").innerHTML = "<br> Rolled " + this.rollNumber + " engines.";
+    } else {
+      document.getElementById("rolling-output").innerHTML = "";
     }
   }
   
@@ -298,7 +300,7 @@ var advancedRoll = function (tier, ruleset) {
     n++;
     var engine = new Engine(tier);
     if(checkRollAgainstRuleset(ruleset, engine)) {
-      alert("Rolled " + n + " engines");
+      alert("Success! (After " + n + " engines)");
       engine.setRollNumber(n);
       return engine;
     }
@@ -321,19 +323,6 @@ var advancedRollWrapper = function () {
     return true;
   }
 };
-
-var rollEngineUntil = function (statName, statValue, tier) {
-  var arrayKey = engineConfig.stats[statName];
-  var engine = rollSchematic(5, 100, engineConfig[tier].schemMax);
-  var n = 1;
-  while (engine[arrayKey] < statValue) {
-    engine = rollSchematic(5, 100, engineConfig[tier].schemMax);
-    n++;
-  }
-  console.log("Final Engine");
-  console.log(engine);
-  console.log("It took " + n + " tries");
-}
 
 var equals = function (el) {
   return el == this;
@@ -361,6 +350,15 @@ var handleValueChange = function (e) {
     e.target.value = 99;
   } else if ( value < 5) {
     e.target.value = 5;
+  }
+}
+
+var handleTierChange = function (e) {
+  var value = e.target.value;
+  if (value > 8) {
+    e.target.value = 8;
+  } else if (value < 1) {
+    e.target.value = 1;
   }
 }
 
