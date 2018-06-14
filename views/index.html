@@ -95,27 +95,27 @@
           </p>
           <div style="width: 100%;" class="row">
             <div class="form-group col-6" style="">
-              <span class="wa-header">Resilience</span>
+              <span class="wa-header form-group-header">Resilience</span>
               <input class="wa-input value" id="roll-stat-0-val" type="number" min="5" max="99" value="5">
               <input class="wa-input parameter unselectable" id="roll-stat-0-param" type="text" value=">" readonly unselectable="on" onselectstart="return false;" onmousedown="return false;">
             </div>
             <div class="form-group col-6">
-              <span class="wa-header" style="font-size: 1em; float: left; display: inline-block; vertical-align: middle; line-height: 34px;">Fuel</span>
+              <span class="wa-header form-group-header">Fuel</span>
               <input class="wa-input value" id="roll-stat-1-val" type="number" min="5" max="99" value="5">
               <input class="wa-input parameter unselectable" id="roll-stat-1-param" type="text" value=">" readonly unselectable="on" onselectstart="return false;" onmousedown="return false;">
             </div>
             <div class="form-group col-6">
-              <span class="wa-header" style="font-size: 1em; float: left; display: inline-block; vertical-align: middle; line-height: 34px;">Spin-Up</span>
+              <span class="wa-header form-group-header">Spin-Up</span>
               <input class="wa-input value" id="roll-stat-2-val" type="number" min="5" max="99" value="5">
               <input class="wa-input parameter unselectable" id="roll-stat-2-param" type="text" value=">" readonly unselectable="on" onselectstart="return false;" onmousedown="return false;">
              </div>
             <div class="form-group col-6">
-              <span class="wa-header" style="font-size: 1em; float: left; display: inline-block; vertical-align: middle; line-height: 34px;">Overheat</span>
+              <span class="wa-header form-group-header">Overheat</span>
               <input class="wa-input value" id="roll-stat-3-val" type="number" min="5" max="99" value="5">
               <input class="wa-input parameter unselectable" id="roll-stat-3-param" type="text" value=">" readonly unselectable="on" onselectstart="return false;" onmousedown="return false;">
             </div>
             <div class="form-group col-6">
-              <span class="wa-header" style="font-size: 1em; float: left; display: inline-block; vertical-align: middle; line-height: 34px;">Power</span>
+              <span class="wa-header form-group-header">Power</span>
               <input class="wa-input value" id="roll-stat-4-val" type="number" min="5" max="99" value="5">
               <input class="wa-input parameter unselectable" id="roll-stat-4-param" type="text" value=">" readonly unselectable="on" onselectstart="return false;" onmousedown="return false;">
             </div>
@@ -140,6 +140,7 @@
       }
       for (var i = 0; i < 5; i++) {
         document.getElementById("roll-stat-" + i + "-param").addEventListener("click", handleQualifierClick);
+        document.getElementById("roll-stat-" + i + "-val").addEventListener("change", handleValueChange);
       }
       createRollerUI();
     </script>

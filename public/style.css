@@ -56,7 +56,7 @@
   cursor: pointer;
 }
 
-.form-group > .wa-header {
+.form-group-header {
   font-size: 1em; 
   float: left; 
   display: inline-block; 

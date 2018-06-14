@@ -248,6 +248,14 @@ var resetKnowledge = function () {
   return true;
 }
 
+var checkRoleAgainstRuleset = function (array, engine) {
+  //2D Array [ [qual, value], ... ] 
+  for (var i = 0; i < array.length; i++) {
+    var bool = eval(engine.stats[i] + array[i][0] + array[i][1]);
+    console.log(bool)
+  }
+}
+
 var rollEngineUntil = function (statName, statValue, tier) {
   var arrayKey = engineConfig.stats[statName];
   var engine = rollSchematic(5, 100, engineConfig[tier].schemMax);
@@ -279,6 +287,15 @@ var incrementQualifier = function (current) {
 var handleQualifierClick = function (e) {
   var current = e.target.value;
   e.target.value = incrementQualifier(current);
+}
+
+var handleValueChange = function (e) {
+  var value = e.target.value;
+  if ( value > 99) {
+    e.target.value = 99;
+  } else if ( value < 5) {
+    e.target.value = 5;
+  }
 }
 
 var handleMatMouseEnter = function (e) {
