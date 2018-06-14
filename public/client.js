@@ -272,13 +272,14 @@ var assembleRuleset = function () {
 var safetyCheckForRoll = function (tier, ruleset) {
   var statTotal = 0, maximumTotal = engineConfig[tier].schemMax - 25;
   for (var i = 0; i < ruleset.length; i++) {
-    statTotal += ruleset[i][1];
+    statTotal += parseInt(ruleset[i][1]);
   }
+  console.log(statTotal);
+  console.log(maximumTotal);
   if (statTotal > maximumTotal) {
-    alert("WHOA THERE! You can't roll schematics too high for your chosen tier");
+    alert("WHOA THERE! You can't roll stats too high for your chosen tier");
     return false;
   } else {
-    alert("Pre-flight checks for advanced rolling looks good");
     return true;
   }
 }
@@ -297,14 +298,17 @@ var advancedRoll = function (tier, ruleset) {
 
 var advancedRollWrapper = function () {
   var ruleset = assembleRuleset(),
-      tier = document.getElementById("roll-tier").value || 4;
+      tier = document.getElementById("roll-tier").value,
+      button = document.querySelector(".form-group.clickable > .wa-header");
   if (safetyCheckForRoll(tier, ruleset) === false) {
-    alert("Pre-flight checks for advanced roll returned false. ABORT");
+    alert("Pre-flight checks for advanced roll returned false. ABORT! ABORT!");
     return false;
   } else {
     alert("Pre-flight checks for advanced roll looks good. PROCEEDING");
+    button.innerHTML = ". . .";
     var result = advancedRoll(tier, ruleset);
     result.displayEngine();
+    button.innerHTML = "Roll Engine";
     return true;
   }
 };
