@@ -276,8 +276,10 @@ var safetyCheckForRoll = function (tier, ruleset) {
   }
   if (statTotal > maximumTotal) {
     alert("WHOA THERE! You can't roll schematics too high for your chosen tier");
+    return false;
   } else {
     alert("Pre-flight checks for advanced rolling looks good");
+    return true;
   }
 }
 
@@ -287,12 +289,25 @@ var advancedRoll = function (tier, ruleset) {
     n++;
     var engine = new Engine(tier);
     if(checkRollAgainstRuleset(ruleset, engine)) {
-      engine.displayEngine();
       alert("Rolled " + n + " engines");
-      return true;
+      return engine;
     }
   }
 }
+
+var advancedRollWrapper = function () {
+  var ruleset = assembleRuleset(),
+      tier = document.getElementById("roll-tier").value || 4;
+  if (safetyCheckForRoll(tier, ruleset) === false) {
+    alert("Pre-flight checks for advanced roll returned false. ABORT");
+    return false;
+  } else {
+    alert("Pre-flight checks for advanced roll looks good. PROCEEDING");
+    var result = advancedRoll(tier, ruleset);
+    result.displayEngine();
+    return true;
+  }
+};
 
 var rollEngineUntil = function (statName, statValue, tier) {
   var arrayKey = engineConfig.stats[statName];
@@ -319,7 +334,7 @@ var incrementQualifier = function (current) {
   } else {
     var next = qualifiers[a];
   }
-  return next;
+  return ">";
 }
 
 var handleQualifierClick = function (e) {
