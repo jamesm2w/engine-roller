@@ -203,16 +203,20 @@ class Engine {
     panel.style.borderColor = this.config.colour;
     document.getElementById("schematicKnowledge").innerHTML = parseInt(document.getElementById("schematicKnowledge").innerHTML) + 
       (this.rollNumber * this.config.knowledge);
+    
     for (var i = 0; i < this.stats.length; i++){
       
       document.getElementById("schem-stat-" + i).style.width = this.stats[i] + "%";
       document.getElementById("schem-stat-" + i + "-label").innerHTML = this.stats[i];
     }
+    
     for (var i = 0; i < this.costs.length; i++) {
       document.getElementById("schem-mat-" + i).innerHTML = this.costs[i];
     }
+    
     document.getElementById("schematicName").innerHTML = 
       this.name[0] + " " + this.name[1] + " " + this.name[2] + this.name[3] + " (Tier " + this.tier + ")";
+    
     if (this.rollNumber > 1) {
       document.getElementById("rolling-output").innerHTML = "<br> Rolled " + this.rollNumber + " engines.";
     } else {
@@ -285,8 +289,6 @@ var safetyCheckForRoll = function (tier, ruleset) {
   for (var i = 0; i < ruleset.length; i++) {
     statTotal += parseInt(ruleset[i][1]);
   }
-  console.log(statTotal);
-  console.log(maximumTotal);
   if (statTotal > maximumTotal) {
     return false;
   } else {
