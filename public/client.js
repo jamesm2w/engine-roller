@@ -152,6 +152,11 @@ class Engine {
     this.stats = this.fullStats.map(x => Math.round(x));
     this.costs = this.calcCosts(this.stats);
     this.name = this.detName(this.stats);
+    this.rollNumber = 1;
+  }
+  
+  set rollNumber (n) {
+    this.rollNumber = n;
   }
   
   _calculateCosts (stats) {
@@ -196,7 +201,7 @@ class Engine {
   displayEngine () {
     var panel = document.getElementById("schematicPanel");
     panel.style.borderColor = this.config.colour;
-    document.getElementById("schematicKnowledge").innerHTML = parseInt(document.getElementById("schematicKnowledge").innerHTML) + this.config.knowledge;
+    document.getElementById("schematicKnowledge").innerHTML = parseInt(document.getElementById("schematicKnowledge").innerHTML) + (this.rollNumber * this.config.knowledge);
     for (var i = 0; i < this.stats.length; i++){
       
       document.getElementById("schem-stat-" + i).style.width = this.stats[i] + "%";
