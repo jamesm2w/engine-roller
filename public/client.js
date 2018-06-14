@@ -112,12 +112,12 @@ var engineConfig = {
     "Power": 4
   },
   "casings": [
-  //Tier, Name, Required Stat, Casing Type
-    [4, "Godfellow", "Spin-Up","m"],
-    [4, "Apotheus", "Resilience", "m"],
+  //Min Tier, Name, Required Stat, Casing Type
+    [4, "Godfellow", "Spin-Up",         "m"],
+    [4, "Apotheus",  "Resilience",      "m"],
     [4, "Sunstream", "Fuel Efficiency", "m"],
-    [4, "Sunstream", "Overheat Limit", "m"],
-    [4, "Ironforge", "Power", "m"]
+    [4, "Sunstream", "Overheat Limit",  "m"],
+    [4, "Ironforge", "Power",           "m"]
   ],
   "propMounts": [ // minPower, name, requiredType, setType
     [59, "Starcaster",  "m", "j"],
@@ -181,7 +181,7 @@ class Engine {
     // TODO: Get Casing name from something
     for (var i = 0; i < engineConfig.casings.length; i++) {
       var currentCasing = engineConfig.casings[i];
-      if (currentCasing[0] == this.tier && stats.indexOf(Math.max(...stats)) == engineConfig.stats[currentCasing[2]]) {
+      if (currentCasing[0] <= this.tier && stats.indexOf(Math.max(...stats)) == engineConfig.stats[currentCasing[2]]) {
         casingName = currentCasing[1];
         engineType = currentCasing[3];
       } 
