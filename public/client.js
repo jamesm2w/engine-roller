@@ -372,10 +372,39 @@ var advancedRollWrapper = function () {
   }
 };
 
+var buildLoaderUI = function () {
+  var modalEl = document.getElementById("LoadEngineModal").getElementByClassName("modal-body");
+  
+  for (var i = 0; i < window.localStorage.length; i++) {
+    var currentItem = window.localStorage.getItem(window.localStorage.key(i));
+    
+    var htmlString = '<div class="form-group col-6" id="Group-' + window.localStorage.key(i) + '">\
+            <span class="wa-header form-group-header center" style="color: var(--rarity-' + currentItem.config.rarity.toLowerCase(); + ');">\
+            ' + currentItem.name[0] + " " + currentItem.name[1] + " " + currentItem.name[2] + currentItem.name[3] + '\
+            </span>\
+            <span class="center" id="' + window.localStorage.key(i) + '"><span class="load-btn" onclick="handleLoadAction">Load Engine</span> \
+            <span class="forget-btn" onlick="handleForgetAction">Forget Engine</span></span>\
+          </div>';
+    modalEl.innerHTML += htmlString;
+  }
+}
+
 var handleLoadAction = function (e) {
-  var obj = JSON.parse(window.localStorage.getItem(e.target.id));
+  var obj = JSON.parse(window.localStorage.getItem(e.target.parentElement.id));
   var engine = Engine.parseJSON(obj);
-  return engine.displayEngine();
+  engine.displayEngine();
+  closeModal();
+}
+
+var handleForgetAction = function (e) {
+  var name = e.target.parentElement.id;
+  if (confirm("Are you sure you want to remove this engine? It will be lost forever.")) {
+    window.localStorage.removeItem(name);
+    closeModal();
+    return true;
+  } else {
+    return false;
+  }
 }
 
 var loadEngineFromName = function (name) {
