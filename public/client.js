@@ -115,13 +115,13 @@ var engineConfig = {
   //Min Tier, Name, Required Stat, Casing Type
     [1, "Piped",      "Spin-Up",        "w"],
     [1, "Squareframe","Resilience",     "w"],
-    [1, "Scrapheap",  "Fuel Efficiency","w"],
-    [1, "Scrapheap",  "Overheat Limit", "w"],
+    [1, "Scrapheap",  "Fuel Efficiency","m"],
+    [1, "Scrapheap",  "Overheat Limit", "m"],
     [1, "Boxpile",    "Power",          "w"],
     
     [2, "Spinshaft",  "Spin-Up",        "w"],
-    [2, "Reliant",    "Resilience",     "w"],
-    [2, "Trishell",   "Fuel Efficiency","w"],
+    [2, "Trishell",    "Resilience",    "w"],
+    [2, "Reliant",   "Fuel Efficiency", "w"],
     [2, "Ventilated", "Overheat Limit", "w"],
     [2, "Spark",      "Power",          "w"],
     
@@ -195,7 +195,7 @@ class Engine {
   }
   
   _determineEngineName (stats) {
-    var casingName, propMountName, propName, powerNum, engineType = "m", stats = stats;
+    var casingName, propMountName, propName, powerNum, engineType, stats = stats;
     // TODO: Get Casing name from something
     for (var i = 0; i < engineConfig.casings.length; i++) {
       var currentCasing = engineConfig.casings[i];
@@ -208,7 +208,7 @@ class Engine {
     //Get Prop Head name from Power
     var power = stats[4];
     for (var i = 0; i < engineConfig.propMounts.length; i++) {
-      if (power > engineConfig.propMounts[i][0] && engineType == engineConfig.propMounts[i][2]) {
+      if (power > engineConfig.propMounts[i][0] && engineConfig.propMounts[i][2] == engineType) {
 
         propMountName = engineConfig.propMounts[i][1];
         powerNum = power - engineConfig.propMounts[i][0];
