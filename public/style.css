@@ -104,6 +104,25 @@
   -webkit-border-image: none;
 }
 
+.center {
+  text-align: center; 
+  vertical-align: middle; 
+  width: 100%;
+}
+
+.load-btn {
+  display: inline-block; 
+  float: left; 
+  text-transform: uppercase;
+}
+
+.forget-btn {
+  display: inline-block; 
+  float: right; 
+  color: darkred;
+  text-transform: uppercase;
+}
+
 /* ------------------------------
        Main Page CSS Styles 
 ------------------------------ */
