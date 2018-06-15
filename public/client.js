@@ -373,18 +373,12 @@ var advancedRollWrapper = function () {
 };
 
 var buildLoaderUI = function () {
-  var modalEl = document.getElementById("LoadEngineModal").getElementByClassName("modal-body");
+  var modalEl = document.getElementById("LoadEngineModal").getElementsByClassName("modal-body")[0];
   
   for (var i = 0; i < window.localStorage.length; i++) {
-    var currentItem = window.localStorage.getItem(window.localStorage.key(i));
+    var currentItem = JSON.parse(window.localStorage.getItem(window.localStorage.key(i)));
     
-    var htmlString = '<div class="form-group col-6" id="Group-' + window.localStorage.key(i) + '">\
-            <span class="wa-header form-group-header center" style="color: var(--rarity-' + currentItem.config.rarity.toLowerCase(); + ');">\
-            ' + currentItem.name[0] + " " + currentItem.name[1] + " " + currentItem.name[2] + currentItem.name[3] + '\
-            </span>\
-            <span class="center" id="' + window.localStorage.key(i) + '"><span class="load-btn" onclick="handleLoadAction">Load Engine</span> \
-            <span class="forget-btn" onlick="handleForgetAction">Forget Engine</span></span>\
-          </div>';
+    var htmlString = '<div class="form-group col-6" id="Group-' + window.localStorage.key(i) + '"><span class="wa-header form-group-header center" style="color: var(--rarity-' + currentItem.config.rarity.toLowerCase(); + ');">' + currentItem.name[0] + " " + currentItem.name[1] + " " + currentItem.name[2] + currentItem.name[3] + '</span><span class="center" id="' + window.localStorage.key(i) + '"><span class="load-btn" onclick="handleLoadAction">Load Engine</span><span class="forget-btn" onlick="handleForgetAction">Forget Engine</span></span></div>';
     modalEl.innerHTML += htmlString;
   }
 }
