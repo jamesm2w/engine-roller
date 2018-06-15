@@ -383,7 +383,7 @@ var buildLoaderUI = function () {
   for (var i = 0; i < window.localStorage.length; i++) {
     var currentItem = JSON.parse(window.localStorage.getItem(window.localStorage.key(i)));
     
-    var htmlString = '<div class="form-group col-6" id="Group-' + window.localStorage.key(i) + '"><span class="wa-header form-group-header center" style="color: var(--rarity-' + currentItem.config.rarity.toLowerCase() + ');">' + (currentItem.name[0] + " " + currentItem.name[1] + " " + currentItem.name[2] + currentItem.name[3]) + '</span><span class="center" id="' + window.localStorage.key(i) + '"><span class="load-btn" onclick="handleLoadAction(event);">Load Engine</span><span class="forget-btn" onlick="handleForgetAction(event);">Forget Engine</span></span></div>';
+    var htmlString = '<div class="form-group col-6" id="Group-' + window.localStorage.key(i) + '"><span class="wa-header form-group-header center" style="color: var(--rarity-' + currentItem.config.rarity.toLowerCase() + ');">' + (currentItem.name[0] + " " + currentItem.name[1] + " " + currentItem.name[2] + currentItem.name[3]) + '</span><span class="center" id="' + window.localStorage.key(i) + '"><span class="load-btn" onclick="handleLoadAction(event);">Load Engine</span><span class="forget-btn" onclick="handleForgetAction(event);">Forget Engine</span></span></div>';
     console.log(htmlString);
     modalEl.innerHTML += htmlString;
   }
@@ -398,7 +398,8 @@ var handleLoadAction = function (e) {
 
 var handleForgetAction = function (e) {
   var name = e.target.parentElement.id;
-  if (confirm("Are you sure you want to remove this engine? It will be lost forever.")) {
+  var confirmation = confirm("Are you sure you want to remove this engine? It will be lost forever.");
+  if (confirmation) {
     window.localStorage.removeItem(name);
     closeModal();
     return true;

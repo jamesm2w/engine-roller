@@ -1,5 +1,6 @@
 var showModal = function (modalID) {
   document.getElementById(modalID + "Modal").style.display = "block";
+  document.getElementById("LoadEngineModal").getElementsByClassName("modal-body")[0].innerHTML = "";
   buildLoaderUI();
 }
 
