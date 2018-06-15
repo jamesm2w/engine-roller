@@ -119,11 +119,11 @@ var engineConfig = {
     [1, "Scrapheap",  "Overheat Limit", "m"],
     [1, "Boxpile",    "Power",          "w"],
     
-    [2, "Spinshaft",  "Spin-Up",        "w"],
-    [2, "Trishell",    "Resilience",    "w"],
-    [2, "Reliant",   "Fuel Efficiency", "w"],
-    [2, "Ventilated", "Overheat Limit", "w"],
-    [2, "Spark",      "Power",          "w"],
+    [2, "Spinshaft", "Spin-Up",        "w"],
+    [2, "Trishell",  "Resilience",     "w"],
+    [2, "Reliant",   "Fuel Efficiency","w"],
+    [2, "Ventilated","Overheat Limit", "w"],
+    [2, "Spark",     "Power",          "w"],
     
     [3, "Dervish",   "Spin-Up",         "m"],
     [3, "Pinnacle",  "Resilience",      "m"],
@@ -199,7 +199,7 @@ class Engine {
     // TODO: Get Casing name from something
     for (var i = 0; i < engineConfig.casings.length; i++) {
       var currentCasing = engineConfig.casings[i];
-      if (currentCasing[0] <= this.tier && stats.indexOf(Math.max(...stats)) == engineConfig.stats[currentCasing[2]]) {
+      if (currentCasing[0] <= this.tier && this.fullStats.indexOf(Math.max(...this.fullStats)) == engineConfig.stats[currentCasing[2]]) {
         casingName = currentCasing[1];
         engineType = currentCasing[3];
       } 
