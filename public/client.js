@@ -375,10 +375,16 @@ var advancedRollWrapper = function () {
 var buildLoaderUI = function () {
   var modalEl = document.getElementById("LoadEngineModal").getElementsByClassName("modal-body")[0];
   
+  if (window.localStorage.length == 0) {
+    modalEl.innerHTML = "<em style='color:darkgrey;'>Nothing to see here. Save an engine first before you try to load one";
+    return undefined;
+  }
+  
   for (var i = 0; i < window.localStorage.length; i++) {
     var currentItem = JSON.parse(window.localStorage.getItem(window.localStorage.key(i)));
     
-    var htmlString = '<div class="form-group col-6" id="Group-' + window.localStorage.key(i) + '"><span class="wa-header form-group-header center" style="color: var(--rarity-' + currentItem.config.rarity.toLowerCase(); + ');">' + currentItem.name[0] + " " + currentItem.name[1] + " " + currentItem.name[2] + currentItem.name[3] + '</span><span class="center" id="' + window.localStorage.key(i) + '"><span class="load-btn" onclick="handleLoadAction">Load Engine</span><span class="forget-btn" onlick="handleForgetAction">Forget Engine</span></span></div>';
+    var htmlString = '<div class="form-group col-6" id="Group-' + window.localStorage.key(i) + '"><span class="wa-header form-group-header center" style="color: var(--rarity-' + currentItem.config.rarity.toLowerCase() + ');">' + (currentItem.name[0] + " " + currentItem.name[1] + " " + currentItem.name[2] + currentItem.name[3]) + '</span><span class="center" id="' + window.localStorage.key(i) + '"><span class="load-btn" onclick="handleLoadAction(event);">Load Engine</span><span class="forget-btn" onlick="handleForgetAction(event);">Forget Engine</span></span></div>';
+    console.log(htmlString);
     modalEl.innerHTML += htmlString;
   }
 }

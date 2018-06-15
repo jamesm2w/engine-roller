@@ -1,5 +1,6 @@
 var showModal = function (modalID) {
   document.getElementById(modalID + "Modal").style.display = "block";
+  buildLoaderUI();
 }
 
 var closeModal = function (e) {
