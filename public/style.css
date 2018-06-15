@@ -114,6 +114,13 @@
   display: inline-block; 
   float: left; 
   text-transform: uppercase;
+  cursor: pointer;
+  color: #fff59d;
+  transition: 0.2s color ease;
+}
+
+.load-btn:hover {
+  color: #ffee58;
 }
 
 .forget-btn {
@@ -121,6 +128,12 @@
   float: right; 
   color: darkred;
   text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.2s color ease;
+}
+
+.forget-btn:hover {
+  color: #b71c1c;
 }
 
 /* ------------------------------
