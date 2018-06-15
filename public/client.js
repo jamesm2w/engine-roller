@@ -232,6 +232,9 @@ class Engine {
   }
   
   displayEngine () {
+    
+    loadedEngine = this; //Load in engine to the UI
+    
     var panel = document.getElementById("schematicPanel");
     panel.style.borderColor = this.config.colour;
     document.getElementById("schematicKnowledge").innerHTML = parseInt(document.getElementById("schematicKnowledge").innerHTML) + 
@@ -258,7 +261,7 @@ class Engine {
   }
   
   saveEngine() {
-    window.localStorage.setItem(this.name, this);
+    window.localStorage.setItem(this.name.join(""), JSON.stringify(this));
   }
   
   get engineObj () {
@@ -288,9 +291,9 @@ var createRollerUI = function () {
 }
 
 var randomRollEngine = function (tier) {
-  loadedEngine = new Engine(tier);
+  var roll = new Engine(tier);
   console.log("Rolling new " + tier + " Engine");
-  lo.displayEngine();
+  roll.displayEngine();
 }
 
 var resetKnowledge = function () {
@@ -359,6 +362,14 @@ var advancedRollWrapper = function () {
     return true;
   }
 };
+
+var handleEngineSaveClick = function (e) {
+  if (!loadedEngine == undefined) {
+    loadedEngine.saveEngine();
+    e.target.innerHTML = "(Saved Engine)";
+    e.target.style.
+  }
+}
 
 var equals = function (el) {
   return el == this;
