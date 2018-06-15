@@ -257,6 +257,10 @@ class Engine {
     }
   }
   
+  saveEngine() {
+    window.localStorage.setItem(this.name, this);
+  }
+  
   get engineObj () {
     return {"name": this.name, "tier": this.tier, "stats": this.stats, "costs": this.costs};
   }
@@ -284,9 +288,9 @@ var createRollerUI = function () {
 }
 
 var randomRollEngine = function (tier) {
-  var randomRoll = new Engine(tier);
+  loadedEngine = new Engine(tier);
   console.log("Rolling new " + tier + " Engine");
-  randomRoll.displayEngine();
+  lo.displayEngine();
 }
 
 var resetKnowledge = function () {
