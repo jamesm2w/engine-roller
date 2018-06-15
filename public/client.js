@@ -285,8 +285,8 @@ class Engine {
     return this._determineEngineName(stats);
   }
   
-  static loadOBJIntoEngine (json) {
-    return Object.assign(new Engine(json.tier), json);
+  static parseJSON (json) {
+    return Object.assign(new Engine(parseInt(json.tier)), json);
   }
 }
 
@@ -371,6 +371,18 @@ var advancedRollWrapper = function () {
     return true;
   }
 };
+
+var handleLoadAction = function (e) {
+  var obj = JSON.parse(window.localStorage.getItem(e.target.id));
+  var engine = Engine.parseJSON(obj);
+  return engine.displayEngine();
+}
+
+var loadEngineFromName = function (name) {
+  var obj = JSON.parse(window.localStorage.getItem(name));
+  var engine = Engine.parseJSON(obj);
+  return engine.displayEngine();
+}
 
 var handleEngineSaveClick = function (e) {
   if (loadedEngine != undefined) {
