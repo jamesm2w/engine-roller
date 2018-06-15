@@ -364,10 +364,12 @@ var advancedRollWrapper = function () {
 };
 
 var handleEngineSaveClick = function (e) {
-  if (!loadedEngine == undefined) {
+  if (loadedEngine != undefined) {
     loadedEngine.saveEngine();
     e.target.innerHTML = "(Saved Engine)";
-    e.target.style.
+    e.target.style.color =  "green";
+  } else {
+    alert("Tried to save an undefined engine");
   }
 }
 
