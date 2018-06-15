@@ -113,11 +113,17 @@ var engineConfig = {
   },
   "casings": [
   //Min Tier, Name, Required Stat, Casing Type
-    [1, "Piped",      "Spin-Up",         "m"],
-    [1, "Squareframe","Resilience",      "m"],
-    [1, "Scrapheap",  "Fuel Efficiency", "m"],
-    [1, "Scrapheap",  "Overheat Limit",  "m"],
-    [1, "Boxpile",    "Power",           "m"],
+    [1, "Piped",      "Spin-Up",        "w"],
+    [1, "Squareframe","Resilience",     "w"],
+    [1, "Scrapheap",  "Fuel Efficiency","w"],
+    [1, "Scrapheap",  "Overheat Limit", "w"],
+    [1, "Boxpile",    "Power",          "w"],
+    
+    [2, "Spinshaft",  "Spin-Up",        "w"],
+    [2, "Reliant",    "Resilience",     "w"],
+    [2, "Trishell",   "Fuel Efficiency","w"],
+    [2, "Ventilated", "Overheat Limit", "w"],
+    [2, "Spark",      "Power",          "w"],
     
     [3, "Dervish",   "Spin-Up",         "m"],
     [3, "Pinnacle",  "Resilience",      "m"],
