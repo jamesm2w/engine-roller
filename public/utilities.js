@@ -13,11 +13,9 @@ var closeModal = function (e) {
 
 var handleWindowClick = function (e) {
   if (event.target.classList.contains("modal")) {
-      closeModal(e);
+    closeModal(e);
   }
 }
-
-
 
 var closeBtns = document.getElementsByClassName("modalClose");
 for (var element of closeBtns) {

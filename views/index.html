@@ -168,6 +168,7 @@
         document.getElementById("roll-stat-" + i + "-val").addEventListener("change", handleValueChange);
       }
       document.getElementById("roll-tier").addEventListener("change", handleTierChange);
+      document.getElementById("engine-load").addEventListener("click", showModal("LoadEngine"));
       window.addEventListener("click", handleWindowClick);
       createRollerUI();
     </script>
