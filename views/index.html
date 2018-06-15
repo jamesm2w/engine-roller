@@ -12,6 +12,20 @@
   </head>
   <body>
     
+    <div id="LoadEngineModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="modalClose">&times;</span>
+          <h3 class="wa-header">Load Engine</h3>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            Abcdef
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <div class="container" style="margin-top: 15px;">
       
       <div class="wa-panel col-4">
@@ -138,6 +152,7 @@
 
     <script src="/random.min.js"></script>
     <script src="/client.js"></script>
+    <script src="/utilities.js"></script>
     <script>
       var random = new Random();
       var storage = window.localStorage;
@@ -153,7 +168,7 @@
         document.getElementById("roll-stat-" + i + "-val").addEventListener("change", handleValueChange);
       }
       document.getElementById("roll-tier").addEventListener("change", handleTierChange);
-      
+      window.addEventListener("click", handleWindowClick);
       createRollerUI();
     </script>
   </body>
