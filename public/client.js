@@ -241,7 +241,6 @@ class Engine {
       (this.rollNumber * this.config.knowledge);
     
     for (var i = 0; i < this.stats.length; i++){
-      
       document.getElementById("schem-stat-" + i).style.width = this.stats[i] + "%";
       document.getElementById("schem-stat-" + i + "-label").innerHTML = this.stats[i];
     }
@@ -252,6 +251,12 @@ class Engine {
     
     document.getElementById("schematicName").innerHTML = 
       this.name[0] + " " + this.name[1] + " " + this.name[2] + this.name[3] + " (Tier " + this.tier + ")";
+    
+    document.getElementById("engine-save").addEventListener("click", handleEngineSaveClick);
+    document.getElementById("engine-save").style.cursor = "pointer";
+    document.getElementById("engine-save").style.color = "darkgrey";
+    document.getElementById("engine-save").innerHTML = "(Save Loaded Engine)";
+    
     
     if (this.rollNumber > 1) {
       document.getElementById("rolling-output").innerHTML = "<br> Rolled " + this.rollNumber + " engines.";
@@ -278,6 +283,10 @@ class Engine {
   
   detName (stats) {
     return this._determineEngineName(stats);
+  }
+  
+  static loadOBJIntoEngine (json) {
+    return Object.assign(new Engine(json.tier), json);
   }
 }
 
