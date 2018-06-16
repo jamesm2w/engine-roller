@@ -2,75 +2,69 @@
 //  Array Transformation  //
 //------------------------//
 
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined'){
-  module.exports = Validator;
-} else {
-  window.Validator = Validator;
-}
-
-var elDiv =  function (ar1, num) {
-  let res = new Array(ar1.length);
-  for (let i = 0; i < ar1.length; i++) {
-    res[i] = ar1[i] / num;
-  }
-  return res;
-}
-
-var elMult = function (ar1, num) {
-  let res = new Array(ar1.length);
-  for (let i = 0; i < ar1.length; i++) {
-    res[i] = ar1[i] * num;
-  }
-  return res;
-}
-
-var arrayMult = function (ar1, ar2, pwr, max, min) {
-  if (ar1.length != ar2.length) {
-    throw "Arrays are not same length. Can't do this";
-  }
-  for (let i = 0; i < ar1.length; i++) {
-    ar1[i] = Math.pow(ar2[i], pwr) * (max-min) + min;
-  }
-  return ar1;
-}
-
-var randomStatArray = function (n) {
-  var a = new Array(n);
-  for (var i = 0; i < n; i++) {
-    a[i] = [random.real(1,5)];
-  }
-  return a;
-}
-
-//------------------------//
-//  Load Modal Functions  //
-//------------------------//
-
-var showModal = function (modalID) {
-  document.getElementById(modalID + "Modal").style.display = "block";
+var Utilities = (function() {
+  Utilities.random = (typeof window.random == undefined) ? require("random-js")() :
   
-  if (modalID = "LoadEngine") {
-    document.getElementById("LoadEngineModal").getElementsByClassName("modal-body")[0].innerHTML = "";
-    buildLoaderUI();
+  Utilities.prototype.elDiv = function (ar1, num) {
+    var res = new Array(ar1.length);
+    for (var i = 0; i < ar1.length; i++) {
+      res[i] = ar1[i] / num;
+    }
+    return res;
   }
-}
+  
+  Utilities.prototype.elMult = function (ar1, num) {
+    var res = new Array(ar1.length);
+    for (var i = 0; i < ar1.length; i++) {
+      res[i] = ar1[i] * num;
+    }
+    return res;
+  }
+  
+  Utilities.prototype.arrayMult = function (ar1, ar2, pwr, max, min) {
+    if (ar1.length != ar2.length) {
+      throw "Arrays are not same length. Can't do this";
+    }
+    for (let i = 0; i < ar1.length; i++) {
+      ar1[i] = Math.pow(ar2[i], pwr) * (max-min) + min;
+    }
+    return ar1;
+  }
+  
+  Utilities.prototype.randomStatArray = function (n) {
+    var a = new Array(n);
+    for (var i = 0; i < n; i++) {
+      if (typeof window.random !== undefined) {
+        a[i] = [window.random.real(1,5)];
+      } else {
+        a[i] = [random.real(1,5)]; 
+      }
+    }
+    return a;
+  }
+  
+  Utilities.prototype.showModal = function (modalID) {
+    document.getElementById(modalID + "Modal").style.display = "block";
 
-var closeModal = function (e) {
-  var modals = document.getElementsByClassName("modal");
-  for (var modal of modals) {
-    if (modal.style.display == "block") {
-      modal.style.display = "none";
+    if (modalID = "LoadEngine") {
+      document.getElementById("LoadEngineModal").getElementsByClassName("modal-body")[0].innerHTML = "";
+      window.UI.buildLoaderUI();
     }
   }
-}
-
-var handleWindowClick = function (e) {
-  if (event.target.classList.contains("modal")) {
-    closeModal(e);
+  
+  Utilities.prototype.closeOpenModal = function (e) {
+    var modals = document.getElementsByClassName("modal");
+    for (var modal of modals) {
+      if (modal.style.display == "block") {
+        modal.style.display = "none";
+      }
+    }
   }
-}
+  
+  if (typeof module !== 'undefined' && typeof module.exports !== 'undefined'){
+    module.exports = Utilities;
+  } else {
+    window.Utilities = Utilities;
+  }
+})();
 
-var closeBtns = document.getElementsByClassName("modalClose");
-for (var element of closeBtns) {
-  element.addEventListener("click", closeModal);
-}
