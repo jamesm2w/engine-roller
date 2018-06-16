@@ -33,12 +33,12 @@
       <div class="wa-panel col-4">
         <h2 class="wa-title" style="text-align: center">
           Schematic View 
-          <h5 href="javascript:void(0)" class="muted-text" id="saveLoadedSchematicBtn" style="cursor: not-allowed;">(Save Loaded Engine)</h5>
-          <h5 href="javascript:void(0)" class="muted-text" id="loadSavedSchematicBtn" style="cursor: pointer;">(Load Saved Engine)</h5>
+          <h5 href="javascript:void(0)" class="muted-text" id="saveLoadedSchematicBtn" style="cursor: not-allowed; display: inline-block; float: right;">(Save Loaded Schematic)</h5>
+          <h5 href="javascript:void(0)" class="muted-text" id="loadSavedSchematicBtn" style="cursor: pointer; display: inline-block; float: left;">(Load Saved Schematic)</h5>
         </h2>
-        <p style="text-align: center;">
+        <p style="text-align: center; clear: both;">
           Spent: <span id="schematicKnowledge">0</span> Knowledge 
-          <a href="javascript:void(0)" onclick="resetKnowledge()" class="muted-text">(Reset)</a>
+          <a href="javascript:void(0)" onclick="UI.resetKnowledge()" class="muted-text">(Reset)</a>
           <span id="multipleRollOutput"></span>
         </p>
         <div class="schematicView wa-panel col-12" id="schematicPanel"></div>
