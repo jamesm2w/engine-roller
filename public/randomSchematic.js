@@ -3,12 +3,11 @@ class Schematic {
     this.tier = tier;
     this.type = type;
     this.config = window.schematicConfig[type][tier];
-    this.Utilities = (typeof window.Utilities == undefined)? require("./public/utilities.js").prototype : window.Utilities.prototype;
     this.rollNumber = 1;
   }
   
   rollSchematic() {
-    var statNo = undefined, min = 5, max = 100, total = this.config.schemTotal;
+    var statNo = undefined, min = 5, max = 100, total = this.config.schemMax, Utilities = new window.Utilities();
     switch (this.type) {
       case "Engine":
         statNo = 5;
@@ -31,22 +30,24 @@ class Schematic {
       schematic[i] = max + 1;  
     }
     let rollMax = -1, rollMin = 0;
+    console.log(schematic);
     while (schematic[0] >= max || schematic[1] >= max || schematic[2] >= max || schematic[3] >= max || schematic[4] >= max) {
       rollMax++;
-      schematic = this.Utilities.arrayMult(schematic, this.Utilities.randomStatArray(statNo), max, min);
-      schematic = this.Utilities.elMult(this.Utilities.elDiv(schematic, eval(schematic.join('+'))), total);
-
+      schematic = Utilities.arrayMult(schematic, Utilities.randomStatArray(statNo), max, min);
+      schematic = Utilities.elMult(Utilities.elDiv(schematic, eval(schematic.join('+'))), total);
+      console.log(total, min, max);
+      console.log(schematic);
       while (schematic[0] < min || schematic[1] < min || schematic[2] < min || schematic[3] < min || schematic[4] < min) {
         rollMin++;
-        schematic = this.Utilities.arrayMult(schematic, this.Utilities.randomStatArray(statNo), 1, max, min)
-        schematic = this.Utilities.elMult(this.Utilities.elDiv(schematic, eval(schematic.join('+'))), total);
+        schematic = Utilities.arrayMult(schematic, Utilities.randomStatArray(statNo), 1, max, min)
+        schematic = Utilities.elMult(Utilities.elDiv(schematic, eval(schematic.join('+'))), total);
       }
     }
     return schematic;
   }
   
   displaySchematic () {
-    var EventHandler = window.EventHandler;
+    var EventHandler = new window.EventHandler();
     window.loadedSchematic = this; //Load in engine to the UI
     
     var panel = document.getElementById("schematicPanel");
