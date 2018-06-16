@@ -5,7 +5,7 @@
 
     EventHandler.prototype.handleWindowClick = function (e) {
       if (event.target.classList.contains("modal")) {
-        window.Utilities.closeOpenModal(e);
+        window.Utilities.prototype.closeOpenModal(e);
       }
     };
 

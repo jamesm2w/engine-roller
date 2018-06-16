@@ -30,13 +30,10 @@ class Schematic {
       schematic[i] = max + 1;  
     }
     let rollMax = -1, rollMin = 0;
-    console.log(schematic);
     while (schematic[0] >= max || schematic[1] >= max || schematic[2] >= max || schematic[3] >= max || schematic[4] >= max) {
       rollMax++;
       schematic = Utilities.arrayMult(schematic, Utilities.randomStatArray(statNo), 1, max, min);
       schematic = Utilities.elMult(Utilities.elDiv(schematic, eval(schematic.join('+'))), total);
-      console.log(total, min, max);
-      console.log(schematic);
       while (schematic[0] < min || schematic[1] < min || schematic[2] < min || schematic[3] < min || schematic[4] < min) {
         rollMin++;
         schematic = Utilities.arrayMult(schematic, Utilities.randomStatArray(statNo), 1, max, min)
@@ -62,7 +59,7 @@ class Schematic {
     
     for (var i = 0; i < this.costs.length; i++) {
       document.getElementById("schematicMat" + i + "Value").innerHTML = this.costs[i];
-      document.getElementById("schematicMat" + i + "Value").style.display = "block";
+      document.getElementById("schematicMat" + i).classList.remove("hidden");
     }
     
     document.getElementById("schematicName").innerHTML = 

@@ -70,7 +70,7 @@
       
       var closeBtns = window.document.getElementsByClassName("modalClose");
       for (var element of closeBtns) {
-        element.addEventListener("click", Utilities.closeOpenModal);
+        element.addEventListener("click", Utilities.prototype.closeOpenModal);
       };
 
       window.addEventListener("click", EventHandler.handleWindowClick);
