@@ -1,3 +1,4 @@
+(function(window) {
 var EventHandler = (function(window) {
   
   var EventHandler = function(options) {};
@@ -6,11 +7,6 @@ var EventHandler = (function(window) {
     if (event.target.classList.contains("modal")) {
       window.Utilities.closeOpenModal(e);
     }
-  };
-
-  var closeBtns = document.getElementsByClassName("modalClose");
-  for (var element of closeBtns) {
-    element.addEventListener("click", window.Utilities.closeOpenModal);
   };
 
   EventHandler.prototype.handleLoadAction = function (e) {
@@ -80,5 +76,12 @@ var EventHandler = (function(window) {
     }
   };
   
-  window.EventHandler = EventHandler;
+})(window);
+                    
+  if (typeof module !== 'undefined' && typeof module.exports !== 'undefined'){
+    module.exports = EventHandler;
+  } else {
+    window.EventHandler = EventHandler;
+  }
+  
 })(window);

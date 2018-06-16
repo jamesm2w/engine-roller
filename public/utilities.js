@@ -1,3 +1,4 @@
+(function(window) {
 var Utilities = (function(window) {
   var random = (typeof window.random == undefined) ? new require("random-js")() : window.random;
   
@@ -69,10 +70,12 @@ var Utilities = (function(window) {
     }
     return ">";
   }
+  })(window);
   
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined'){
     module.exports = Utilities;
   } else {
     window.Utilities = Utilities;
   }
+  
 })(window);

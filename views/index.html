@@ -154,7 +154,6 @@
 
     <script src="/random.min.js"></script>
     
-    <script src="/engineConfig.js"></script>
     <script src="/eventHandler.js"></script>
     <script src="/randomSchematic.js"></script>
     <script src="/utilities.js"></script>
@@ -168,17 +167,23 @@
       
       var materials = document.getElementsByClassName("schem-mat");
       for (var i = 0; i < materials.length; i++) {
-        materials[i].addEventListener("mouseenter", handleMatMouseEnter);
-        materials[i].addEventListener("mouseleave", handleMatMouseLeave);
+        materials[i].addEventListener("mouseenter", EventHandler.handleMatMouseEnter);
+        materials[i].addEventListener("mouseleave", EventHandler.handleMatMouseLeave);
       }
       for (var i = 0; i < 5; i++) {
-        document.getElementById("roll-stat-" + i + "-param").addEventListener("click", handleQualifierClick);
-        document.getElementById("roll-stat-" + i + "-val").addEventListener("change", handleValueChange);
+        document.getElementById("roll-stat-" + i + "-param").addEventListener("click", EventHandler.handleQualifierClick);
+        document.getElementById("roll-stat-" + i + "-val").addEventListener("change", EventHandler.handleValueChange);
       }
-      document.getElementById("roll-tier").addEventListener("change", handleTierChange);
+      document.getElementById("roll-tier").addEventListener("change", EventHandler.handleTierChange);
       document.getElementById("engine-load").addEventListener("click", () => {showModal("LoadEngine")});
       
-      window.addEventListener("click", handleWindowClick);
+      var closeBtns = document.getElementsByClassName("modalClose");
+      for (var element of closeBtns) {
+        element.addEventListener("click", Utilities.closeOpenModal);
+      };
+
+      
+      window.addEventListener("click", EventHandler.handleWindowClick);
       createRollerUI();
     </script>
   </body>

@@ -14,7 +14,7 @@ app.get("/", function (request, response) {
 });
 
 app.get("/engineConfig.js", function (req, res) {
-  res.sendFile("config/engineConfig.js");
+  res.sendFile("./config/engineConfig.js");
 });
 
 app.get("/engine/full/t1", (req, res) => {
