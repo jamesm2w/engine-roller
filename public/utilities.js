@@ -1,5 +1,7 @@
-var Utilities = (function() {
-  Utilities.random = (typeof window.random == undefined) ? new require("random-js")() : window.random;
+var Utilities = (function(window) {
+  var random = (typeof window.random == undefined) ? new require("random-js")() : window.random;
+  
+  var Utilities = function (options) {};
   
   Utilities.prototype.elDiv = function (ar1, num) {
     var res = new Array(ar1.length);
@@ -73,5 +75,4 @@ var Utilities = (function() {
   } else {
     window.Utilities = Utilities;
   }
-})();
-
+})(window);

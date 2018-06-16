@@ -153,13 +153,18 @@
     </div>
 
     <script src="/random.min.js"></script>
+    
     <script src="/engineConfig.js"></script>
-    <script src="/client.js"></script>
+    <script src="/eventHandler.js"></script>
+    <script src="/randomSchematic.js"></script>
     <script src="/utilities.js"></script>
+    
+    <script src="/client.js"></script>
+    
     <script>
       window.random = new Random();
       var storage = window.localStorage;
-      var loadedEngine;
+      var loadedSchematic;
       
       var materials = document.getElementsByClassName("schem-mat");
       for (var i = 0; i < materials.length; i++) {
