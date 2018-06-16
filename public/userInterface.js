@@ -51,7 +51,7 @@
       for (var i = 0; i < window.localStorage.length; i++) {
         var currentItem = JSON.parse(window.localStorage.getItem(window.localStorage.key(i)));
 
-        var htmlString = '<div class="form-group col-6" id="Group-' + window.localStorage.key(i) + '"><span class="wa-header form-group-header center" style="color: var(--rarity-' + currentItem.config.rarity.toLowerCase() + ');">' + (currentItem.name[0] + " " + currentItem.name[1] + " " + currentItem.name[2] + currentItem.name[3]) + '</span><span class="center" id="' + window.localStorage.key(i) + '"><span class="load-btn" onclick="EventHandler.handleLoadAction(event);">Load Engine</span><span class="forget-btn" onclick="EventHandler.handleForgetAction(event);">Forget Engine</span></span></div>';
+        var htmlString = '<div class="form-group col-6" id="Group-' + window.localStorage.key(i) + '"><span class="wa-header form-group-header center" style="color: var(--rarity-' + currentItem.config.rarity.toLowerCase() + ');">' + (currentItem.name[0] + " " + currentItem.name[1] + " " + currentItem.name[2] + currentItem.name[3]) + '</span><span class="center" id="' + window.localStorage.key(i) + '"><span class="load-btn" onclick="EventHandler.prototype.handleLoadAction(event);">Load Engine</span><span class="forget-btn" onclick="EventHandler.prototype.handleForgetAction(event);">Forget Engine</span></span></div>';
         modalEl.innerHTML += htmlString;
       }
     }
@@ -70,8 +70,8 @@
     }
     
     UserInterface.prototype.bindHandlers = function () {
-      //var Utilities, //= new window.Utilities(), 
-      //    EventHandler; //= new window.EventHandler();
+      var Utilities = new window.Utilities(), 
+          EventHandler = new window.EventHandler();
       
       var materials = window.document.getElementsByClassName("schem-mat");
       for (var i = 0; i < materials.length; i++) {

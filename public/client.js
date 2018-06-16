@@ -6,8 +6,7 @@
     if (this.status >= 200 && this.status < 400) {
       window.schematicConfig = JSON.parse(this.response);
       window.UI = new window.UserInterface();
-      window.EventHandler = new window.EventHandler();
-      window.Utilities = new window.Utilities();
+      
       window.UI.renderAndBind("Engine");
     } else {
       console.log(this.response);
