@@ -19,11 +19,17 @@
     
     UserInterface.prototype.renderSchematicUI = function (type) {
       var panel = window.document.getElementById("schematicPanel");
-      panel.setAttribute("-data-schematicType", type);
+      panel.setAttribute("schematicType", type);
       panel.innerHTML = `<span class="wa-header" style="font-size: 1em; float: left;" id="schematicName">Procedural ${type}</span>
                          <div class="divider top bottom"></div>`;
       for (var i = 0; i < 5; i++) {
         panel.innerHTML += statString({"name": Object.keys(window.schematicConfig[type].stats)[i], "index": i});
+      }
+      for (var i = 0; i < Object.keys(window.schematicConfig[type].stats).length; i++) {
+        if(panel.getElementById("schematicStat"+i).getElementsByClassName("stat-label")[0].innerHTML == "undefined") {
+          panel.getElementById("schematicStat"+i).getElementsByClassName("stat-label")[0].classList.add("hidden");
+          panel.getElementById("schematicStat"+i).getElementsByClassName("stat-label")[1].classList.add("hidden");
+        }
       }
       panel.innerHTML += `<div class="schematicMoreInfo">
             <div class="divider bottom top" style="margin-bottom: 3%;"></div>`;
@@ -37,7 +43,7 @@
     UserInterface.prototype.patchSchematicUI = function (type) {
       var panel = window.document.getElementById("schematicPanel");
       
-      if (panel.getAttribute("-data-schematicType") == type) {
+      if (panel.getAttribute("schematicType") == type) {
         return true;
       } else {
         

@@ -114,5 +114,18 @@
       [10, "E", "p"],
       [ 0, "A", "p"]
     ]
+  },
+  "Wing": {
+    "statEffects": {
+      "Casing":     [0],
+      "Combustion": [1, 3, 4],
+      "Mechanical": [1, 3, 2],
+      "Propeller":  [2, 4]
+    },
+    "stats": {
+      "Resilience": 0,
+      "Pivot Speed": 1,
+      "Power": 2
+    }
   }
 }
