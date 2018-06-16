@@ -17,6 +17,27 @@
             </div>`
     }
     
+    var advancedRollMetaString = function (type) {
+      return `<h3 class="wa-title" style="text-align:center;">Advanced Rolling</h3>
+          <div style="width: 100%; text-align: center;">
+            <label for="advancedRollTier" class="wa-header">${type} Tier </label>
+            <input class="wa-input" id="advancedRollTier" type="number" min="1" max="7" value="4">
+          </div>
+          <p style="text-transform:uppercase; font-size: 0.7em; text-align:center;">
+            Warning: Running these functions can lead to the rolling algorithm running hundereds of thousands of times. 
+            This can crash browser tabs on some machines.
+          </p><div style="width: 100%;" class="row">`
+    }
+    
+    var advancedRollGroup = function (obj) {
+      return `<div class="form-group col-6">
+              <span class="wa-header form-group-header">${obj.name}</span>
+              <input class="wa-input value" id="rollStat${obj.index}Value" type="number" min="5" max="99" value="5">
+              <input class="wa-input parameter unselectable" id="rollStat${obj.index}Param" type="text" value=">" 
+                readonly unselectable="on" onselectstart="return false;" onmousedown="return false;">
+            </div>`
+    }
+    
     UserInterface.prototype.renderSchematicUI = function (type) {
       var panel = window.document.getElementById("schematicPanel");
       panel.setAttribute("schematicType", type);
@@ -95,6 +116,12 @@
         var EventHandler = new EventHandler();
       }
       var panel = document.getElementById("advancedForm");
+      panel.innerHTML = advancedRollMetaString(type);
+      
+      for (var i = 0; i < Object.keys(window.schematicConfig[type].stats).length; i++) {
+        window.schematicConfig[type].statsObject.keys(window.schematicConfig[type].stats)[i]
+      }
+      
     }
     
     UserInterface.prototype.resetKnowledge = function () {
