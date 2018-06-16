@@ -1,9 +1,10 @@
 (function(window) {
   
   var Utilities = (function(window) {
-    var random = (typeof window.random == undefined) ? new require("random-js")() : window.random;
-
+    
     var Utilities = function (options) {};
+    
+    var random = window.random;
 
     Utilities.prototype.elDiv = function (ar1, num) {
       var res = new Array(ar1.length);
@@ -34,7 +35,7 @@
     Utilities.prototype.randomStatArray = function (n) {
       var a = new Array(n);
       for (var i = 0; i < n; i++) {
-        a[i] = [Utilities.random.real(1,5)];
+        a[i] = [window.random.real(1,5)];
       }
       return a;
     }

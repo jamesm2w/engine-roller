@@ -3,7 +3,7 @@ class Schematic {
     this.tier = tier;
     this.type = type;
     this.config = window.schematicConfig[type][tier];
-    this.Utilities = (typeof window.Utilities == undefined)? require("./public/utilities.js") : window.Utilities;
+    this.Utilities = (typeof window.Utilities == undefined)? require("./public/utilities.js").prototype : window.Utilities.prototype;
     this.rollNumber = 1;
   }
   
@@ -125,31 +125,31 @@ class Engine extends Schematic {
   }
   
   determineName() {
-    var casingName, propMountName, propName, powerNum, engineType, stats = this.stats;
-    for (var i = 0; i < this.config.casings.length; i++) {
-      var currentCasing = this.config.casings[i];
-      if (currentCasing[0] <= this.tier && this.fullStats.indexOf(Math.max(...this.fullStats)) == this.config.stats[currentCasing[2]]) {
+    var casingName, propMountName, propName, powerNum, engineType, stats = this.stats, config = window.schematicConfig[this.type];
+    for (var i = 0; i < config.casings.length; i++) {
+      var currentCasing = config.casings[i];
+      if (currentCasing[0] <= this.tier && this.fullStats.indexOf(Math.max(...this.fullStats)) == config.stats[currentCasing[2]]) {
         casingName = currentCasing[1];
         engineType = currentCasing[3];
       } 
     }
     var power = stats[4];
-    for (var i = 0; i < this.config.propMounts.length; i++) {
-      if (power > this.config.propMounts[i][0] && this.config.propMounts[i][2] == engineType) {
+    for (var i = 0; i < config.propMounts.length; i++) {
+      if (power > config.propMounts[i][0] && config.propMounts[i][2] == engineType) {
 
-        propMountName = this.config.propMounts[i][1];
-        powerNum = power - this.config.propMounts[i][0];
-        engineType = this.config.propMounts[i][3];
+        propMountName = config.propMounts[i][1];
+        powerNum = power - config.propMounts[i][0];
+        engineType = config.propMounts[i][3];
 
         break;
       }
     }
     var spin = stats[2];
-    for (var i = 0; i < this.config.props.length; i++) {
-      if (spin >= this.config.props[i][0] && this.config.props[i][2] == engineType) {
+    for (var i = 0; i < config.props.length; i++) {
+      if (spin >= config.props[i][0] && config.props[i][2] == engineType) {
 
-        propName = this.config.props[i][1];
-        engineType = this.config.props[i][3];
+        propName = config.props[i][1];
+        engineType = config.props[i][3];
 
         break;
       }
