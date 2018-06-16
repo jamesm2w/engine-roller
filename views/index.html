@@ -33,13 +33,13 @@
       <div class="wa-panel col-4">
         <h2 class="wa-title" style="text-align: center">
           Schematic View 
-          <h5 href="javascript:void(0)" class="muted-text" id="engine-save" style="cursor: not-allowed;">(Save Loaded Engine)</h5>
-          <h5 href="javascript:void(0)" class="muted-text" id="engine-load" style="cursor: pointer;">(Load Saved Engine)</h5>
+          <h5 href="javascript:void(0)" class="muted-text" id="saveLoadedSchematicBtn" style="cursor: not-allowed;">(Save Loaded Engine)</h5>
+          <h5 href="javascript:void(0)" class="muted-text" id="loadSavedSchematicBtn" style="cursor: pointer;">(Load Saved Engine)</h5>
         </h2>
         <p style="text-align: center;">
           Spent: <span id="schematicKnowledge">0</span> Knowledge 
           <a href="javascript:void(0)" onclick="resetKnowledge()" class="muted-text">(Reset)</a>
-          <span id="rolling-output"></span>
+          <span id="multipleRollOutput"></span>
         </p>
         <div class="schematicView wa-panel col-12" id="schematicPanel">
 
@@ -160,16 +160,10 @@
     <script src="/userInterface.js"></script>
     <script src="/client.js"></script>
     
-    
     <script>
       window.random = new Random();
       var storage = window.localStorage;
       var loadedSchematic;
-      
-      
-
-      UI.renderRollerUI();
-      UI.renderSchematicUI();
     </script>
   </body>
 </html>

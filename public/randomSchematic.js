@@ -56,12 +56,13 @@ class Schematic {
       (this.rollNumber * this.config.knowledge); // Increment knowledge based on which type was rolled and how many were.
     
     for (var i = 0; i < this.stats.length; i++){
-      document.getElementById("schematicStatistic" + i).style.width = this.stats[i] + "%";
-      document.getElementById("schematicStatistic" + i + "--Label").innerHTML = this.stats[i];
+      document.getElementById("schematicStat" + i + "Bar").style.width = this.stats[i] + "%";
+      document.getElementById("schematicStat" + i + "Value").innerHTML = this.stats[i];
     }
     
     for (var i = 0; i < this.costs.length; i++) {
-      document.getElementById("schematicMaterial" + i).innerHTML = this.costs[i];
+      document.getElementById("schematicMat" + i + "Value").innerHTML = this.costs[i];
+      document.getElementById("schematicMat" + i + "Value").style.display = "block";
     }
     
     document.getElementById("schematicName").innerHTML = 

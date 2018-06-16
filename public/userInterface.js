@@ -6,12 +6,12 @@
       return `<div class="stat-bar" id="schematicStat${obj.index}">
             <div class="progress" id="schematicStat${obj.index}Bar"></div>
             <span class="stat-label left">${obj.name}</span>
-            <span class="stat-label right" id="schematicStat${obj.index}Bar">0</span>
+            <span class="stat-label right" id="schematicStat${obj.index}Value">0</span>
           </div>`
     }
     
     var matString = function (obj) {
-      return `<div class="col-6 schem-mat bottom hidden" id="schematicMat${obj.index}">
+      return `<div class="col-6 schem-mat bottom top hidden" id="schematicMat${obj.index}">
               <span class="wa-header" id="schematicMat${obj.index}Label">${obj.name}</span>
               <span id="schematicMat${obj.index}Value">100</span>
             </div>`
@@ -26,6 +26,7 @@
       }
       panel.innerHTML += `<div class="schematicMoreInfo">
             <div class="divider bottom top" style="margin-bottom: 3%;"></div>`;
+      
       for (var i = 0; i < Object.keys(window.schematicConfig[type].statEffects).length; i++) {
         panel.innerHTML += matString({"name": Object.keys(window.schematicConfig[type].statEffects)[i], "index": i});
       }
@@ -65,7 +66,7 @@
         window.document.getElementById("roll-stat-" + i + "-val").addEventListener("change", EventHandler.handleValueChange);
       }
       window.document.getElementById("roll-tier").addEventListener("change", EventHandler.handleTierChange);
-      window.document.getElementById("loadSchematicBtn").addEventListener("click", function () {Utilities.showModal("LoadEngine")});
+      window.document.getElementById("loadSavedSchematicBtn").addEventListener("click", function () {Utilities.prototype.showModal("LoadEngine")});
       
       var closeBtns = window.document.getElementsByClassName("modalClose");
       for (var element of closeBtns) {
