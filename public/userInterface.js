@@ -2,6 +2,20 @@
   var UserInterface = (function(window) {
     var UserInterface = function (options) {};
     
+    var statString = function (obj) {
+      return `<div class="stat-bar" id="schematicStat${obj.index}">
+            <div class="progress" id="schematicStat${obj.index}Bar"></div>
+            <span class="stat-label left">${obj.name}</span>
+            <span class="stat-label right" id="schematicStat${obj.index}Bar">0</span>
+          </div>`
+    }
+    
+    var matString = function (obj) {
+      return `<div class="col-6 schem-mat bottom hidden">
+              <span class="wa-header" id="schematicMat${obj.index}Label">${obj.name}</span>
+              <span id="schematicMat${obj.index}">100</span>
+            </div>`
+    }
     
   })();
 })();
