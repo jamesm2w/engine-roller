@@ -11,7 +11,7 @@
 
     EventHandler.prototype.handleLoadAction = function (e) {
       var obj = JSON.parse(window.localStorage.getItem(e.target.parentElement.id));
-      var engine = window.Schematic.parseJson(obj);
+      var engine = Schematic.parseJson(obj);
       engine.displayEngine();
       window.Utilities.closeOpenModal();
     };
@@ -30,7 +30,7 @@
 
     EventHandler.prototype.handleEngineSaveClick = function (e) {
       if (window.loadedSchematic != undefined) {
-        window.loadedEngine.saveSchematic();
+        window.loadedSchematic.saveSchematic();
         e.target.innerHTML = "(Saved Schematic)";
         e.target.style.color =  "green";
       } else {
@@ -64,15 +64,15 @@
     EventHandler.prototype.handleMatMouseEnter = function (e) {
       var el = e.target, 
           name = el.querySelector(".wa-header").innerHTML, 
-          effects = window.loadedEngine.config.statEffects[name];
+          effects = window.schematicConfig[window.loadedSchematic.type].statEffects[name];
       for (var i = 0; i < effects.length; i++) {
-        document.getElementById("schem-stat-" + effects[i]).style.backgroundColor = "#8bc34a";
+        document.getElementById("schematicStat" + effects[i] + "Bar").style.backgroundColor = "#8bc34a";
       }
     };
 
     EventHandler.prototype.handleMatMouseLeave = function (e) {
       for (var i = 0; i < 5; i++) {
-        document.getElementById("schem-stat-" + i).style.backgroundColor = "#668ec3";
+        document.getElementById("schematicStat" + i + "Bar").style.backgroundColor = "#668ec3";
       }
     };
     
