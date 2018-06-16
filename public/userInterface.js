@@ -40,6 +40,23 @@
       }
     }
     
+    UserInterface.prototype.renderLoaderUI = function () {
+      var modalEl = document.getElementById("LoadEngineModal").getElementsByClassName("modal-body")[0];
+
+      if (window.localStorage.length == 0) {
+        modalEl.innerHTML = "<em style='color:darkgrey;'>Nothing to see here. Save an engine first before you try to load one";
+        return undefined;
+      }
+
+      for (var i = 0; i < window.localStorage.length; i++) {
+        var currentItem = JSON.parse(window.localStorage.getItem(window.localStorage.key(i)));
+
+        var htmlString = '<div class="form-group col-6" id="Group-' + window.localStorage.key(i) + '"><span class="wa-header form-group-header center" style="color: var(--rarity-' + currentItem.config.rarity.toLowerCase() + ');">' + (currentItem.name[0] + " " + currentItem.name[1] + " " + currentItem.name[2] + currentItem.name[3]) + '</span><span class="center" id="' + window.localStorage.key(i) + '"><span class="load-btn" onclick="handleLoadAction(event);">Load Engine</span><span class="forget-btn" onclick="handleForgetAction(event);">Forget Engine</span></span></div>';
+        console.log(htmlString);
+        modalEl.innerHTML += htmlString;
+      }
+    }
+    
     UserInterface.prototype.resetKnowledge = function () {
       var kc = document.getElementById("schematicKnowledge");
       console.log("Reset " + kc.innerHTML + " Knowledge to 0");
@@ -54,7 +71,7 @@
     }
     
     UserInterface.prototype.bindHandlers = function () {
-      var Utilities = window.Utilities, EventHandler = window.EventHandler;
+      var Utilities = new window.Utilities(), EventHandler = new window.EventHandler();
       
       var materials = window.document.getElementsByClassName("schem-mat");
       for (var i = 0; i < materials.length; i++) {
@@ -66,11 +83,11 @@
         window.document.getElementById("roll-stat-" + i + "-val").addEventListener("change", EventHandler.handleValueChange);
       }
       window.document.getElementById("roll-tier").addEventListener("change", EventHandler.handleTierChange);
-      window.document.getElementById("loadSavedSchematicBtn").addEventListener("click", function () {Utilities.prototype.showModal("LoadEngine")});
+      window.document.getElementById("loadSavedSchematicBtn").addEventListener("click", function () {Utilities.showModal("LoadEngine")});
       
       var closeBtns = window.document.getElementsByClassName("modalClose");
       for (var element of closeBtns) {
-        element.addEventListener("click", Utilities.prototype.closeOpenModal);
+        element.addEventListener("click", Utilities.closeOpenModal);
       };
 
       window.addEventListener("click", EventHandler.handleWindowClick);
@@ -152,22 +169,7 @@ var advancedRollWrapper = function () {
   }
 };
 
-var buildLoaderUI = function () {
-  var modalEl = document.getElementById("LoadEngineModal").getElementsByClassName("modal-body")[0];
-  
-  if (window.localStorage.length == 0) {
-    modalEl.innerHTML = "<em style='color:darkgrey;'>Nothing to see here. Save an engine first before you try to load one";
-    return undefined;
-  }
-  
-  for (var i = 0; i < window.localStorage.length; i++) {
-    var currentItem = JSON.parse(window.localStorage.getItem(window.localStorage.key(i)));
-    
-    var htmlString = '<div class="form-group col-6" id="Group-' + window.localStorage.key(i) + '"><span class="wa-header form-group-header center" style="color: var(--rarity-' + currentItem.config.rarity.toLowerCase() + ');">' + (currentItem.name[0] + " " + currentItem.name[1] + " " + currentItem.name[2] + currentItem.name[3]) + '</span><span class="center" id="' + window.localStorage.key(i) + '"><span class="load-btn" onclick="handleLoadAction(event);">Load Engine</span><span class="forget-btn" onclick="handleForgetAction(event);">Forget Engine</span></span></div>';
-    console.log(htmlString);
-    modalEl.innerHTML += htmlString;
-  }
-}
+
 
 
 

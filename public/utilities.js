@@ -45,7 +45,7 @@
 
       if (modalID = "LoadEngine") {
         document.getElementById("LoadEngineModal").getElementsByClassName("modal-body")[0].innerHTML = "";
-        window.UI.buildLoaderUI();
+        window.UI.renderLoaderUI();
       }
     }
 

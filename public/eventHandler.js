@@ -29,7 +29,7 @@
     };
 
     EventHandler.prototype.handleEngineSaveClick = function (e) {
-      if (window.loadedEngine != undefined) {
+      if (window.loadedSchematic != undefined) {
         window.loadedEngine.saveSchematic();
         e.target.innerHTML = "(Saved Schematic)";
         e.target.style.color =  "green";
