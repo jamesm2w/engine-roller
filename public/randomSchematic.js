@@ -68,10 +68,10 @@ class Schematic {
     document.getElementById("saveLoadedSchematicBtn").addEventListener("click", EventHandler.handleEngineSaveClick);
     document.getElementById("saveLoadedSchematicBtn").style.cursor = "pointer";
     document.getElementById("saveLoadedSchematicBtn").style.color = "darkgrey";
-    document.getElementById("saveLoadedSchematicBtn").innerHTML = "(Save Loaded Engine)";
+    document.getElementById("saveLoadedSchematicBtn").innerHTML = "(Save Loaded Schematic)";
     
     if (this.rollNumber > 1) {
-      document.getElementById("multipleRollOutput").innerHTML = "<br> Rolled " + this.rollNumber + " engines.";
+      document.getElementById("multipleRollOutput").innerHTML = "<br> Rolled " + this.rollNumber + " schematics.";
     } else {
       document.getElementById("multipleRollOutput").innerHTML = "";
     }
@@ -166,7 +166,27 @@ class Engine extends Schematic {
   }
 };
 
-class Wing extends Schematic {};
+class Wing extends Schematic {
+  constructor(tier) {
+    super("Wing", tier);
+    this.fullStats = this.rollSchematic();
+    this.stats = this.fullStats.map(function (x) {return Math.round(x)});
+    this.name = this.determineName();
+    this.costs = this.calculateCosts();
+  }
+  
+  determineName() {
+    return "Procedural Engine (Tier " + this.tier + ")";
+  }
+  
+  calculateCosts() {
+    var stats = this.stat, costs = [0,0,0];
+    costs[0] = 2 * (stats[0] + stats[1]);
+    costs[1] = 2 * (stats[1]);
+    costs[2] = 2 * (stats[2]);
+    return costs;
+  }
+};
 
 class Cannon extends Schematic {};
 

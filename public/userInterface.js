@@ -147,8 +147,17 @@
       
       var roll = new Engine(tier);
       console.log("Rolling new Tier " + tier + " Engine");
+
+      roll.displaySchematic();
+    }
+    
+    UserInterface.prototype.randomRollWing = function (tier) {
+      UserInterface.prototype.patchSchematicUI("Wing");
+      UserInterface.prototype.renderRollerUI("Wing");
       
-      
+      var roll = new Wing(tier);
+      console.log("Rolling new Tier " + tier + " Wing");
+
       roll.displaySchematic();
     }
     
