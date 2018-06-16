@@ -11,9 +11,9 @@
     }
     
     var matString = function (obj) {
-      return `<div class="col-6 schem-mat bottom hidden">
+      return `<div class="col-6 schem-mat bottom hidden" id="schematicMat${obj.index}">
               <span class="wa-header" id="schematicMat${obj.index}Label">${obj.name}</span>
-              <span id="schematicMat${obj.index}">100</span>
+              <span id="schematicMat${obj.index}Value">100</span>
             </div>`
     }
     
@@ -21,23 +21,26 @@
       var panel = window.document.getElementById("schematicPanel");
       panel.innerHTML = `<span class="wa-header" style="font-size: 1em; float: left;" id="schematicName">Procedural ${type}</span>
                          <div class="divider top bottom"></div>`;
-      for (var i = 0; i < window.schematicConfig[type].stats.length; i++) {
-        window.schematicConifg[type].stats.keys[i]
+      for (var i = 0; i < 5; i++) {
+        panel.innerHTML += statString({"name": Object.keys(window.schematicConfig[type].stats)[i], "index": i});
       }
-      
+      panel.innerHTML += `<div class="schematicMoreInfo">
+            <div class="divider bottom top" style="margin-bottom: 3%;"></div>`;
+      for (var i = 0; i < Object.keys(window.schematicConfig[type].statEffects).length; i++) {
+        panel.innerHTML += matString({"name": Object.keys(window.schematicConfig[type].statEffects)[i], "index": i});
+      }
+      panel.innerHTML += `</div>`;
     }
     
-  })();
+    UserInterface.prototype.renderRollerUI = function (type) {
+      for (var i = 1; i < 9; i++) {
+        document.getElementById("rollerUI").innerHTML += `<div class='${window.schematicConfig.Engine[i].rarity.toLowerCase()}-btn roll-btn' 
+          onclick='randomRoll${type}(${i})'>${window.schematicConfig.Engine[i].rarity} (T${i}) ${type}</div>`;
+      }
+    }
+    
+  })(window);
 })();
-
-var createRollerUI = function () {
-  for (var i = 1; i < 9; i++) {
-    document.getElementById("rollerUI").innerHTML += "<div class='" 
-      + schematicConfig.Engine[i].rarity.toLowerCase() + "-btn roll-btn' onclick='randomRollEngine(" 
-      + i + ")'>" 
-      + schematicConfig.Engine[i].rarity + " (T" + i + ") Engine</div>";
-  }
-}
 
 var randomRollEngine = function (tier) {
   var roll = new Engine(tier);
