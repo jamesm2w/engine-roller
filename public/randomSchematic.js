@@ -4,6 +4,7 @@ class Schematic {
     this.type = type;
     this.config = window.schematicConfig[type][tier];
     this.Utilities = (typeof window.Utilities == undefined)? require("./public/utilities.js") : window.Utilities;
+    this.rollNumber = 1;
   }
   
   rollSchematic() {
@@ -41,16 +42,53 @@ class Schematic {
     return engine;
   }
   
+  displayEngine () {
+    var EventHandler = window.EventHandler;
+    window.loadedSchematic = this; //Load in engine to the UI
+    
+    var panel = document.getElementById("schematicPanel");
+    panel.style.borderColor = this.config.colour;
+    document.getElementById("schematicKnowledge").innerHTML = parseInt(document.getElementById("schematicKnowledge").innerHTML) + 
+      (this.rollNumber * this.config.knowledge); // Increment knowledge based on which type was rolled and how many were.
+    
+    for (var i = 0; i < this.stats.length; i++){
+      document.getElementById("schematicStatistic" + i).style.width = this.stats[i] + "%";
+      document.getElementById("schematicStatistic" + i + "--Label").innerHTML = this.stats[i];
+    }
+    
+    for (var i = 0; i < this.costs.length; i++) {
+      document.getElementById("schematicMaterial" + i).innerHTML = this.costs[i];
+    }
+    
+    document.getElementById("schematicName").innerHTML = 
+      this.name[0] + " " + this.name[1] + " " + this.name[2] + this.name[3] + " (Tier " + this.tier + ")";
+    
+    document.getElementById("saveLoadedSchematicBtn").addEventListener("click", EventHandler.handleEngineSaveClick);
+    document.getElementById("saveLoadedSchematicBtn").style.cursor = "pointer";
+    document.getElementById("saveLoadedSchematicBtn").style.color = "darkgrey";
+    document.getElementById("saveLoadedSchematicBtn").innerHTML = "(Save Loaded Engine)";
+    
+    if (this.rollNumber > 1) {
+      document.getElementById("multipleRollOutput").innerHTML = "<br> Rolled " + this.rollNumber + " engines.";
+    } else {
+      document.getElementById("multipleRollOutput").innerHTML = "";
+    }
+  }
+  
   static parseJson (json) {
     return Object.assign(new Schematic(json.type, parseInt(json.tier)), json);
   }
   
   get schemKnowledge() {
-    return this.config.knowledgeCost;
+    return this.config.knowledge;
   }
   
   get schemPoints () {
     return this.config.schemMax;
+  }
+  
+  set rollNumer(n) {
+    this.rollNumber = n;
   }
 };
 
@@ -59,10 +97,12 @@ class Engine extends Schematic {
     super("Engine", tier);
     this.fullStats = this.rollSchematic();
     this.stats = this.fullStats.map(function (x) {return Math.round(x)});
+    this.name = this.determineName();
+    this.costs = this.calculateCosts();
   }
   
-  determinName() {
-    var casingName, propMountName, propName, powerNum, engineType, stats = stats;
+  determineName() {
+    var casingName, propMountName, propName, powerNum, engineType, stats = this.stats;
     // TODO: Get Casing name from something
     for (var i = 0; i < this.config.casings.length; i++) {
       var currentCasing = this.config.casings[i];
@@ -95,6 +135,15 @@ class Engine extends Schematic {
       }
     }
     return [casingName, propMountName, propName, powerNum];
+  }
+  
+  calculateCosts() {
+    var stats = this.stats, costs = [0, 0, 0, 0] //Casing, Combus, Mech, Prop
+    costs[0] = 2 * (stats[0] + stats[4] + stats[2]);   //2 x (Resilience + Power + Spinup)
+    costs[1] = 2 * (stats[4] + stats[1] + stats[3]);   //2 x (Power + Fuel efficiency + Overheat)
+    costs[2] = 2 * (stats[4] + stats[1]);               //2 x (Power + Fuel efficiency)
+    costs[3] = 2 * (stats[2] + stats[3]);               //2 x (Spinup + Overheat)
+    return costs;
   }
 };
 
