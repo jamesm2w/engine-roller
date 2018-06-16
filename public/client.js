@@ -237,40 +237,6 @@ var buildLoaderUI = function () {
   }
 }
 
-var handleLoadAction = function (e) {
-  var obj = JSON.parse(window.localStorage.getItem(e.target.parentElement.id));
-  var engine = Engine.parseJSON(obj);
-  engine.displayEngine();
-  closeModal();
-}
-
-var handleForgetAction = function (e) {
-  var name = e.target.parentElement.id;
-  var confirmation = confirm("Are you sure you want to remove this engine? It will be lost forever.");
-  if (confirmation) {
-    window.localStorage.removeItem(name);
-    closeModal();
-    return true;
-  } else {
-    return false;
-  }
-}
-
-var loadEngineFromName = function (name) {
-  var obj = JSON.parse(window.localStorage.getItem(name));
-  var engine = Engine.parseJSON(obj);
-  return engine.displayEngine();
-}
-
-var handleEngineSaveClick = function (e) {
-  if (loadedEngine != undefined) {
-    loadedEngine.saveEngine();
-    e.target.innerHTML = "(Saved Engine)";
-    e.target.style.color =  "green";
-  } else {
-    alert("Tried to save an undefined engine");
-  }
-}
 
 var equals = function (el) {
   return el == this;
