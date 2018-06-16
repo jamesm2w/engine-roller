@@ -41,9 +41,7 @@
           <a href="javascript:void(0)" onclick="resetKnowledge()" class="muted-text">(Reset)</a>
           <span id="multipleRollOutput"></span>
         </p>
-        <div class="schematicView wa-panel col-12" id="schematicPanel">
-
-        </div>
+        <div class="schematicView wa-panel col-12" id="schematicPanel"></div>
       </div>
       
       <div class="wa-panel col-8">
@@ -51,6 +49,7 @@
           Random Schematic Roller
         </h1>
         <div id="rollerUI" class="col-4"></div>
+        
         <div id="advancedForm" class="wa-panel col-8">
           <h3 class="wa-title" style="text-align:center;">Advanced Rolling</h3>
           <div style="width: 100%; text-align: center;">
@@ -61,6 +60,7 @@
             Warning: Running these functions can lead to the rolling algorithm running hundereds of thousands of times. 
             This can crash browser tabs on some machines.
           </p>
+          
           <div style="width: 100%;" class="row">
             <div class="form-group col-6" style="">
               <span class="wa-header form-group-header">Resilience</span>
@@ -87,6 +87,7 @@
               <input class="wa-input value" id="roll-stat-4-val" type="number" min="5" max="99" value="5">
               <input class="wa-input parameter unselectable" id="roll-stat-4-param" type="text" value=">" readonly unselectable="on" onselectstart="return false;" onmousedown="return false;">
             </div>
+            
             <div class="form-group col-6 clickable" style="text-align: center; height: 64px; vertical-align: middle;" onclick="advancedRollWrapper();">
               <span class="wa-header" style="font-size: 1em; line-height: 34px;">Roll Engine</span>
             </div>
@@ -107,8 +108,6 @@
     
     <script>
       window.random = new Random();
-      var storage = window.localStorage;
-      var loadedSchematic;
     </script>
   </body>
 </html>

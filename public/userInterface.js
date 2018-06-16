@@ -19,6 +19,7 @@
     
     UserInterface.prototype.renderSchematicUI = function (type) {
       var panel = window.document.getElementById("schematicPanel");
+      panel.setAttribute("-data-schematicType", type);
       panel.innerHTML = `<span class="wa-header" style="font-size: 1em; float: left;" id="schematicName">Procedural ${type}</span>
                          <div class="divider top bottom"></div>`;
       for (var i = 0; i < 5; i++) {
@@ -33,7 +34,19 @@
       panel.innerHTML += `</div>`;
     }
     
+    UserInterface.prototype.patchSchematicUI = function (type) {
+      var panel = window.document.getElementById("schematicPanel");
+      
+      if (panel.getAttribute("-data-schematicType") == type) {
+        return true;
+      } else {
+        
+      }
+    
+    }
+    
     UserInterface.prototype.renderRollerUI = function (type) {
+      document.getElementById("rollerUI").innerHTML = "";
       for (var i = 1; i < 9; i++) {
         document.getElementById("rollerUI").innerHTML += `<div class='${window.schematicConfig.Engine[i].rarity.toLowerCase()}-btn roll-btn' 
           onclick='UI.randomRoll${type}(${i})'>${window.schematicConfig.Engine[i].rarity} (T${i}) ${type}</div>`;
@@ -44,7 +57,7 @@
       var modalEl = document.getElementById("LoadEngineModal").getElementsByClassName("modal-body")[0];
 
       if (window.localStorage.length == 0) {
-        modalEl.innerHTML = "<em style='color:darkgrey;'>Nothing to see here. Save an engine first before you try to load one";
+        modalEl.innerHTML = `<em style='color:darkgrey;'>Nothing to see here. Save an engine first before you try to load one`;
         return undefined;
       }
 
@@ -64,8 +77,13 @@
     }
     
     UserInterface.prototype.randomRollEngine = function (tier) {
+      UserInterface.prototype.renderSchematicUI("Engine");
+      UserInterface.prototype.renderRollerUI("Engine");
+      
       var roll = new Engine(tier);
-      console.log("Rolling new " + tier + " Engine");
+      console.log("Rolling new Tier " + tier + " Engine");
+      
+      
       roll.displaySchematic();
     }
     

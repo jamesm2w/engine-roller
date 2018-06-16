@@ -8,6 +8,11 @@
       window.UI = new window.UserInterface();
       
       window.UI.renderAndBind("Engine");
+      
+      
+      window.storage = window.localStorage;
+      window.loadedSchematic;
+      
     } else {
       console.log(this.response);
     }
