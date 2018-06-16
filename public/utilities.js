@@ -1,9 +1,5 @@
-//------------------------//
-//  Array Transformation  //
-//------------------------//
-
 var Utilities = (function() {
-  Utilities.random = (typeof window.random == undefined) ? require("random-js")() :
+  Utilities.random = (typeof window.random == undefined) ? new require("random-js")() : window.random;
   
   Utilities.prototype.elDiv = function (ar1, num) {
     var res = new Array(ar1.length);
@@ -34,11 +30,7 @@ var Utilities = (function() {
   Utilities.prototype.randomStatArray = function (n) {
     var a = new Array(n);
     for (var i = 0; i < n; i++) {
-      if (typeof window.random !== undefined) {
-        a[i] = [window.random.real(1,5)];
-      } else {
-        a[i] = [random.real(1,5)]; 
-      }
+      a[i] = [Utilities.random.real(1,5)];
     }
     return a;
   }

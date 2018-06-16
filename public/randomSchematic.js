@@ -5,8 +5,8 @@ class Schematic {
     this.config = window.schematicConfig[type][tier];
   }
   
-  rollSchematic() {
-    var stats = undefined;
+  rollSchematic(max) {
+    var stats = undefined, min = 5, max = this.config.schemMa
     switch (this.type) {
       case "Engine":
         stats = new Array(5);
@@ -24,6 +24,20 @@ class Schematic {
         stats = new Array(5);
         break;
                      }
+    let engine = [max + 1, max + 1, max + 1, max + 1, max + 1];
+    let rollMax = -1, rollMin = 0;
+    while (engine[0] >= max || engine[1] >= max || engine[2] >= max || engine[3] >= max || engine[4] >= max) {
+      rollMax++;
+      engine = Utilities.arrayMult(engine, randomStatArray(5), 1, max, min)
+      engine = Utilities.elMult(Utilities.elDiv(engine, eval(engine.join('+'))), total);
+
+      while (engine[0] < min || engine[1] < min || engine[2] < min || engine[3] < min || engine[4] < min) {
+        rollMin++;
+        engine = Utilities.arrayMult(engine, randomStatArray(5), 1, max, min)
+        engine = Utilities.elMult(Utilities.elDiv(engine, eval(engine.join('+'))), total);
+      }
+    }
+    return engine;
     
   }
   
