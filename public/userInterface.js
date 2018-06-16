@@ -119,9 +119,19 @@
       panel.innerHTML = advancedRollMetaString(type);
       
       for (var i = 0; i < Object.keys(window.schematicConfig[type].stats).length; i++) {
-        window.schematicConfig[type].statsObject.keys(window.schematicConfig[type].stats)[i]
+        var currentObj = Object.keys(window.schematicConfig[type].stats)[i];
+        if (currentObj == "Fuel Efficiency") {
+          currentObj = "Fuel E.";
+        } else if (currentObj == "Overheat Limit") {
+          currentObj = "Overheat";
+        }
+        panel.innerHTML += advancedRollGroup({"name": currentObj, "index": i});
       }
       
+      panel.innerHTML += `<div class="form-group col-6 clickable" style="text-align: center; height: 64px; vertical-align: middle;" 
+              onclick="AdvancedRoller.advancedRollWrapper(${type});">
+              <span class="wa-header" style="font-size: 1em; line-height: 34px;">Roll ${type}</span>
+            </div></div>`;
     }
     
     UserInterface.prototype.resetKnowledge = function () {
@@ -152,28 +162,29 @@
       
       var materials = window.document.getElementsByClassName("schem-mat");
       for (var i = 0; i < materials.length; i++) {
-        materials[i].addEventListener("mouseenter", EventHandler.handleMatMouseEnter);
-        materials[i].addEventListener("mouseleave", EventHandler.handleMatMouseLeave);
+        materials[i].addEventListener("mouseenter", window.EventHandler.handleMatMouseEnter);
+        materials[i].addEventListener("mouseleave", window.EventHandler.handleMatMouseLeave);
       }
       for (var i = 0; i < 5; i++) {
-        window.document.getElementById("roll-stat-" + i + "-param").addEventListener("click", EventHandler.handleQualifierClick);
-        window.document.getElementById("roll-stat-" + i + "-val").addEventListener("change", EventHandler.handleValueChange);
+        window.document.getElementById("roll-stat-" + i + "-param").addEventListener("click", window.EventHandler.handleQualifierClick);
+        window.document.getElementById("roll-stat-" + i + "-val").addEventListener("change", window.EventHandler.handleValueChange);
       }
-      window.document.getElementById("roll-tier").addEventListener("change", EventHandler.handleTierChange);
-      window.document.getElementById("loadSavedSchematicBtn").addEventListener("click", function () {Utilities.showModal("LoadEngine")});
+      window.document.getElementById("roll-tier").addEventListener("change", window.EventHandler.handleTierChange);
+      window.document.getElementById("loadSavedSchematicBtn").addEventListener("click", function () {
+        window.Utilities.showModal("LoadEngine")});
       
       var closeBtns = window.document.getElementsByClassName("modalClose");
       for (var element of closeBtns) {
-        element.addEventListener("click", Utilities.closeOpenModal);
+        element.addEventListener("click", window.Utilities.closeOpenModal);
       };
 
-      window.addEventListener("click", EventHandler.handleWindowClick);
+      window.addEventListener("click", window.EventHandler.handleWindowClick);
     }
     
     UserInterface.prototype.renderAndBind = function (type) {
       UserInterface.prototype.renderRollerUI(type);
+      UserInterface.prototype.renderAdvancedRollerUI(type);
       UserInterface.prototype.renderSchematicUI(type);
-      
       UserInterface.prototype.bindHandlers();
     }
     
