@@ -17,6 +17,16 @@
             </div>`
     }
     
+    UserInterface.prototype.renderSchematicUI = function (type) {
+      var panel = window.document.getElementById("schematicPanel");
+      panel.innerHTML = `<span class="wa-header" style="font-size: 1em; float: left;" id="schematicName">Procedural ${type}</span>
+                         <div class="divider top bottom"></div>`;
+      for (var i = 0; i < window.schematicConfig[type].stats.length; i++) {
+        window.schematicConifg[type].stats.keys[i]
+      }
+      
+    }
+    
   })();
 })();
 

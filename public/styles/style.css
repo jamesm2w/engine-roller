@@ -34,6 +34,10 @@
   --text-colour: #ffe5c4;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .muted-text {
   text-decoration: none; 
   color: darkgray; 
