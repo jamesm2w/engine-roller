@@ -35,7 +35,7 @@
     UserInterface.prototype.renderRollerUI = function (type) {
       for (var i = 1; i < 9; i++) {
         document.getElementById("rollerUI").innerHTML += `<div class='${window.schematicConfig.Engine[i].rarity.toLowerCase()}-btn roll-btn' 
-          onclick='UserInterface.randomRoll${type}(${i})'>${window.schematicConfig.Engine[i].rarity} (T${i}) ${type}</div>`;
+          onclick='UI.randomRoll${type}(${i})'>${window.schematicConfig.Engine[i].rarity} (T${i}) ${type}</div>`;
       }
     }
     
@@ -49,7 +49,7 @@
     UserInterface.prototype.randomRollEngine = function (tier) {
       var roll = new Engine(tier);
       console.log("Rolling new " + tier + " Engine");
-      roll.displayEngine();
+      roll.displaySchematic();
     }
     
     UserInterface.prototype.bindHandlers = function () {
@@ -65,7 +65,7 @@
         window.document.getElementById("roll-stat-" + i + "-val").addEventListener("change", EventHandler.handleValueChange);
       }
       window.document.getElementById("roll-tier").addEventListener("change", EventHandler.handleTierChange);
-      window.document.getElementById("engine-load").addEventListener("click", function () {Utilities.showModal("LoadEngine")});
+      window.document.getElementById("loadSchematicBtn").addEventListener("click", function () {Utilities.showModal("LoadEngine")});
       
       var closeBtns = window.document.getElementsByClassName("modalClose");
       for (var element of closeBtns) {
@@ -75,8 +75,9 @@
       window.addEventListener("click", EventHandler.handleWindowClick);
     }
     
-    UserInterface.prototype.renderAndBind = function () {
-      UserInterface.prototype.renderRollerUI("Engine")
+    UserInterface.prototype.renderAndBind = function (type) {
+      UserInterface.prototype.renderRollerUI(type);
+      UserInterface.prototype.renderSchematicUI(type);
       
       UserInterface.prototype.bindHandlers();
     }

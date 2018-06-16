@@ -7,7 +7,7 @@
       window.schematicConfig = JSON.parse(this.response);
       window.UI = new window.UserInterface();
       
-      window.UI.renderAndBind();
+      window.UI.renderAndBind("Engine");
     } else {
       console.log(this.response);
     }
