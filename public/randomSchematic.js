@@ -8,41 +8,44 @@ class Schematic {
   }
   
   rollSchematic() {
-    var stats = undefined, min = 5, max = 100, total = this.config.schemTotal;
+    var statNo = undefined, min = 5, max = 100, total = this.config.schemTotal;
     switch (this.type) {
       case "Engine":
-        stats = new Array(5);
+        statNo = 5;
         break;
       case "Wing":
-        stats = new Array(3);
+        statNo = 3
         break;
       case "Cannon":
-        stats = new Array(5);
+        statNo = 5;
         break;
       case "SwivelCannon":
-        stats = new Array(5);
+        statNo = 5;
         break;
       default:
-        stats = new Array(5);
+        statNo = 5;
         break;
                      }
-    let engine = [max + 1, max + 1, max + 1, max + 1, max + 1];
+    var schematic = new Array(statNo);
+    for (var i = 0; i < statNo; i++) {
+      schematic[i] = max + 1;  
+    }
     let rollMax = -1, rollMin = 0;
-    while (engine[0] >= max || engine[1] >= max || engine[2] >= max || engine[3] >= max || engine[4] >= max) {
+    while (schematic[0] >= max || schematic[1] >= max || schematic[2] >= max || schematic[3] >= max || schematic[4] >= max) {
       rollMax++;
-      engine = this.Utilities.arrayMult(engine, this.Utilities.randomStatArray(5), 1, max, min)
-      engine = this.Utilities.elMult(this.Utilities.elDiv(engine, eval(engine.join('+'))), total);
+      schematic = this.Utilities.arrayMult(schematic, this.Utilities.randomStatArray(statNo), max, min);
+      schematic = this.Utilities.elMult(this.Utilities.elDiv(schematic, eval(schematic.join('+'))), total);
 
-      while (engine[0] < min || engine[1] < min || engine[2] < min || engine[3] < min || engine[4] < min) {
+      while (schematic[0] < min || schematic[1] < min || schematic[2] < min || schematic[3] < min || schematic[4] < min) {
         rollMin++;
-        engine = this.Utilities.arrayMult(engine, this.Utilities.randomStatArray(5), 1, max, min)
-        engine = this.Utilities.elMult(this.Utilities.elDiv(engine, eval(engine.join('+'))), total);
+        schematic = this.Utilities.arrayMult(schematic, this.Utilities.randomStatArray(statNo), 1, max, min)
+        schematic = this.Utilities.elMult(this.Utilities.elDiv(schematic, eval(schematic.join('+'))), total);
       }
     }
-    return engine;
+    return schematic;
   }
   
-  displayEngine () {
+  displaySchematic () {
     var EventHandler = window.EventHandler;
     window.loadedSchematic = this; //Load in engine to the UI
     
@@ -75,8 +78,28 @@ class Schematic {
     }
   }
   
+  saveSchematic() {
+    var key = this.type + this.name.join("");
+    while (true) {
+      if (window.localStorage.getItem(key) != undefined) {
+        key = key + "+";
+      } else {
+        break;
+      }
+    }
+    window.localStorage.setItem(key, JSON.stringify(this));
+  }
+  
   static parseJson (json) {
     return Object.assign(new Schematic(json.type, parseInt(json.tier)), json);
+  }
+  
+  get toJson () {
+    return this;
+  }
+  
+  get toString() {
+    return JSON.stringify(this);
   }
   
   get schemKnowledge() {
