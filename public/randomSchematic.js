@@ -126,7 +126,6 @@ class Engine extends Schematic {
   
   determineName() {
     var casingName, propMountName, propName, powerNum, engineType, stats = this.stats;
-    // TODO: Get Casing name from something
     for (var i = 0; i < this.config.casings.length; i++) {
       var currentCasing = this.config.casings[i];
       if (currentCasing[0] <= this.tier && this.fullStats.indexOf(Math.max(...this.fullStats)) == this.config.stats[currentCasing[2]]) {
@@ -134,7 +133,6 @@ class Engine extends Schematic {
         engineType = currentCasing[3];
       } 
     }
-    //Get Prop Head name from Power
     var power = stats[4];
     for (var i = 0; i < this.config.propMounts.length; i++) {
       if (power > this.config.propMounts[i][0] && this.config.propMounts[i][2] == engineType) {
@@ -146,7 +144,6 @@ class Engine extends Schematic {
         break;
       }
     }
-    // Get the propeller from spin-up
     var spin = stats[2];
     for (var i = 0; i < this.config.props.length; i++) {
       if (spin >= this.config.props[i][0] && this.config.props[i][2] == engineType) {

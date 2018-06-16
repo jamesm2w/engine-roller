@@ -1,6 +1,6 @@
 (function(window) {
   var request = new XMLHttpRequest();
-  request.open('GET', '/config/schematicConifg.json', true);
+  request.open('GET', '/config/schematicConfig.json', true);
 
   request.onload = function() {
     if (this.status >= 200 && this.status < 400) {
