@@ -5,6 +5,9 @@
   request.onload = function() {
     if (this.status >= 200 && this.status < 400) {
       window.schematicConfig = JSON.parse(this.response);
+      window.UI = new window.UserInterface();
+      
+      window.UI.renderAndBind();
     } else {
       console.log(this.response);
     }
@@ -15,6 +18,5 @@
   };
 
   request.send();
-  
   
 })(window);

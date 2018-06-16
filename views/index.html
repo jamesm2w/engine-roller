@@ -166,26 +166,10 @@
       var storage = window.localStorage;
       var loadedSchematic;
       
-      var materials = document.getElementsByClassName("schem-mat");
-      for (var i = 0; i < materials.length; i++) {
-        materials[i].addEventListener("mouseenter", EventHandler.handleMatMouseEnter);
-        materials[i].addEventListener("mouseleave", EventHandler.handleMatMouseLeave);
-      }
-      for (var i = 0; i < 5; i++) {
-        document.getElementById("roll-stat-" + i + "-param").addEventListener("click", EventHandler.handleQualifierClick);
-        document.getElementById("roll-stat-" + i + "-val").addEventListener("change", EventHandler.handleValueChange);
-      }
-      document.getElementById("roll-tier").addEventListener("change", EventHandler.handleTierChange);
-      document.getElementById("engine-load").addEventListener("click", () => {showModal("LoadEngine")});
       
-      var closeBtns = document.getElementsByClassName("modalClose");
-      for (var element of closeBtns) {
-        element.addEventListener("click", Utilities.closeOpenModal);
-      };
 
-      
-      window.addEventListener("click", EventHandler.handleWindowClick);
-      createRollerUI();
+      UI.renderRollerUI();
+      UI.renderSchematicUI();
     </script>
   </body>
 </html>

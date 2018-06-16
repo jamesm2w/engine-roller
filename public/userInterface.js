@@ -35,25 +35,60 @@
     UserInterface.prototype.renderRollerUI = function (type) {
       for (var i = 1; i < 9; i++) {
         document.getElementById("rollerUI").innerHTML += `<div class='${window.schematicConfig.Engine[i].rarity.toLowerCase()}-btn roll-btn' 
-          onclick='randomRoll${type}(${i})'>${window.schematicConfig.Engine[i].rarity} (T${i}) ${type}</div>`;
+          onclick='UserInterface.randomRoll${type}(${i})'>${window.schematicConfig.Engine[i].rarity} (T${i}) ${type}</div>`;
       }
     }
     
+    UserInterface.prototype.resetKnowledge = function () {
+      var kc = document.getElementById("schematicKnowledge");
+      console.log("Reset " + kc.innerHTML + " Knowledge to 0");
+      kc.innerHTML = 0;
+      return true;
+    }
+    
+    UserInterface.prototype.randomRollEngine = function (tier) {
+      var roll = new Engine(tier);
+      console.log("Rolling new " + tier + " Engine");
+      roll.displayEngine();
+    }
+    
+    UserInterface.prototype.bindHandlers = function () {
+      var Utilities = window.Utilities, EventHandler = window.EventHandler;
+      
+      var materials = window.document.getElementsByClassName("schem-mat");
+      for (var i = 0; i < materials.length; i++) {
+        materials[i].addEventListener("mouseenter", EventHandler.handleMatMouseEnter);
+        materials[i].addEventListener("mouseleave", EventHandler.handleMatMouseLeave);
+      }
+      for (var i = 0; i < 5; i++) {
+        window.document.getElementById("roll-stat-" + i + "-param").addEventListener("click", EventHandler.handleQualifierClick);
+        window.document.getElementById("roll-stat-" + i + "-val").addEventListener("change", EventHandler.handleValueChange);
+      }
+      window.document.getElementById("roll-tier").addEventListener("change", EventHandler.handleTierChange);
+      window.document.getElementById("engine-load").addEventListener("click", function () {Utilities.showModal("LoadEngine")});
+      
+      var closeBtns = window.document.getElementsByClassName("modalClose");
+      for (var element of closeBtns) {
+        element.addEventListener("click", Utilities.closeOpenModal);
+      };
+
+      window.addEventListener("click", EventHandler.handleWindowClick);
+    }
+    
+    UserInterface.prototype.renderAndBind = function () {
+      UserInterface.prototype.renderRollerUI("Engine")
+      
+      UserInterface.prototype.bindHandlers();
+    }
+    
+    return UserInterface;
+    
   })(window);
-})();
+  
+  window.UserInterface = UserInterface;
+  
+})(window);
 
-var randomRollEngine = function (tier) {
-  var roll = new Engine(tier);
-  console.log("Rolling new " + tier + " Engine");
-  roll.displayEngine();
-}
-
-var resetKnowledge = function () {
-  var kc = document.getElementById("schematicKnowledge");
-  console.log("Reset " + kc.innerHTML + " Knowledge to 0");
-  kc.innerHTML = 0;
-  return true;
-}
 
 var checkRollAgainstRuleset = function (array, engine) {
   //2D Array [ [qual, value], ... ] 
