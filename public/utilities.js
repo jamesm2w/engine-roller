@@ -80,7 +80,7 @@
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined'){
     module.exports = Utilities;
   } else {
-    window.Utilities = Utilities;
+    window.Utilities = new Utilities();
   }
   
 })(window);

@@ -90,6 +90,13 @@
       }
     }
     
+    UserInterface.prototype.renderAdvancedRollerUI = function (type) {
+      if (typeof window.EventHandler == undefined) {
+        var EventHandler = new EventHandler();
+      }
+      var panel = document.getElementById("advancedForm");
+    }
+    
     UserInterface.prototype.resetKnowledge = function () {
       var kc = document.getElementById("schematicKnowledge");
       console.log("Reset " + kc.innerHTML + " Knowledge to 0");
@@ -109,8 +116,12 @@
     }
     
     UserInterface.prototype.bindHandlers = function () {
-      var Utilities = new window.Utilities(), 
-          EventHandler = new window.EventHandler();
+      if (typeof window.Utilities == undefined) {
+        var Utilities = new Utilities();
+      } 
+      if (typeof window.EventHandler == undefined) {
+        var EventHandler = new EventHandler();
+      }
       
       var materials = window.document.getElementsByClassName("schem-mat");
       for (var i = 0; i < materials.length; i++) {

@@ -82,7 +82,7 @@
     if (typeof module !== 'undefined' && typeof module.exports !== 'undefined'){
       module.exports = EventHandler;
     } else {
-      window.EventHandler = EventHandler;
+      window.EventHandler = new EventHandler();
     }
 
 })(window);
