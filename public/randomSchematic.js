@@ -33,7 +33,7 @@ class Schematic {
     console.log(schematic);
     while (schematic[0] >= max || schematic[1] >= max || schematic[2] >= max || schematic[3] >= max || schematic[4] >= max) {
       rollMax++;
-      schematic = Utilities.arrayMult(schematic, Utilities.randomStatArray(statNo), max, min);
+      schematic = Utilities.arrayMult(schematic, Utilities.randomStatArray(statNo), 1, max, min);
       schematic = Utilities.elMult(Utilities.elDiv(schematic, eval(schematic.join('+'))), total);
       console.log(total, min, max);
       console.log(schematic);

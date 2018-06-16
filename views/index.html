@@ -33,12 +33,12 @@
       <div class="wa-panel col-4">
         <h2 class="wa-title" style="text-align: center">
           Schematic View 
-          <h5 href="javascript:void(0)" id="engine-save" style="text-decoration: none; color: darkgrey; text-transform: uppercase; cursor: not-allowed; text-align: center;">(Save Loaded Engine)</h5>
-          <h5 href="javascript:void(0)" id="engine-load" style="text-decoration: none; color: darkgrey; text-transform: uppercase; cursor: pointer; text-align: center;">(Load Saved Engine)</h5>
+          <h5 href="javascript:void(0)" class="muted-text" id="engine-save" style="cursor: not-allowed;">(Save Loaded Engine)</h5>
+          <h5 href="javascript:void(0)" class="muted-text" id="engine-load" style="cursor: pointer;">(Load Saved Engine)</h5>
         </h2>
         <p style="text-align: center;">
           Spent: <span id="schematicKnowledge">0</span> Knowledge 
-          <a href="javascript:void(0)" onclick="resetKnowledge()" style="text-decoration: none; color: darkgrey; text-transform: uppercase;">(Reset)</a>
+          <a href="javascript:void(0)" onclick="resetKnowledge()" class="muted-text">(Reset)</a>
           <span id="rolling-output"></span>
         </p>
         <div class="schematicView wa-panel col-12" id="schematicPanel">
@@ -157,8 +157,9 @@
     <script src="/eventHandler.js"></script>
     <script src="/randomSchematic.js"></script>
     <script src="/utilities.js"></script>
-    
+    <script src="/userInterface.js"></script>
     <script src="/client.js"></script>
+    
     
     <script>
       window.random = new Random();

@@ -1,9 +1,17 @@
+(function (window) {
+  var UserInterface = (function(window) {
+    var UserInterface = function (options) {};
+    
+    
+  })();
+})();
+
 var createRollerUI = function () {
   for (var i = 1; i < 9; i++) {
     document.getElementById("rollerUI").innerHTML += "<div class='" 
-      + engineConfig[i].rarity.toLowerCase() + "-btn roll-btn' onclick='randomRollEngine(" 
+      + schematicConfig.Engine[i].rarity.toLowerCase() + "-btn roll-btn' onclick='randomRollEngine(" 
       + i + ")'>" 
-      + engineConfig[i].rarity + " (T" + i + ") Engine</div>";
+      + schematicConfig.Engine[i].rarity + " (T" + i + ") Engine</div>";
   }
 }
 

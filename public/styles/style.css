@@ -34,6 +34,13 @@
   --text-colour: #ffe5c4;
 }
 
+.muted-text {
+  text-decoration: none; 
+  color: darkgray; 
+  text-transform: uppercase; 
+  text-align: center;
+}
+
 .unselectable {
   -moz-user-select: none; 
   -webkit-user-select: none; 
