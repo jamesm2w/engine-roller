@@ -2,6 +2,12 @@
 //  Array Transformation  //
 //------------------------//
 
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined'){
+  module.exports = Validator;
+} else {
+  window.Validator = Validator;
+}
+
 var elDiv =  function (ar1, num) {
   let res = new Array(ar1.length);
   for (let i = 0; i < ar1.length; i++) {
