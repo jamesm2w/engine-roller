@@ -57,11 +57,16 @@ var EventHandler = (function(window) {
       e.target.value = 1;
     }
   }
+  
+  EventHandler.prototype.handleQualifierClick = function (e) {
+    var current = e.target.value;
+    e.target.value = EventHandler.prototype.incrementQualifier(current);
+  }
 
   EventHandler.prototype.handleMatMouseEnter = function (e) {
     var el = e.target, 
         name = el.querySelector(".wa-header").innerHTML, 
-        effects = window.config.Engine.statEffects[name];
+        effects = window.loadedEngine.config.statEffects[name];
     for (var i = 0; i < effects.length; i++) {
       document.getElementById("schem-stat-" + effects[i]).style.backgroundColor = "#8bc34a";
     }

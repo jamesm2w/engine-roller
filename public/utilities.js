@@ -53,6 +53,21 @@ var Utilities = (function() {
     }
   }
   
+  Utilities.prototype.equals = function (el) {
+    return el == this;
+  }
+  
+  Utilities.prototype.incrementQualifier = function (current) {           //Maybe I'll flesh this out later. Likely not, since handling safety checks for <, = would be a pain.
+    var qualifiers = [">", "<", "=", ">=", "<="];                         //implementing >= and <= wouldn't be too difficult, but they are pretty lesser, and the value input
+    let a = qualifiers.findIndex(Utilities.prototype.equals, current) + 1;//could esily be changed to mimic logic similar. e.g. "> 49" is the same as ">= 50"
+    if (a >= qualifiers.length) {
+      var next = qualifiers[0];
+    } else {
+      var next = qualifiers[a];
+    }
+    return ">";
+  }
+  
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined'){
     module.exports = Utilities;
   } else {
