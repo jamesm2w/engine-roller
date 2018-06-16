@@ -166,10 +166,10 @@
         materials[i].addEventListener("mouseleave", window.EventHandler.handleMatMouseLeave);
       }
       for (var i = 0; i < 5; i++) {
-        window.document.getElementById("roll-stat-" + i + "-param").addEventListener("click", window.EventHandler.handleQualifierClick);
-        window.document.getElementById("roll-stat-" + i + "-val").addEventListener("change", window.EventHandler.handleValueChange);
+        window.document.getElementById("rollStat" + i + "Param").addEventListener("click", window.EventHandler.handleQualifierClick);
+        window.document.getElementById("rollStat" + i + "Value").addEventListener("change", window.EventHandler.handleValueChange);
       }
-      window.document.getElementById("roll-tier").addEventListener("change", window.EventHandler.handleTierChange);
+      window.document.getElementById("advancedRollTier").addEventListener("change", window.EventHandler.handleTierChange);
       window.document.getElementById("loadSavedSchematicBtn").addEventListener("click", function () {
         window.Utilities.showModal("LoadEngine")});
       

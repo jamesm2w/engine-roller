@@ -7,7 +7,7 @@ class Schematic {
   }
   
   rollSchematic() {
-    var statNo = undefined, min = 5, max = 100, total = this.config.schemMax, Utilities = new window.Utilities();
+    var statNo = undefined, min = 5, max = 100, total = this.config.schemMax, Utilities = window.Utilities;
     switch (this.type) {
       case "Engine":
         statNo = 5;
@@ -44,7 +44,7 @@ class Schematic {
   }
   
   displaySchematic () {
-    var EventHandler = new window.EventHandler();
+    var EventHandler = window.EventHandler;
     window.loadedSchematic = this; //Load in engine to the UI
     
     var panel = document.getElementById("schematicPanel");
@@ -109,7 +109,7 @@ class Schematic {
     return this.config.schemMax;
   }
   
-  set rollNumer(n) {
+  rollNumber(n) {
     this.rollNumber = n;
   }
 };
