@@ -180,7 +180,7 @@ class Wing extends Schematic {
   }
   
   calculateCosts() {
-    var stats = this.stat, costs = [0,0,0];
+    var stats = this.stats, costs = [0,0,0];
     costs[0] = 2 * (stats[0] + stats[1]);
     costs[1] = 2 * (stats[1]);
     costs[2] = 2 * (stats[2]);
