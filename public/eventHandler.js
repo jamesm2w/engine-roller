@@ -5,7 +5,7 @@
 
     EventHandler.prototype.handleWindowClick = function (e) {
       if (event.target.classList.contains("modal")) {
-        window.Utilities.prototype.closeOpenModal(e);
+        window.Utilities.closeOpenModal(e);
       }
     };
 
@@ -13,7 +13,7 @@
       var obj = JSON.parse(window.localStorage.getItem(e.target.parentElement.id));
       var engine = Schematic.parseJson(obj);
       engine.displaySchematic();
-      window.Utilities.prototype.closeOpenModal();
+      window.Utilities.closeOpenModal();
     };
 
     EventHandler.prototype.handleForgetAction = function (e) {
@@ -21,7 +21,8 @@
       var confirmation = confirm("Are you sure you want to remove this engine? It will be lost forever.");
       if (confirmation) {
         window.localStorage.removeItem(name);
-        window.Utilities.prototype.closeOpenModal();
+        window.UI.renderLoaderUI();
+        //window.Utilities.prototype.closeOpenModal();
         return true;
       } else {
         return false;
