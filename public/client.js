@@ -258,36 +258,5 @@ var handleQualifierClick = function (e) {
   e.target.value = incrementQualifier(current);
 }
 
-var handleValueChange = function (e) {
-  var value = e.target.value;
-  if ( value > 99) {
-    e.target.value = 99;
-  } else if ( value < 5) {
-    e.target.value = 5;
-  }
-}
 
-var handleTierChange = function (e) {
-  var value = e.target.value;
-  if (value > 8) {
-    e.target.value = 8;
-  } else if (value < 1) {
-    e.target.value = 1;
-  }
-}
-
-var handleMatMouseEnter = function (e) {
-  var el = e.target, 
-      name = el.querySelector(".wa-header").innerHTML, 
-      effects = engineConfig.statEffects[name];
-  for (var i = 0; i < effects.length; i++) {
-    document.getElementById("schem-stat-" + effects[i]).style.backgroundColor = "#8bc34a";
-  }
-}
-
-var handleMatMouseLeave = function (e) {
-  for (var i = 0; i < 5; i++) {
-    document.getElementById("schem-stat-" + i).style.backgroundColor = "#668ec3";
-  }
-}
 
