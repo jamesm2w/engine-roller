@@ -24,11 +24,10 @@
                          <div class="divider top bottom"></div>`;
       for (var i = 0; i < 5; i++) {
         panel.innerHTML += statString({"name": Object.keys(window.schematicConfig[type].stats)[i], "index": i});
-      }
-      for (var i = 0; i < Object.keys(window.schematicConfig[type].stats).length; i++) {
-        if(panel.getElementById("schematicStat"+i).getElementsByClassName("stat-label")[0].innerHTML == "undefined") {
-          panel.getElementById("schematicStat"+i).getElementsByClassName("stat-label")[0].classList.add("hidden");
-          panel.getElementById("schematicStat"+i).getElementsByClassName("stat-label")[1].classList.add("hidden");
+      
+        if(document.getElementById("schematicStat"+i).getElementsByClassName("stat-label")[0].innerHTML == "undefined") {
+          document.getElementById("schematicStat"+i).getElementsByClassName("stat-label")[0].classList.add("hidden");
+          document.getElementById("schematicStat"+i).getElementsByClassName("stat-label")[1].classList.add("hidden");
         }
       }
       panel.innerHTML += `<div class="schematicMoreInfo">
@@ -46,6 +45,24 @@
       if (panel.getAttribute("schematicType") == type) {
         return true;
       } else {
+        
+        window.document.getElementById("schematicName").innerHTML = "Procedural " + type;
+        
+        for (var i = 0; i < 5; i++) {
+          var stat = document.getElementById("schematicStat"+i);
+          if(stat.getElementsByClassName("stat-label")[0].innerHTML == "undefined") {
+            //Hide stats which aren't gonna be used in this schematic
+            stat.getElementsByClassName("stat-label")[0].classList.add("hidden");
+            stat.getElementsByClassName("stat-label")[1].classList.add("hidden");
+            stat.getElementsByClassName("progress")[0].classList.add("hidden");
+          } else {
+            //Show stats which are
+            stat.getElementsByClassName("stat-label")[0].classList.remove("hidden");
+            stat.getElementsByClassName("stat-label")[1].classList.remove("hidden");
+            stat.getElementsByClassName("progress")[0].classList.remove("hidden");
+          }
+        }
+        
         
       }
     
