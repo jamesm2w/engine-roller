@@ -152,7 +152,7 @@
       roll.displaySchematic();
     }
     
-    UserInterface.prototype.bindHandlers = function () {
+    UserInterface.prototype.bindHandlers = function (type) {
       if (typeof window.Utilities == undefined) {
         var Utilities = new Utilities();
       } 
@@ -165,7 +165,7 @@
         materials[i].addEventListener("mouseenter", window.EventHandler.handleMatMouseEnter);
         materials[i].addEventListener("mouseleave", window.EventHandler.handleMatMouseLeave);
       }
-      for (var i = 0; i < 5; i++) {
+      for (var i = 0; i < window.schematicConfig[type].stats.length; i++) {
         window.document.getElementById("rollStat" + i + "Param").addEventListener("click", window.EventHandler.handleQualifierClick);
         window.document.getElementById("rollStat" + i + "Value").addEventListener("change", window.EventHandler.handleValueChange);
       }
@@ -185,7 +185,7 @@
       UserInterface.prototype.renderRollerUI(type);
       UserInterface.prototype.renderAdvancedRollerUI(type);
       UserInterface.prototype.renderSchematicUI(type);
-      UserInterface.prototype.bindHandlers();
+      UserInterface.prototype.bindHandlers(type);
     }
     
     return UserInterface;
