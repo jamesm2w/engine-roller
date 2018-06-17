@@ -37,14 +37,29 @@
     }
 
     var advancedRoll = function (type, tier, ruleset) {
+      var schematic;
+      switch (type) {
+        case "Engine":
+          schematic = new Engine(tier);
+          break;
+        case "Wing":
+          schematic = new Wing(tier);
+          break;
+        case "Cannon":
+          schematic = new Cannon(tier);
+          break;
+        case "Swivel":
+          schematic = new Swivel(tier);
+          break;
+                  }
       var n = 0;
       while (true) {
         n++;
-        var engine = new Schematic(type, tier);
-        if(checkRollAgainstRuleset(ruleset, engine)) {
+        schematic.stats = schematic.rollSchematic().map(x => Math.round(x));
+        if(checkRollAgainstRuleset(ruleset, schematic)) {
           alert("Success! (After attempt #" + n + ")");
-          engine.rollNumber = n;
-          return engine;
+          schematic.rollNumber = n;
+          return schematic;
         }
       }
     }
