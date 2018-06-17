@@ -199,7 +199,7 @@ class Wing extends Schematic {
   }
   
   determineName() {
-    return ["Proc", "Wing", this.tier, "23", "?"];
+    return ["Proc", "Wing", this.tier, "00", "X"];
   }
   
   calculateCosts() {
@@ -217,7 +217,35 @@ class Wing extends Schematic {
   }
 };
 
-class Cannon extends Schematic {};
+class Cannon extends Schematic {
+    constructor(tier) {
+    super("Cannon", tier);
+    this.fullStats = this.rollSchematic();
+    this.stats = this.fullStats.map(function (x) {return Math.round(x)});
+    this.name = this.determineName();
+    this.costs = this.calculateCosts();
+  }
+  
+  determineName() {
+    return ["Proc", "Wing", this.tier, "00", "X"];
+  }
+  
+  calculateCosts() {
+    var stats = this.stats, costs = [0,0,0];
+  // Resilience, Capactiy, Power, OH, ROF
+    costs[0] = 2 * (stats[0] + stats[2]); //Casing = 2 x (Resilience + Power)
+    costs[3] = 2 * (stats[4]); //Firing Mechanism = 2 x (Rate of fire)
+    costs[1] = 2 * (stats[2]); //Barrel = 2 x (Power)
+    costs[2] = 2 * (stats[1] + stats[3]); //Ammo Loader = 2x (Capacity + Overheat)
+    return costs;
+  }
+  
+  static getDisplayName(name) {
+        // Body Name + "Barrel" + Base + Ammo Box + - Number
+        // [Narwhal] [Navigator] [1][23][B]
+    return name[0] + " " + name[1] + " " + name[2] + name[3] + name[4];
+  }
+};
 
 class SwivelCannon extends Schematic {};
 

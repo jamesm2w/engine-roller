@@ -174,5 +174,35 @@
       "Pivot Speed": 1,
       "Power": 2
     }
+  },
+  "Cannon": {
+    "statEffects": {
+      "Casing":     [0],
+      "Barrel":    [2, 3],
+      "Ammo Loader": [1, 4],
+      "Firing Mechanism": [2, 3, 4]
+    },
+    "stats": {
+      "Resilience": 0,
+      "Capacity": 1,
+      "Power": 2,
+      "Overheat Limit": 3,
+      "Rate Of Fire": 4
+    }
+  },
+  "Swivel": {
+    "statEffects": {
+      "Casing":     [0],
+      "Barrel":    [2, 3],
+      "Ammo Loader": [1, 4],
+      "Firing Mechanism": [2, 3, 4]
+    },
+    "stats": {
+      "Resilience": 0,
+      "Capacity": 1,
+      "Power": 2,
+      "Overheat Limit": 3,
+      "Rate Of Fire": 4
+    }
   }
 }
