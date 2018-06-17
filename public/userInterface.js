@@ -167,6 +167,26 @@
       roll.displaySchematic();
     }
     
+    UserInterface.prototype.randomRollCannon = function (tier) {
+      UserInterface.prototype.patchSchematicUI("Cannon");
+      UserInterface.prototype.renderRollerUI("Cannon");
+      
+      var roll = new Cannon(tier);
+      console.log("Rolling new Tier " + tier + " Cannon");
+
+      roll.displaySchematic();
+    }
+    
+    UserInterface.prototype.randomRollSwivel = function (tier) {
+      UserInterface.prototype.patchSchematicUI("Swivel");
+      UserInterface.prototype.renderRollerUI("Swivel");
+      
+      var roll = new Swivel(tier);
+      console.log("Rolling new Tier " + tier + " Swivel");
+
+      roll.displaySchematic();
+    }
+    
     UserInterface.prototype.bindHandlers = function (type) {
       if (typeof window.Utilities == undefined) {
         var Utilities = new Utilities();

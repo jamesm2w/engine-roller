@@ -176,6 +176,54 @@
     }
   },
   "Cannon": {
+        "8": {
+      "rarity":    "Experimental",
+      "schemMax":  460,
+      "knowledge": 2000,
+      "colour":    "black"
+    },
+    "7": {
+      "rarity":    "Hypothetical",
+      "schemMax":  375,
+      "knowledge": 1240,
+      "colour":    "darkgray"
+    },
+    "6": {
+      "rarity":    "Legendary",
+      "schemMax":  300,
+      "knowledge": 860,
+      "colour":    "#E6152C"
+    },
+    "5": {
+      "rarity":    "Pristine",
+      "schemMax":  235,
+      "knowledge": 640,
+      "colour":    "#C883F5"
+    },
+    "4": {
+      "rarity":    "Exotic",
+      "schemMax":  180,
+      "knowledge": 500,
+      "colour":    "#FFD27D"
+    },
+    "3": {
+      "rarity":    "Rare",
+      "schemMax":  135,
+      "knowledge": 400,
+      "colour":    "#6392F6"
+    },
+    "2": {
+      "rarity":    "Uncommon",
+      "schemMax":  100,
+      "knowledge": 320,
+      "colour":    "#95C340"
+    },
+    "1": {
+      "rarity":    "Common",
+      "schemMax":  75,
+      "knowledge": 250,
+      "colour":    "#FFE5C4"
+    },
     "statEffects": {
       "Casing":     [0],
       "Barrel":    [2, 3],
@@ -191,6 +239,54 @@
     }
   },
   "Swivel": {
+    "8": {
+      "rarity":    "Experimental",
+      "schemMax":  460,
+      "knowledge": 2000,
+      "colour":    "black"
+    },
+    "7": {
+      "rarity":    "Hypothetical",
+      "schemMax":  375,
+      "knowledge": 1240,
+      "colour":    "darkgray"
+    },
+    "6": {
+      "rarity":    "Legendary",
+      "schemMax":  300,
+      "knowledge": 860,
+      "colour":    "#E6152C"
+    },
+    "5": {
+      "rarity":    "Pristine",
+      "schemMax":  235,
+      "knowledge": 640,
+      "colour":    "#C883F5"
+    },
+    "4": {
+      "rarity":    "Exotic",
+      "schemMax":  180,
+      "knowledge": 500,
+      "colour":    "#FFD27D"
+    },
+    "3": {
+      "rarity":    "Rare",
+      "schemMax":  135,
+      "knowledge": 400,
+      "colour":    "#6392F6"
+    },
+    "2": {
+      "rarity":    "Uncommon",
+      "schemMax":  100,
+      "knowledge": 320,
+      "colour":    "#95C340"
+    },
+    "1": {
+      "rarity":    "Common",
+      "schemMax":  75,
+      "knowledge": 250,
+      "colour":    "#FFE5C4"
+    },
     "statEffects": {
       "Casing":     [0],
       "Barrel":    [2, 3],
