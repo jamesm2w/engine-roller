@@ -136,7 +136,7 @@
       
       panel.innerHTML += `<div class="form-group col-6 clickable" style="text-align: center; height: 64px; vertical-align: middle;" 
               onclick="AdvancedRoller.advancedRollWrapper(${type});">
-              <span class="wa-header" style="font-size: 1em; line-height: 34px;">Roll ${type}</span>
+              <span class="wa-header" style="font-size: 1em; line-height: 34px;" id="advancedRoll${type}">Roll ${type}</span>
             </div></div>`;
     }
     

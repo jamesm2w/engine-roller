@@ -176,7 +176,7 @@
     }
   },
   "Cannon": {
-        "8": {
+    "8": {
       "rarity":    "Experimental",
       "schemMax":  460,
       "knowledge": 2000,
@@ -228,7 +228,7 @@
       "Casing":     [0],
       "Barrel":    [2, 3],
       "Ammo Loader": [1, 4],
-      "Firing Mechanism": [2, 3, 4]
+      "Firing Mech": [2, 3, 4]
     },
     "stats": {
       "Resilience": 0,
@@ -291,7 +291,7 @@
       "Casing":     [0],
       "Barrel":    [2, 3],
       "Ammo Loader": [1, 4],
-      "Firing Mechanism": [2, 3, 4]
+      "Firing Mech": [2, 3, 4]
     },
     "stats": {
       "Resilience": 0,

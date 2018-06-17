@@ -106,6 +106,10 @@ class Schematic {
         return Engine.getDisplayName(name);
       case "Wing":
         return Wing.getDisplayName(name);
+      case "Cannon":
+        return Cannon.getDisplayName(name);
+      case "Swivel":
+        return Swivel.getDisplayName(name);
                }
   }
   
@@ -247,7 +251,7 @@ class Cannon extends Schematic {
   }
 };
 
-class SwivelCannon extends Schematic {
+class Swivel extends Schematic {
   constructor(tier) {
     super("Swivel", tier);
     this.fullStats = this.rollSchematic();
