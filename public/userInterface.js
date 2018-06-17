@@ -203,6 +203,20 @@
       UserInterface.prototype.bindHandlers(type);
     }
     
+    UserInterface.prototype.switch = function (e) {
+      var type = e.target.id
+      this.renderAndBind(type);
+      document.getElementsByClassName("switch-btn").forEach(function (el) {
+        el.classList.remove("active");
+        if (el.id == type) {
+          el.classList.add("active");
+          el.removeEventListener("click", window.UI.switch); 
+        } else {
+          el.addEventListener("click", window.UI.switch);
+        }
+      })
+    }
+    
     return UserInterface;
     
   })(window);
