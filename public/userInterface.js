@@ -211,16 +211,17 @@
     UserInterface.prototype.switch = function (e) {
       var type = e.target.parentNode.getAttribute("id") ? e.target.parentNode.getAttribute("id"): e.target.getAttribute("id");
       UserInterface.prototype.renderAndBind(type);
-      document.getElementsByClassName("switch-btn").forEach(function (el) {
+      var btns = document.getElementsByClassName("switch-btn");
+      for (var i = 0; i< btns.length; i++) {
+        var el = btns[i];
         el.classList.remove("active");
-        console.log(el.getAttribute("id"));
         if (el.getAttribute("id") == type) {
           el.classList.add("active");
           el.removeEventListener("click", this.switch); 
         } else {
           el.addEventListener("click", this.switch);
         }
-      })
+      }
     }
     
     return UserInterface;

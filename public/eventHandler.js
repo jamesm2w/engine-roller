@@ -11,8 +11,9 @@
 
     EventHandler.prototype.handleLoadAction = function (e) {
       var obj = JSON.parse(window.localStorage.getItem(e.target.parentElement.id));
-      var engine = Schematic.parseJson(obj);
-      engine.displaySchematic();
+      var schem = Schematic.parseJson(obj);
+      document.getElementById(schem.type).click();
+      schem.displaySchematic();
       window.Utilities.closeOpenModal();
     };
 
