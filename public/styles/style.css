@@ -52,7 +52,10 @@
 }
 
 .switch-btn.active {
-  
+  background-color: var(--text-colour);
+  color: black;
+  border-color: var(--text-colour);
+  cursor: default !important;
 }
 
 #saveLoadedSchematicBtn:hover {
