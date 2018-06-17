@@ -80,8 +80,14 @@ class Schematic {
   saveSchematic() {
     var key = this.type + this.name.join("");
     while (true) {
-      if (window.localStorage.getItem(key) == JSON.stringify(this)) {
-        key += "+";
+      if (window.localStorage.getItem(key)) {
+        if (window.localStorage.getItem(key) == JSON.stringify(this)) {
+          //Same object... don't really care what happens
+          break;
+        } else {
+          //Whoa two different engines with the same name!!
+          key += "+";
+        }
       } else {
         break;
       }
