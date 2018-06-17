@@ -34,6 +34,14 @@
   --text-colour: #ffe5c4;
 }
 
+#saveLoadedSchematicBtn:hover {
+  color: gray;
+}
+
+#loadSavedSchematicBtn:hover {
+  color: gray;
+}
+
 .hidden {
   display: none;
 }
