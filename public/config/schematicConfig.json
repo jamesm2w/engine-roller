@@ -136,13 +136,13 @@
     },
     "5": {
       "rarity":    "Pristine",
-      "schemMax":  156,
+      "schemMax":  155,
       "knowledge": 250,
       "colour":    "#C883F5"
     },
     "4": {
       "rarity":    "Exotic",
-      "schemMax":  120,
+      "schemMax":  110,
       "knowledge": 200,
       "colour":    "#FFD27D"
     },
@@ -154,13 +154,13 @@
     },
     "2": {
       "rarity":    "Uncommon",
-      "schemMax":  50,
+      "schemMax":  60,
       "knowledge": 130,
       "colour":    "#95C340"
     },
     "1": {
       "rarity":    "Common",
-      "schemMax":  30,
+      "schemMax":  45,
       "knowledge": 100,
       "colour":    "#FFE5C4"
     },
