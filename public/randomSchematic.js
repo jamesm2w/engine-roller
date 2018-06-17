@@ -80,7 +80,7 @@ class Schematic {
   saveSchematic() {
     var key = this.type + this.name.join("");
     while (true) {
-      if (!window.localStorage.getItem(key) && window.localStorage.getItem(key) == JSON.stringify(this)) {
+      if (window.localStorage.getItem(key) == JSON.stringify(this)) {
         key += "+";
       } else {
         break;
