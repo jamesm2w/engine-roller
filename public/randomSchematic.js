@@ -62,8 +62,16 @@ class Schematic {
       document.getElementById("schematicMat" + i).classList.remove("hidden");
     }
     
-    document.getElementById("schematicName").innerHTML = 
-      this.name[0] + " " + this.name[1] + " " + this.name[2] + this.name[3] + " (Tier " + this.tier + ")";
+    var displayName;
+    switch(this.type) {
+      case "Engine":
+        displayName = Engine.getDisplayName(this.name);
+        break;
+      case "Wing":
+        displayName = Wing.getDisplayName(this.name);
+               }
+    
+    document.getElementById("schematicName").innerHTML = displayName + " (Tier " + this.tier + ")";
     
     document.getElementById("saveLoadedSchematicBtn").addEventListener("click", EventHandler.handleEngineSaveClick);
     document.getElementById("saveLoadedSchematicBtn").style.cursor = "pointer";
@@ -171,6 +179,13 @@ class Engine extends Schematic {
     costs[3] = 2 * (stats[2] + stats[3]);               //2 x (Spinup + Overheat)
     return costs;
   }
+  
+  
+  static getDisplayName(name) {
+        // Casing Name + Prop Mount Name + Prop Letter + Number
+        //e.g. Ironforge Starcaster N1
+    return name[0] + " " + name[1] + " " + name[2] + name[3];
+  }
 };
 
 class Wing extends Schematic {
@@ -183,7 +198,7 @@ class Wing extends Schematic {
   }
   
   determineName() {
-    return "Procedural Engine (Tier " + this.tier + ")";
+    return ["Proc", "Wing", "(Tier " + this.tier + ")"];
   }
   
   calculateCosts() {
@@ -192,6 +207,12 @@ class Wing extends Schematic {
     costs[1] = 2 * (stats[1]);
     costs[2] = 2 * (stats[2]);
     return costs;
+  }
+  
+  static getDisplayName(name) {
+        // Body Name + Wingtip Name + Aileron Number + Bracket Number + Letter
+        // [Traveller] [Navigator] [1][23][B]
+    return name[0] + " " + name[1] + " " + name[2] + name[3] + name[4];
   }
 };
 
