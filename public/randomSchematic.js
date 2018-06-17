@@ -62,10 +62,8 @@ class Schematic {
       document.getElementById("schematicMat" + i).classList.remove("hidden");
     }
     
-    var displayName;
     
-    
-    document.getElementById("schematicName").innerHTML = displayName + " (Tier " + this.tier + ")";
+    document.getElementById("schematicName").innerHTML = Schematic.getDisplayName(this.type, this.name) + " (Tier " + this.tier + ")";
     
     document.getElementById("saveLoadedSchematicBtn").addEventListener("click", EventHandler.handleEngineSaveClick);
     document.getElementById("saveLoadedSchematicBtn").style.cursor = "pointer";

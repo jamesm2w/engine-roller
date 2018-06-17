@@ -99,7 +99,7 @@
       var modalEl = document.getElementById("LoadEngineModal").getElementsByClassName("modal-body")[0];
       modalEl.innerHTML = "";
       if (window.localStorage.length == 0) {
-        modalEl.innerHTML = `<p><em style='color:darkgrey;'>Nothing to see here. Save an engine first before you try to load one</em></p>`;
+        modalEl.innerHTML = `<p><em style='color:darkgray;'>Nothing to see here. Save an engine first before you try to load one</em></p>`;
         return undefined;
       }
 
