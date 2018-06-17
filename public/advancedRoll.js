@@ -7,7 +7,6 @@
       //2D Array [ [qual, value], ... ] 
       for (var i = 0; i < array.length; i++) {
         var bool = eval(stats[i] + array[i][0] + array[i][1]);
-        console.log(stats[i] + array[i][0] + array[i][1]);
         if (bool === true) {
           continue;
         } else {
