@@ -148,19 +148,19 @@
     },
     "3": {
       "rarity":    "Rare",
-      "schemMax":  90,
+      "schemMax":  80,
       "knowledge": 160,
       "colour":    "#6392F6"
     },
     "2": {
       "rarity":    "Uncommon",
-      "schemMax":  66,
+      "schemMax":  50,
       "knowledge": 130,
       "colour":    "#95C340"
     },
     "1": {
       "rarity":    "Common",
-      "schemMax":  50,
+      "schemMax":  30,
       "knowledge": 100,
       "colour":    "#FFE5C4"
     },

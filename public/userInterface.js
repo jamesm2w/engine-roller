@@ -99,14 +99,20 @@
       var modalEl = document.getElementById("LoadEngineModal").getElementsByClassName("modal-body")[0];
       modalEl.innerHTML = "";
       if (window.localStorage.length == 0) {
-        modalEl.innerHTML = `<em style='color:darkgrey;'>Nothing to see here. Save an engine first before you try to load one`;
+        modalEl.innerHTML = `<p><em style='color:darkgrey;'>Nothing to see here. Save an engine first before you try to load one</em></p>`;
         return undefined;
       }
 
       for (var i = 0; i < window.localStorage.length; i++) {
         var currentItem = JSON.parse(window.localStorage.getItem(window.localStorage.key(i)));
 
-        var htmlString = '<div class="form-group col-6" id="Group-' + window.localStorage.key(i) + '"><span class="wa-header form-group-header center" style="color: var(--rarity-' + currentItem.config.rarity.toLowerCase() + ');">' + (currentItem.name[0] + " " + currentItem.name[1] + " " + currentItem.name[2] + currentItem.name[3]) + '</span><span class="center" id="' + window.localStorage.key(i) + '"><span class="load-btn" onclick="EventHandler.handleLoadAction(event);">Load Engine</span><span class="forget-btn" onclick="EventHandler.handleForgetAction(event);">Forget Engine</span></span></div>';
+        var htmlString = `<div class="form-group col-6" id="Group-${window.localStorage.key(i)}">
+            <span class="wa-header form-group-header center" style="color: var(--rarity-${currentItem.config.rarity.toLowerCase()});">
+            ${Schematic.getDisplayName(currentItem.type, currentItem.name)}</span>
+            <span class="center" id="${window.localStorage.key(i)}">
+            <span class="load-btn" onclick="EventHandler.handleLoadAction(event);">Load ${currentItem.type}</span>
+            <span class="forget-btn" onclick="EventHandler.handleForgetAction(event);">Forget ${currentItem.type}</span>
+        </span></div>`;
         modalEl.innerHTML += htmlString;
       }
     }

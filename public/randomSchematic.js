@@ -63,13 +63,7 @@ class Schematic {
     }
     
     var displayName;
-    switch(this.type) {
-      case "Engine":
-        displayName = Engine.getDisplayName(this.name);
-        break;
-      case "Wing":
-        displayName = Wing.getDisplayName(this.name);
-               }
+    
     
     document.getElementById("schematicName").innerHTML = displayName + " (Tier " + this.tier + ")";
     
@@ -106,6 +100,15 @@ class Schematic {
   
   static parseJson (json) {
     return Object.assign(new Schematic(json.type, parseInt(json.tier)), json);
+  }
+  
+  static getDisplayName (type, name) {
+    switch(type) {
+      case "Engine":
+        return Engine.getDisplayName(name);
+      case "Wing":
+        return Wing.getDisplayName(name);
+               }
   }
   
   get toJson () {
@@ -198,7 +201,7 @@ class Wing extends Schematic {
   }
   
   determineName() {
-    return ["Proc", "Wing", "(Tier " + this.tier + ")"];
+    return ["Proc", "Wing", this.tier, "23", "?"];
   }
   
   calculateCosts() {
