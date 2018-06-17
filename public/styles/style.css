@@ -34,6 +34,27 @@
   --text-colour: #ffe5c4;
 }
 
+.switch-btn {
+  width: 22%; 
+  margin: 0 1%; 
+  display: inline-block; 
+  border: 1px solid; 
+  border-radius: 5px; 
+  text-align: center;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.switch-btn:hover {
+  background-color: var(--text-colour);
+  color: black;
+  border-color: var(--text-colour);
+  cursor: pointer;
+}
+
+.switch-btn.active {
+  
+}
+
 #saveLoadedSchematicBtn:hover {
   color: gray;
 }
