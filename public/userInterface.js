@@ -175,6 +175,11 @@
         var EventHandler = new EventHandler();
       }
       
+      var switchBtns = window.document.getElementsByClassName("switch-btn");
+      for (var i = 0; i < switchBtns.length; i++) {
+        switchBtns[i].addEventListener("click", this.switch);
+      }
+      
       var materials = window.document.getElementsByClassName("schem-mat");
       for (var i = 0; i < materials.length; i++) {
         materials[i].addEventListener("mouseenter", window.EventHandler.handleMatMouseEnter);
@@ -204,15 +209,16 @@
     }
     
     UserInterface.prototype.switch = function (e) {
-      var type = e.target.id
-      this.renderAndBind(type);
+      var type = e.target.parentNode.getAttribute("id") ? e.target.parentNode.getAttribute("id"): e.target.getAttribute("id");
+      UserInterface.prototype.renderAndBind(type);
       document.getElementsByClassName("switch-btn").forEach(function (el) {
         el.classList.remove("active");
-        if (el.id == type) {
+        console.log(el.getAttribute("id"));
+        if (el.getAttribute("id") == type) {
           el.classList.add("active");
-          el.removeEventListener("click", window.UI.switch); 
+          el.removeEventListener("click", this.switch); 
         } else {
-          el.addEventListener("click", window.UI.switch);
+          el.addEventListener("click", this.switch);
         }
       })
     }
