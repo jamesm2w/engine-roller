@@ -68,7 +68,7 @@
       } else {
         
         window.document.getElementById("schematicName").innerHTML = "Procedural " + type;
-        
+        panel.style.borderColor = "var(--text-color)";
         for (var i = 0; i < 5; i++) {
           var stat = document.getElementById("schematicStat"+i);
           if(stat.getElementsByClassName("stat-label")[0].innerHTML == "undefined") {
@@ -230,7 +230,11 @@
     
     UserInterface.prototype.switch = function (e) {
       var type = e.target.parentNode.getAttribute("id") ? e.target.parentNode.getAttribute("id"): e.target.getAttribute("id");
-      UserInterface.prototype.renderAndBind(type);
+      //UserInterface.prototype.renderAndBind(type);
+      UserInterface.prototype.patchSchematicUI(type);
+      UserInterface.prototype.renderAdvancedRollerUI(type);
+      UserInterface.prototype.renderSchematicUI(type);
+      UserInterface.prototype.bindHandlers(type);
       var btns = document.getElementsByClassName("switch-btn");
       for (var i = 0; i< btns.length; i++) {
         var el = btns[i];
