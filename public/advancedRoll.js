@@ -30,7 +30,7 @@
         statTotal += parseInt(ruleset[i][1]);
       }
       if (statTotal > maximumTotal) {
-        return false;
+        return true;
       } else {
         return true;
       }

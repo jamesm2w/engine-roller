@@ -230,11 +230,24 @@
     
     UserInterface.prototype.switch = function (e) {
       var type = e.target.parentNode.getAttribute("id") ? e.target.parentNode.getAttribute("id"): e.target.getAttribute("id");
-      //UserInterface.prototype.renderAndBind(type);
+
+      
+      UserInterface.prototype.renderRollerUI(type);
       UserInterface.prototype.patchSchematicUI(type);
       UserInterface.prototype.renderAdvancedRollerUI(type);
       UserInterface.prototype.renderSchematicUI(type);
       UserInterface.prototype.bindHandlers(type);
+      UserInterface.prototype.resetKnowledge();
+      window.loadedSchematic = undefined;
+      
+      
+      var loadBtn = document.getElementById("saveLoadedSchematicBtn");
+      loadBtn.removeEventListener("click", window.EventHandler.handleEngineSaveClick);
+      loadBtn.style.cursor = "not-allowed";
+      loadBtn.style.color = "darkgrey";
+      loadBtn.innerHTML = "(Save Loaded Schematic)";
+      
+      
       var btns = document.getElementsByClassName("switch-btn");
       for (var i = 0; i< btns.length; i++) {
         var el = btns[i];
