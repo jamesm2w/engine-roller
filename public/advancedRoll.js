@@ -25,12 +25,12 @@
     }
 
     var safetyCheckForRoll = function (tier, ruleset) {
-      var statTotal = 0, maximumTotal = window.schematicConfig["Engine"][tier].schemMax - 25;
+      var statTotal = 0, maximumTotal = window.schematicConfig["Engine"][tier].schemMax;
       for (var i = 0; i < ruleset.length; i++) {
         statTotal += parseInt(ruleset[i][1]);
       }
       if (statTotal > maximumTotal) {
-        return true;
+        return false;
       } else {
         return true;
       }
