@@ -2,34 +2,42 @@ var random = new require("random-js")();
 
 exports = module.exports = {};
 
-var elDiv = (ar1, num) => {
-  let res = new Array(ar1.length);
-  for (let i = 0; i < ar1.length; i++) {
-    res[i] = ar1[i] / num;
+var elementwiseDivision = (arr, num) => {
+  // Divides each element in the array by num
+  for (var i = 0; i < arr.length; i++) {
+    arr[i] = arr[i] / num
   }
-  return res;
+  return arr;
 }
 
-var elMult = (ar1, num) => {
-  let res = new Array(ar1.length);
-  for (let i = 0; i < ar1.length; i++) {
-    res[i] = ar1[i] * num;
+var elementwiseMultiplication = (arr, num) => {
+  // Multiplies each element in the array by num
+  for (var i = 0; i < arr.length; i++) {
+    arr[i] = arr[i] * num
   }
-  return res;
+  return arr;
 }
 
-var arrayMult = (ar1, ar2, pwr, max, min) => {
-  if (ar1.length != ar2.length) {
-    throw "Arrays are not same length. Can't do this";
+var comparisonAny = (arr, max, min) => {
+  // Return false if any value in array is outside the max >= x >= min range
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] >= max) {
+      return false;
+    }
+    if (arr[i] <= min) {
+      return false;
+    }
   }
-  for (let i = 0; i < ar1.length; i++) {
-    ar1[i] = Math.pow(ar2[i], pwr) * (max-min) + min;
-  }
-  return ar1;
+  return true;
 }
 
 exports.rollSchematic = (min, max, total) => {
   let engine = [max + 1, max + 1, max + 1, max + 1, max + 1];
+  while (comparisonAny(engine, max, min)) {
+    engine = elementwiseMultiplication(elementwiseDivision());
+  }
+  
+  
   let rollMax = -1, rollMin = 0;
   console.log(engine)
   while (engine[0] >= max || engine[1] >= max || engine[2] >= max || engine[3] >= max || engine[4] >= max) {
