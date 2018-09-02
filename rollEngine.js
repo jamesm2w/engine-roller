@@ -19,41 +19,28 @@ var elementwiseMultiplication = (arr, num) => {
 }
 
 var comparisonAny = (arr, max, min) => {
-  // Return false if any value in array is outside the max >= x >= min range
+  // Return true (to keep while loop going) if any value in array is outside the max >= x >= min range
   for (var i = 0; i < arr.length; i++) {
     if (arr[i] >= max) {
-      return false;
+      return true;
     }
     if (arr[i] <= min) {
-      return false;
+      return true;
     }
   }
-  return true;
+  return false;
 }
 
 exports.rollSchematic = (min, max, total) => {
   let engine = [max + 1, max + 1, max + 1, max + 1, max + 1];
   while (comparisonAny(engine, max, min)) {
-    engine = elementwiseMultiplication(elementwiseDivision());
-  }
-  
-  
-  let rollMax = -1, rollMin = 0;
-  console.log(engine)
-  while (engine[0] >= max || engine[1] >= max || engine[2] >= max || engine[3] >= max || engine[4] >= max) {
-    rollMax++;
-    engine = arrayMult(engine, [random.real(1,5),random.real(1,5),random.real(1,5),random.real(1,5),random.real(1,5)], 1, max, min)
-    console.log(engine)
-    engine = elMult(elDiv(engine, eval(engine.join('+'))), total);
-    console.log(engine)
-    
-    while (engine[0] < min || engine[1] < min || engine[2] < min || engine[3] < min || engine[4] < min) {
-      rollMin++;
-      engine = arrayMult(engine, [random.real(1,5),random.real(1,5),random.real(1,5),random.real(1,5),random.real(1,5)], 1, max, min)
-      console.log(engine)
-      engine = elMult(elDiv(engine, eval(engine.join('+'))), total);
-      console.log(engine)
-    }
+    engine = [random.real(1,5), random.real(1,5), random.real(1,5), random.real(1,5), random.real(1,5)];
+    engine = elementwiseMultiplication(
+      elementwiseDivision(
+        engine,
+        engine.reduce((a, b) => a + b, 0) // sum the array.
+      ), total
+    );
   }
   return engine;
 };
