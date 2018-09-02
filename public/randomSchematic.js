@@ -29,16 +29,17 @@ class Schematic {
     for (var i = 0; i < statNo; i++) {
       schematic[i] = max + 1;  
     }
-    let rollMax = -1, rollMin = 0;
-    while (schematic[0] >= max || schematic[1] >= max || schematic[2] >= max || schematic[3] >= max || schematic[4] >= max) {
-      rollMax++;
-      schematic = Utilities.arrayMult(schematic, Utilities.randomStatArray(statNo), 1, max, min);
-      schematic = Utilities.elMult(Utilities.elDiv(schematic, eval(schematic.join('+'))), total);
-      while (schematic[0] < min || schematic[1] < min || schematic[2] < min || schematic[3] < min || schematic[4] < min) {
-        rollMin++;
-        schematic = Utilities.arrayMult(schematic, Utilities.randomStatArray(statNo), 1, max, min)
-        schematic = Utilities.elMult(Utilities.elDiv(schematic, eval(schematic.join('+'))), total);
-      }
+    console.log(schematic);
+    while (Utilities.comparisonAny(schematic, max, min)) {
+      console.log(schematic);
+      schematic = Utilities.randomStatArray(statNo);
+      schematic = Utilities.elementwiseMultiplication(
+        Utilities.elementwiseDivision(
+          schematic,
+          schematic.reduce((a, b) => a + b, 0) // sum the array.
+        ), total
+      );
+      console.log(schematic);
     }
     return schematic;
   }

@@ -5,6 +5,36 @@
     var Utilities = function (options) {};
     
     var random = window.random;
+    
+    Utilities.prototype.elementwiseDivision = (arr, num) => {
+      // Divides each element in the array by num
+      for (var i = 0; i < arr.length; i++) {
+        arr[i] = arr[i] / num
+      }
+      return arr;
+    }
+
+    Utilities.prototype.elementwiseMultiplication = (arr, num) => {
+      // Multiplies each element in the array by num
+      for (var i = 0; i < arr.length; i++) {
+        arr[i] = arr[i] * num
+      }
+      return arr;
+    }
+
+    Utilities.prototype.comparisonAny = (arr, max, min) => {
+      // Return true (to keep while loop going) if any value in array is outside the max >= x >= min range
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i] >= max) {
+          return true;
+        }
+        if (arr[i] <= min) {
+          return true;
+        }
+      }
+      return false;
+    }
+
 
     Utilities.prototype.elDiv = function (ar1, num) {
       var res = new Array(ar1.length);
