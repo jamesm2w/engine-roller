@@ -213,6 +213,10 @@
       window.document.getElementById("loadSavedSchematicBtn").addEventListener("click", function () {
         window.Utilities.showModal("LoadEngine")});
       
+      window.document.getElementById("cipherDisplay").addEventListener("click", function (){
+        window.Utilities.showModal("CipherHelper")
+      });
+      
       var closeBtns = window.document.getElementsByClassName("modalClose");
       for (var element of closeBtns) {
         element.addEventListener("click", window.Utilities.closeOpenModal);
