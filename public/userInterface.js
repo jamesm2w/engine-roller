@@ -90,8 +90,14 @@
     UserInterface.prototype.renderRollerUI = function (type) {
       document.getElementById("rollerUI").innerHTML = "";
       for (var i = 1; i < 8; i++) {
-        document.getElementById("rollerUI").innerHTML += `<div class='${window.schematicConfig.Engine[i].rarity.toLowerCase()}-btn roll-btn' 
+        if (i == 1) {
+          document.getElementById("rollerUI").innerHTML += `<span class="wa-header">Existing</span>`;
+        } else if (i == 5) {
+          document.getElementById("rollerUI").innerHTML += `<div class="divider top"></div><span class="wa-header">Theoretical</span>`;
+        }
+        document.getElementById("rollerUI").innerHTML += `<div class='${window.schematicConfig.Engine[i].rarity.toLowerCase()}-btn unselectable roll-btn' 
           onclick='UI.randomRoll${type}(${i})'>${window.schematicConfig.Engine[i].rarity} (T${i}) ${type}</div>`;
+        
       }
     }
     
