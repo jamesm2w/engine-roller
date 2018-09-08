@@ -31,7 +31,6 @@ class Schematic {
     }
     console.log(schematic);
     while (Utilities.comparisonAny(schematic, max, min)) {
-      console.log(schematic);
       schematic = Utilities.randomStatArray(statNo);
       schematic = Utilities.elementwiseMultiplication(
         Utilities.elementwiseDivision(
