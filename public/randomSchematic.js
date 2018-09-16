@@ -203,7 +203,20 @@ class Wing extends Schematic {
   }
   
   determineName() {
-    var casingName, tipName, aileronName, pivNum, engineType, stats = this.stats, config = window.schematicConfig[this.type];
+    var casingName, tipName, aileronName, pivLetter, stats = this.stats, config = window.schematicConfig[this.type];
+    for (var i = 0; i < config.casings.length; i++) {
+      var currentCasing = config.casings[i];
+      if (currentCasing[0] <= this.tier && this.fullStats.indexOf(Math.max(...this.fullStats)) == config.stats[currentCasing[2]]) {
+        casingName = currentCasing[1];
+      } 
+    }
+    var pivotSpeed = stats[1];
+    for (var i = 0; i < config.ailerons.length; i++) {
+      if (pivotSpeed > config.ailerons[i][0]) {
+        aileronName = config.ailerons[i][1]
+        pivLetter = String.fromCharCode(pivotSpeed - 
+      }
+    }
   }
   
   calculateCosts() {
