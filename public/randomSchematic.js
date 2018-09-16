@@ -203,7 +203,7 @@ class Wing extends Schematic {
   }
   
   determineName() {
-    return ["Proc", "Wing", this.tier, "00", "X"];
+    var casingName, tipName, aileronName, pivNum, engineType, stats = this.stats, config = window.schematicConfig[this.type];
   }
   
   calculateCosts() {
