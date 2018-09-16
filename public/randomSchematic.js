@@ -213,7 +213,7 @@ class Wing extends Schematic {
     }
     var power = stats[2];
     for (var i = 0; i < config.tips.length; i++) {
-      if (power >= config.tips[i][0] && wingType == config.ailerons[i][2]) {
+      if (power >= config.tips[i][0] && wingType == config.tips[i][2]) {
         tipName = config.tips[i][1]
       }
     }
@@ -226,7 +226,7 @@ class Wing extends Schematic {
     }
     var resilience = stats[0];
     for (var i = 0; i < config.mounts.length; i++) {
-      if (resilience >= config.mounts[i][0] && wingType == config.ailerons[i][2]) {
+      if (resilience >= config.mounts[i][0] && wingType == config.mounts[i][2]) {
         mountName = config.mounts[i][1];
       }
     }
