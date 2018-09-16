@@ -173,6 +173,25 @@
       "Resilience": 0,
       "Pivot Speed": 1,
       "Power": 2
+    },
+    "casing": {
+      [1, "Barndoor", "Resilience", "w"],
+      [1, "Driftwood", "Resilience", "w"],
+      [1, "Hatchflap", "Pivot Speed", "w"],
+      [1, "Strapped", "Power", "w"],
+      [2, "Consolidated", "Resilience", "w"],
+      [2, "Feather", "Power", "w"],
+      [2, "Hinged", "Pivot Speed", "w"],
+      [2, "Reinforced", "Resilience", "w"],
+      [2, "Rotator", "Pivot Speed", "w"],
+      [3, "Ceres", "Power", "m"],
+      [3, "Comet", "Power", "m"],
+      [3, "Condor", "Resilience", "m"],
+      [3, "Dynamo", "Pivot Speed", "m"],
+      [3, "Falcon", "Pivot Speed", "m"],
+      [4, "Aether", "Power", "m"],
+      [4, "Celestius", "Resilience", "m"],
+      [4, "Cloudline", "Pivot Speed", "
     }
   },
   "Cannon": {
