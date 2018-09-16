@@ -13,7 +13,7 @@ class Schematic {
         statNo = 5;
         break;
       case "Wing":
-        statNo = 3
+        statNo = 3;
         break;
       case "Cannon":
         statNo = 5;
@@ -203,20 +203,35 @@ class Wing extends Schematic {
   }
   
   determineName() {
-    var casingName, tipName, aileronName, pivLetter, stats = this.stats, config = window.schematicConfig[this.type];
+    var casingName, tipName, aileronName, mountName, pivLetter, wingType, stats = this.stats, config = window.schematicConfig[this.type];
     for (var i = 0; i < config.casings.length; i++) {
       var currentCasing = config.casings[i];
       if (currentCasing[0] <= this.tier && this.fullStats.indexOf(Math.max(...this.fullStats)) == config.stats[currentCasing[2]]) {
         casingName = currentCasing[1];
+        wingType = currentCasing[3];
       } 
+    }
+    var power = stats[2];
+    for (var i = 0; i < config.tips.length; i++) {
+      if (power >= config.tips[i][0] && wingType == config.ailerons[i][2]) {
+        tipName = config.tips[i][1]
+      }
     }
     var pivotSpeed = stats[1];
     for (var i = 0; i < config.ailerons.length; i++) {
       if (pivotSpeed > config.ailerons[i][0]) {
-        aileronName = config.ailerons[i][1]
-        pivLetter = String.fromCharCode(pivotSpeed - 
+        aileronName = config.ailerons[i][1];
+        pivLetter = String.fromCharCode(64 + pivotSpeed - config.ailerons[i][0]);
       }
     }
+    var resilience = stats[0];
+    for (var i = 0; i < config.mounts.length; i++) {
+      if (resilience >= config.mounts[i][0] && wingType == config.ailerons[i][2]) {
+        mountName = config.mounts[i][1];
+      }
+    }
+    
+    return [casingName, tipName, aileronName, mountName, pivLetter];
   }
   
   calculateCosts() {

@@ -181,7 +181,7 @@
       [1, "Strapped",     "Power",       "w"],
       [2, "Consolidated", "Resilience",  "w"],
       [2, "Feather",      "Power",       "w"],
-      [2, "Hinged",  f    "Pivot Speed", "w"],
+      [2, "Hinged",       "Pivot Speed", "w"],
       [2, "Reinforced",   "Resilience",  "w"],
       [2, "Rotator",      "Pivot Speed", "w"],
       [3, "Ceres",        "Power",       "m"],
@@ -221,7 +221,7 @@
       [0,  "00", "m"],
       [25, "25", "m"],
       [40, "50", "m"],
-      [56, "99", "m"],
+      [56, "99", "m"]
     ]
   },
   "Cannon": {
