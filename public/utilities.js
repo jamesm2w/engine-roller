@@ -38,7 +38,7 @@
     Utilities.prototype.randomStatArray = function (n) {
       var a = new Array(n);
       for (var i = 0; i < n; i++) {
-        a[i] = window.random.real(1,5);
+        a[i] = window.random.real(1,5) + 0.2;
       }
       return a;
     }
