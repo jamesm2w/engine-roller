@@ -17,14 +17,15 @@
   <body>
     
     <div id="app" class="row col-6">
-      <div class="schematicView wa-panel col-12" id="schematicPanel"></div>
+      <div class="schematicView wa-panel col-12" id="schematicPanel" style="margin-bottom: 10px;"></div>
       
-      <input id="stat1" type="number">
-      <input id="stat2" type="number">
-      <input id="stat3" type="number">
-      <input id="stat4" type="number">
-      <input id="stat5" type="number">
-      <button onclick="">
+      <input id="stat1" type="number" placeholder="Stat1">
+      <input id="stat2" type="number" placeholder="Stat2">
+      <input id="stat3" type="number" placeholder="Stat3">
+      <input id="stat4" type="number" placeholder="Stat4">
+      <input id="stat5" type="number" placeholder="Stat5">
+      <input id="tier" type="number" placeholder="Tier">
+      <button id="updateButton">
         Change
       </button>
     </div>
@@ -81,7 +82,12 @@
         panel.style.borderColor = window.schematicConfig.Engine[tier].colour;
         
         for (var i = 0; i < stats.length; i++){
-          document.getElementById("schematicStat" + i + "Bar").style.width = stats[i] + "%";
+          if (stats[i] < 5) {
+            document.getElementById("schematicStat" + i + "Bar").style.width = (stats[i] * 100) + "%";
+          } else {
+            document.getElementById("schematicStat" + i + "Bar").style.width = stats[i] + "%";
+          }
+          
           document.getElementById("schematicStat" + i + "Value").innerHTML = stats[i];
         }
         
@@ -107,7 +113,7 @@
                document.getElementById('stat3').value,
                document.getElementById('stat4').value,
                document.getElementById('stat5').value ],
-              4);
+              document.getElementById("tier").value);
           });
 
         } else {
