@@ -13,6 +13,10 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
+app.get("/test", function (request, response) {
+  response.sendFile(__dirname + '/views/rollLog.html');
+});
+
 app.get("/engine/full/t1", (req, res) => {
   let ans = roller.rollSchematic(5, 100, 75);
   res.send(ans);

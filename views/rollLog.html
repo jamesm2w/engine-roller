@@ -16,8 +16,17 @@
   </head>
   <body>
     
-    <div id="app">
+    <div id="app" class="row col-6">
+      <div class="schematicView wa-panel col-12" id="schematicPanel"></div>
       
+      <input id="stat1" type="number">
+      <input id="stat2" type="number">
+      <input id="stat3" type="number">
+      <input id="stat4" type="number">
+      <input id="stat5" type="number">
+      <button onclick="">
+        Change
+      </button>
     </div>
     
     <script src="/random.min.js"></script>
@@ -26,11 +35,91 @@
     <script src="/randomSchematic.js"></script>
     <script src="/advancedRoll.js"></script>
     <script src="/utilities.js"></script>
-    <script src="/userInterface.js"></script>
-    <script src="/client.js"></script>
     
     <script>
       window.random = new Random();
+      
+      var statString = function (obj) {
+        return `<div class="stat-bar" id="schematicStat${obj.index}">
+              <div class="progress" id="schematicStat${obj.index}Bar"></div>
+              <span class="stat-label left">${obj.name}</span>
+              <span class="stat-label right" id="schematicStat${obj.index}Value">0</span>
+            </div>`
+      }
+
+      var matString = function (obj) {
+        return `<div class="col-6 schem-mat bottom top hidden" id="schematicMat${obj.index}">
+                <span class="wa-header" id="schematicMat${obj.index}Label">${obj.name}</span>
+                <span id="schematicMat${obj.index}Value">100</span>
+              </div>`
+      }
+      
+      function render(type) {
+        var panel = window.document.getElementById("schematicPanel");
+        panel.setAttribute("schematicType", type);
+        panel.innerHTML = `<span class="wa-header" style="font-size: 1em; float: left;" id="schematicName">Procedural ${type}</span>
+                           <div class="divider top bottom"></div>`;
+        for (var i = 0; i < 5; i++) {
+          panel.innerHTML += statString({"name": Object.keys(window.schematicConfig[type].stats)[i], "index": i});
+
+          if(document.getElementById("schematicStat"+i).getElementsByClassName("stat-label")[0].innerHTML == "undefined") {
+            document.getElementById("schematicStat"+i).getElementsByClassName("stat-label")[0].classList.add("hidden");
+            document.getElementById("schematicStat"+i).getElementsByClassName("stat-label")[1].classList.add("hidden");
+          }
+        }
+        panel.innerHTML += `<div class="schematicMoreInfo">
+              <div class="divider bottom top" style="margin-bottom: 3%;"></div>`;
+
+        for (var i = 0; i < Object.keys(window.schematicConfig[type].statEffects).length; i++) {
+          panel.innerHTML += matString({"name": Object.keys(window.schematicConfig[type].statEffects)[i], "index": i});
+        }
+        panel.innerHTML += `</div>`;
+      }
+      
+      function update (stats, tier) {
+      var panel = document.getElementById("schematicPanel");
+        panel.style.borderColor = window.schematicConfig.Engine[tier].colour;
+        
+        for (var i = 0; i < stats.length; i++){
+          document.getElementById("schematicStat" + i + "Bar").style.width = stats[i] + "%";
+          document.getElementById("schematicStat" + i + "Value").innerHTML = stats[i];
+        }
+        
+        document.getElementById("schematicName").innerHTML = "Procedural Engine (Tier " + tier + ")";
+      }
+      
+      var request = new XMLHttpRequest();
+      request.open('GET', '/config/schematicConfig.json', true);
+
+      request.onload = function() {
+        if (this.status >= 200 && this.status < 400) {
+          window.schematicConfig = JSON.parse(this.response);
+          
+          render("Engine");
+
+          window.storage = window.localStorage;
+          window.loadedSchematic;
+          
+          document.getElementById("updateButton").addEventListener("click", function (e) {
+            update(
+              [ document.getElementById('stat1').value, 
+               document.getElementById('stat2').value,
+               document.getElementById('stat3').value,
+               document.getElementById('stat4').value,
+               document.getElementById('stat5').value ],
+              4);
+          });
+
+        } else {
+          console.log(this.response);
+        }
+      };
+
+      request.onerror = function(err) {
+        console.log(err);
+      };
+
+      request.send();
     </script>
   </body>
 </html>
